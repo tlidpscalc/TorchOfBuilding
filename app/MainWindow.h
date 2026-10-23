@@ -1,15 +1,28 @@
 #pragma once
 
-#include <QMainWindow>
+#include "tob/Build.h"
+#include "tob/GameData.h"
 
+#include <QMainWindow>
+#include <QString>
+
+#include <map>
+#include <string>
+
+#include <nlohmann/json.hpp>
+
+class QCheckBox;
 class QComboBox;
 class QDoubleSpinBox;
-class QLineEdit;
+class QFormLayout;
+class QLabel;
 class QPlainTextEdit;
+class QTableWidget;
 class QTextBrowser;
 
-// First UI milestone: a single-skill sandbox. Enter weapon/skill numbers and custom modifier
-// lines, get DPS with a full breakdown. Talent tree, traits and gear panels come later.
+// First usable UI: open a build file, see its DPS and breakdown, toggle the situational config
+// (only the flags and values the build's own modifiers check), add custom modifier lines, and list
+// every line with how the parser read it. Talent, trait and gear editors come later.
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
@@ -17,27 +30,31 @@ public:
     explicit MainWindow(QWidget* parent = nullptr);
 
 private:
+    void openBuild();
+    void loadBuildPath(const QString& path);
+    void rebuildConfigPanel();
     void recalculate();
+    void showLines();
+    tob::BuildState loadState() const;
 
-    QLineEdit* skillTags_;
-    QDoubleSpinBox* weaponMin_;
-    QDoubleSpinBox* weaponMax_;
-    QDoubleSpinBox* weaponAps_;
-    QDoubleSpinBox* weaponCrit_;
-    QDoubleSpinBox* weaponPct_;
-    QDoubleSpinBox* ade_;
-    QComboBox* spellType_;
-    QDoubleSpinBox* spellMin_;
-    QDoubleSpinBox* spellMax_;
-    QDoubleSpinBox* spellCastSpeed_;
-    QDoubleSpinBox* spellCrit_;
-    QDoubleSpinBox* hitsPerUse_;
-    QComboBox* convertTo_;
-    QDoubleSpinBox* convertPct_;
+    tob::GameData data_;
+    QString dataDir_;
+    QString buildPath_;
+    nlohmann::json build_;
+    bool loaded_ = false;
+    bool updating_ = false;
+
+    QLabel* buildLabel_;
+    QFormLayout* flagsForm_;
+    QFormLayout* varsForm_;
     QDoubleSpinBox* enemyRes_;
     QDoubleSpinBox* armorPhys_;
     QDoubleSpinBox* armorNonPhys_;
-    QPlainTextEdit* mods_;
-    QPlainTextEdit* config_;
+    QPlainTextEdit* custom_;
     QTextBrowser* output_;
+    QTableWidget* lines_;
+    QComboBox* lineFilter_;
+    std::map<std::string, QCheckBox*> flags_;
+    std::map<std::string, QDoubleSpinBox*> vars_;
+    tob::BuildState state_;
 };

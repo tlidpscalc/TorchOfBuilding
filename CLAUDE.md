@@ -3,6 +3,7 @@
 - Offline Torchlight Infinite build planner. Engine is C++20 (`engine/`, no Qt), UI is Qt 6 Widgets (`app/`), tlidb scraper is Python (`tools/scraper/`, dev-only).
 - The project owner is the authority on game mechanics. Never invent a formula: mark guesses `UNVERIFIED`/`ASSUMED` and ask.
 - Every confirmed mechanic gets a test in `tests/`. Keep tests passing: `cmake --preset engine-only && cmake --build --preset engine-debug && ctest --preset engine-debug` (from a VS Developer shell).
+- Desktop app: `cmake --preset msvc && cmake --build --preset msvc-debug --target TorchOfBuilding`, then `windeployqt --debug` on `build/msvc/app/Debug/TorchOfBuilding.exe` once so it runs outside a Qt shell. It finds `data/` by walking up from the exe or working directory.
 - ModParser must never silently drop text. Unsupported lines return `ok=false` with a reason; lines with no DPS effect are recognised as `inert`.
 
 ## Engine data flow

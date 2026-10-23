@@ -1,0 +1,32 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "msvc",
+      "displayName": "MSVC + Ninja",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build/msvc",
+      "cacheVariables": {
+        "CMAKE_PREFIX_PATH": "$env{QT_DIR}"
+      }
+    },
+    {
+      "name": "engine-only",
+      "displayName": "Engine + tests (no Qt)",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/build/engine",
+      "cacheVariables": {
+        "TOB_BUILD_APP": "OFF"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "msvc-debug",   "configurePreset": "msvc",        "configuration": "Debug" },
+    { "name": "msvc-release", "configurePreset": "msvc",        "configuration": "Release" },
+    { "name": "engine-debug", "configurePreset": "engine-only", "configuration": "Debug" }
+  ],
+  "testPresets": [
+    { "name": "engine-debug", "configurePreset": "engine-only", "configuration": "Debug", "output": { "outputOnFailure": true } },
+    { "name": "msvc-debug",   "configurePreset": "msvc",        "configuration": "Debug", "output": { "outputOnFailure": true } }
+  ]
+}

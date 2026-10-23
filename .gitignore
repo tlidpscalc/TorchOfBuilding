@@ -1,0 +1,11 @@
+build/
+out/
+.vs/
+.vscode/
+*.user
+
+# Scraper output: raw HTML cache is large and re-creatable
+data/raw/
+tools/scraper/.venv/
+__pycache__/
+*.pyc

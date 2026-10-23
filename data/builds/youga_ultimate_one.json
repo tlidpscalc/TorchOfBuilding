@@ -1,0 +1,203 @@
+{
+ "schema": 1,
+ "_comment": "Reference build: the project owner's Spacetime Witness Youga (The Ultimate One), reduced setup used for dummy tests on 2026-10-22. Every modifier is stored as in-game text; the engine parses it.",
+ "hero": "Spacetime Witness Youga",
+ "character_level": 97,
+
+ "traits": {
+  "tree": "The_Ultimate_One",
+  "nodes": [
+   {"name": "I Am the Ultimate One", "level": 1},
+   {"name": "I Meet the Selves", "level": 3},
+   {"name": "I Am the Measure of All Time", "level": 3},
+   {"name": "I Need Not Lift a Finger", "level": 3}
+  ]
+ },
+
+ "talents": [
+  {"board": "Goddess_of_Knowledge", "slot": "main", "core": ["Insight", "Acquaintance"],
+   "nodes": [[0, 2, 3], [1, 1, 3], [2, 1, 3], [2, 4, 3], [3, 4, 3], [5, 0, 1], [5, 1, 3], [5, 3, 3], [6, 1, 1], [6, 3, 1]]},
+  {"board": "Prophet", "slot": "sub", "core": ["Extreme Coldness"],
+   "nodes": [[2, 0, 3], [3, 0, 2], [4, 0, 3], [5, 0, 3], [6, 0, 1], [1, 1, 3], [2, 1, 3], [3, 1, 1], [0, 2, 3], [1, 2, 3]]},
+  {"board": "Warlock", "slot": "advanced", "core": ["Dirty Tricks"],
+   "nodes": [[2, 0, 3], [3, 0, 3], [4, 0, 1], [3, 1, 3], [4, 1, 1], [0, 2, 3], [1, 2, 3], [2, 4, 3], [3, 4, 3], [6, 3, 1]],
+   "prism": {"name": "Ethereal Prism: Haze", "slot": [5, 3],
+             "lines": ["+12% additional Spell Damage while you have Spell Aggression"],
+             "_note": "Haze adds this effect to the panel's core talent; plasticity 3, 1x1 area"}},
+  {"board": "Lich", "slot": "advanced", "core": ["Off The Beaten Track"],
+   "nodes": [[2, 0, 3], [3, 0, 3], [4, 0, 3], [5, 0, 3], [6, 0, 1], [5, 1, 3], [6, 1, 1], [0, 2, 3], [1, 2, 3], [4, 2, 3], [5, 2, 2], [5, 3, 3], [6, 3, 1], [4, 4, 3], [5, 4, 3], [6, 4, 1]]}
+ ],
+
+ "skills": {
+  "main": "Homing Frost Bolt",
+  "active": [
+   {"name": "Homing Frost Bolt", "supports": [
+     {"name": "Clockwork Core"},
+     {"name": "Multiple Projectiles"},
+     {"name": "Homing Frost Bolt: Deep Chill (Noble)", "stars": 5,
+      "lines": ["The supported skill deals +17% additional damage to Frozen enemies",
+                "+80 Critical Strike Rating against Frozen enemies for the supported skill"]},
+     {"name": "Homing Frost Bolt: Frost Barb (Magnificent)", "stars": 5,
+      "lines": ["+24% additional damage for the supported skill when having at least 6 unfired Frost Bolt(s)",
+                "+2 Penetration(s) for the supported skill when having at least 6 unfired Frost Bolt(s)"]},
+     {"name": "Ailment Termination"}]},
+   {"name": "Frost Shield", "supports": [
+     {"name": "Activation Medium: Preparation"}, {"name": "Mighty Bulwark"}, {"name": "Resurgence"}, {"name": "Iron Fortification"}]},
+   {"name": "Blink", "supports": [
+     {"name": "Cooldown Reduction"}, {"name": "Quick Mobility"}, {"name": "Periodic Burst"}]},
+   {"name": "Selves of All Realms", "supports": [
+     {"name": "Activation Medium: Preparation"}, {"name": "Cooldown Reduction"}, {"name": "Extended Duration"}, {"name": "Empowered Element"}]},
+   {"name": "Biting Cold", "supports": [
+     {"name": "Activation Medium: Preparation"}, {"name": "Deepened Curse"}, {"name": "Terrain of Malice"}]}
+  ],
+  "passive": [
+   {"name": "Precise: Precise Projectiles", "enabled": false, "supports": [{"name": "Aura Amplification"}, {"name": "Precise: Stand as One"}, {"name": "Restrain"}]},
+   {"name": "Precise: Frigid Domain", "enabled": false, "supports": [{"name": "Aura Amplification"}, {"name": "Precise: Stand as One"}, {"name": "Restrain"}]},
+   {"name": "Precise: Steadfast", "enabled": true, "supports": [{"name": "Aura Amplification"}, {"name": "Seal Conversion"}, {"name": "Precise: Stand as One"}]},
+   {"name": "Precise: Energy Fortress", "enabled": true, "supports": [{"name": "Aura Amplification"}, {"name": "Precise: Stand as One"}, {"name": "Restrain"}]}
+  ]
+ },
+
+ "items": [
+  {"slot": "Helmet", "name": "Malign Embrace", "lines": [
+   "+272 gear Energy Shield", "+2 Max Tangle Quantity",
+   "+180 Spell Critical Strike Rating and +18% additional damage on Critical Strike for each activated Tangle",
+   "Nearby enemies are guaranteed to land Critical Strikes"]},
+  {"slot": "Amulet", "name": "Rare Amulet (Priceless)", "lines": [
+   "+24 Intelligence", "+88 Max Energy Shield", "+433 Max Energy Shield", "+2 Active Skill Level",
+   "Gains Spell Aggression when casting a Spell Skill", "+26% Spell Aggression Effect", "+19% Aura Effect",
+   "+25% Lightning Resistance", "+42% Projectile Speed"]},
+  {"slot": "Belt", "name": "Rare Belt", "blend_core": ["Bunch"], "lines": [
+   "+80 Max Energy Shield", "+52 Intelligence", "+15% Defense", "+349 Max Energy Shield",
+   "+27% Erosion Resistance", "+27% Lightning Resistance", "+21% Fire Resistance"]},
+  {"slot": "Ring 1", "name": "Rare Ring (Priceless)", "lines": [
+   "+4% Elemental Resistance", "+9% Erosion Resistance", "+15% Armor DMG Mitigation Penetration",
+   "+419 Max Energy Shield", "+18% Attack and Spell Block Chance", "+34 to Max Frostbite Rating",
+   "100% Chance to gain a Barrier for every 5 m you move", "+27% Cold Resistance"]},
+  {"slot": "Ring 2", "name": "Rare Ring (Priceless)", "lines": [
+   "+12% Erosion Resistance", "+7% Attack and Cast Speed", "+20% Elemental and Erosion Resistance Penetration",
+   "+13% Attack and Spell Block Chance", "+351 Max Energy Shield", "+26% chance to deal Double Damage",
+   "+19% Fire Resistance", "+59% Critical Strike Damage"]},
+  {"slot": "Main Hand", "name": "Rare Wand (Priceless)", "lines": [
+   "+40% Spell Damage", "+6% Armor DMG Mitigation Penetration", "+55 Spell Critical Strike Rating",
+   "+21% Armor DMG Mitigation Penetration", "+101 Intelligence", "+137% Spell Damage",
+   "+46% Tangle Damage Enhancement", "+84% Spell Critical Strike Damage", "+47% Cast Speed", "+47% Minion Cast Speed"]},
+  {"slot": "Off Hand", "name": "Rare Wand (Priceless)", "lines": [
+   "+40% Spell Damage", "+6% Armor DMG Mitigation Penetration", "+6% Armor DMG Mitigation Penetration",
+   "+3 Spell Skill Level", "+3 Cold Skill Level", "+131% Spell Damage", "+47% Tangle Damage Enhancement",
+   "+82% Spell Critical Strike Damage", "+38% Cast Speed", "+38% Minion Cast Speed"]},
+  {"slot": "Boots", "name": "Lone Walker's Boots", "lines": [
+   "+1615 gear Evasion", "You have a Lv. 20 Precise Spell Amplification.", "+50% Movement Speed",
+   "+16% Aura effect when affected by 5 or more Auras", "+2% Aura Effect per +3% Sealed Mana Compensation",
+   "Has Hasten"]},
+  {"slot": "Gloves", "name": "Israfel's Laws", "lines": [
+   "+470 Max Energy Shield", "+350 gear Energy Shield", "+33% Blessing Duration",
+   "+13% additional Cold Damage for every stack of Focus Blessing",
+   "+4% Critical Strike Damage per stack of Focus Blessing owned"]},
+  {"slot": "Chest", "name": "Vorax Limb: Chest", "lines": [
+   "+20% Block Ratio",
+   "+10% Block Ratio and Block Ratio Upper Limit",
+   "+1% additional damage for you and your Minions for every +4% Attack or Spell Block Chance",
+   "+10% Block Ratio and Block Ratio Upper Limit",
+   "-1% additional Damage Over Time taken for every +2% Block Ratio owned",
+   "+2 Active Skill Level",
+   "Inflicts Cold Infiltration when dealing damage. Interval for each enemy: 1s",
+   "When minions deal damage, inflicts Cold Infiltration. Interval for each enemy: 1s",
+   "+14% Cold Infiltration Effect", "+10% Elemental Resistance", "+13% Aura Effect"],
+   "_note": "Silent Avowal grafts: Wield My Sword and Absolve My Sin (their lines are included above)"}
+ ],
+
+ "slates": [
+  {"name": "Pedigree of Gods", "core_talents": ["Three Birds with One Stone", "Gale"], "lines": [
+   "+35% Armor if you have Blocked recently(Max Active Divinity: 1)", "+9% Fire Damage", "+9% Minion Fire Damage"]},
+  {"name": "Sparks of Moth Fire", "lines": ["+10% additional damage when having both Sealed Mana and Life"],
+   "_note": "copies the last talent of the slate above it (Fallen Starlight Lv93)"},
+  {"name": "Fallen Starlight (Lv93)", "lines": [
+   "+3% Attack and Cast Speed", "+6% Skill Area", "+6% Projectile Speed", "+18% Projectile Damage",
+   "+10% additional damage when having both Sealed Mana and Life"]},
+  {"name": "Fallen Starlight (Lv86)", "lines": [
+   "+15% Minion Critical Strike Rating", "+2% Movement Speed", "+3% Max Life", "+3% Max Energy Shield",
+   "+5% Block Ratio", "Restores 1% Missing Life and Energy Shield when Blocking(Max Active Divinity: 1)",
+   "+1 Cold Skill Level"]},
+  {"name": "Goddess of Knowledge's Divinity (Z, Lv86)", "lines": [
+   "+1 Cold Skill Level", "+1 to Max Focus Blessing Stacks",
+   "Regenerates 0.4% Mana per second while Focus Blessing is active(Max Active Divinity: 1)",
+   "+6% Max Energy Shield", "+1 Spell Skill Level",
+   "Energy Shield Charge cannot be interrupted by damage for 1 s after it starts(Max Active Divinity: 1)"]},
+  {"name": "Goddess of Knowledge's Divinity (2x2, Lv87)", "lines": [
+   "Consumes 4% of current Mana when casting a Main Skill. Interval: 0.03s",
+   "+8% additional Spell Damage(Max Active Divinity: 1)", "+10% additional damage against Frozen enemies",
+   "+6% Attack and Cast Speed", "+6% Minion Attack and Cast Speed", "+6% Max Life", "+6% Max Energy Shield",
+   "+1 Spell Skill Level"]},
+  {"name": "Goddess of Knowledge's Divinity (S, Lv86)", "lines": [
+   "+1 to Max Focus Blessing Stacks(Max Active Divinity: 1)", "+10% additional damage against Frozen enemies",
+   "Inflicts Frail when dealing Spell Damage(Max Active Divinity: 1)", "+18% Cold Resistance",
+   "Minions are immune to Cold Damage", "Minions are immune to Frostbite and Freeze(Max Active Divinity: 1)"],
+   "_note": "third brand 'Gains 1 stack of Focus Blessing when ...' was cut off in the screenshot; minor source"}
+ ],
+
+ "pactspirits": [
+  {"name": "Dreamweaver", "level": 6, "lines": [
+   "+19% additional Elemental Damage dealt by Spell Skills",
+   "1.2% Elemental Resistance Penetration when hitting an enemy with Elemental Damage, stacking up to 4 times",
+   "+3% Elemental Resistance Penetration every time you hit an enemy with Elemental Damage recently. Stacks up to 4 times",
+   "+4% additional damage",
+   "+8% Spell Block Chance", "+12% Elemental Damage",
+   "Damage Penetrates 2% Elemental Resistance", "Damage Penetrates 2% Elemental Resistance",
+   "+4% Cast Speed", "+4% Cast Speed",
+   "+24% Elemental Damage", "Damage Penetrates 4% Elemental Resistance", "+8% Cast Speed",
+   "+6% damage"],
+   "_note": "inner ring: first minor talent replaced by a Fate (+8% Spell Block Chance); last line is the +6% damage end node"},
+  {"name": "Witch of the Night", "level": 6, "lines": [
+   "Gains 1 stack of Night Feather Entanglement for every 1 active Tangle",
+   "+50% Night Feather Entanglement Effect",
+   "+8% additional Spell Damage when having Night Feather Entanglement",
+   "Gains 1 stack of Focus Blessing every 1 s when Night Feather Entanglement reaches max stacks",
+   "+2.5% Block Ratio", "+2.5% Block Ratio",
+   "+22% Spell Critical Strike Rating", "+22% Spell Critical Strike Rating",
+   "+4% Cast Speed", "+4% Cast Speed",
+   "+24% Spell Damage", "+45% Spell Critical Strike Rating", "+8% Cast Speed",
+   "+6% damage"],
+   "_note": "first two inner minor talents (Spell Damage I) replaced by Micro Fate: Block Ratio"},
+  {"name": "Preserver of Eternity", "level": 6, "lines": [
+   "+40% Movement Speed if you haven't been hit recently", "+8% Movement Speed", "+20% Movement Speed",
+   "-4% additional damage taken",
+   "2.5% Elemental Resistance", "2.5% Elemental Resistance",
+   "1.5% chance to avoid damage", "1.5% chance to avoid damage",
+   "-10% XP lost upon death", "-10% XP lost upon death",
+   "+5% Elemental Resistance", "+3% chance to avoid damage", "-20% XP lost upon death",
+   "+6% damage"]}
+ ],
+
+ "hero_memories": [
+  {"slot": "Origin", "name": "Memory of Origin", "trait_level_bonus": 3, "lines": [
+   "+110 Intelligence", "+21% Spell Block Chance", "+16% Projectile Speed", "+40% Projectile Speed", "+26% Spell Block Chance"]},
+  {"slot": "Discipline", "name": "Memory of Discipline", "trait_level_bonus": 3, "lines": [
+   "+642 Max Energy Shield", "+30% Projectile Speed", "+20% Attack Block Chance",
+   "+47% Cold Skill Critical Strike Damage", "+44% Spell Critical Strike Damage"]},
+  {"slot": "Progress", "name": "Memory of Progress", "trait_level_bonus": 3, "lines": [
+   "+30% Movement Speed", "+80% Critical Strike Rating", "+20% Spell Block Chance",
+   "+65% Cold Skill Critical Strike Damage", "+28% Attack Block Chance"]}
+ ],
+
+ "follower": {
+  "name": "Witch Rat",
+  "player_lines": ["+40% Projectile Speed"],
+  "projectile_amplification_stacks": 40,
+  "ailments": ["Trauma", "Ignite", "Wilt", "Numbed"],
+  "_note": "Swift Shadow Raid (+40% Projectile Speed for 4s, up all test), Origin Ice Shot (Projectile Amplification, 40 stacks), Lightning Storm (Numbed, Wilt), Deep Wounds (Trauma), Additional Ignite (Ignite)"
+ },
+
+ "config": {
+  "flags": ["sealed mana and life", "selves of all realms active", "dual wielding"],
+  "vars": {"auras": 3},
+  "enemy": {"resistance": 30, "armor_physical": 50, "armor_non_physical": 30}
+ },
+
+ "dummy_tests": [
+  {"label": "reduced setup, a few blinks", "duration_s": 60, "average_dps": 7643825141854},
+  {"label": "reduced setup, no blinking, Biting Cold ON", "duration_s": 61, "average_dps": 8368985944041},
+  {"label": "reduced setup, no blinking, Biting Cold OFF", "duration_s": 60, "average_dps": 3808949534420},
+  {"label": "reduced setup, Biting Cold OFF (first run)", "duration_s": 60, "average_dps": 3740360863025}
+ ]
+}

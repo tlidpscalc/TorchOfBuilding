@@ -1,0 +1,6260 @@
+{
+ "hero_memories": {
+  "Memory of Origin": {
+   "Base Stats": [
+    {
+     "tier": "1",
+     "text": "+90 Strength",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+90 Dexterity",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+90 Intelligence",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+90% damage",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+90% Minion Damage",
+     "level": 0,
+     "weight": 0
+    }
+   ],
+   "Fixed Affix": [
+    {
+     "tier": "1",
+     "text": "+2 to Hero Trait Level",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(18–22)% Movement Speed",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Fire Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Cold Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Lightning Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Erosion Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+32% Skill Area",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+23% Skill Area",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+15% Skill Area",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(38–42)% Critical Strike Damage",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(20–26)% Critical Strike Damage",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Critical Strike Damage",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+30% Projectile Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+24% Projectile Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+16% Projectile Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+80% Critical Strike Rating",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+60% Critical Strike Rating",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+40% Critical Strike Rating",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Attack Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Attack Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Attack Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Cast Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Cast Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Cast Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(20–30)% Affliction Effect",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(14–18)% Affliction Effect",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Affliction Effect",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(24–32)% Reaping Recovery Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(14–22)% Reaping Recovery Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Reaping Recovery Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% damage",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% damage",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% damage",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(10–14)% Max Life",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Life",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Life",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(10–14)% Max Energy Shield",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Energy Shield",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Energy Shield",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(26–30)% Armor",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–25)% Armor",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Armor",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(26–30)% Evasion",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–25)% Evasion",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Evasion",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(28–31)% Minion Critical Strike Damage",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(20–26)% Minion Critical Strike Damage",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Minion Critical Strike Damage",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+80% Minion Critical Strike Rating",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+60% Minion Critical Strike Rating",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+40% Minion Critical Strike Rating",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Minion Attack Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Minion Attack Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Minion Attack Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Minion Cast Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Minion Cast Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Minion Cast Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Minion Damage",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Minion Damage",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Minion Damage",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(15–21)% Attack Block Chance",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(10–14)% Attack Block Chance",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(6–9)% Attack Block Chance",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(15–21)% Spell Block Chance",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(10–14)% Spell Block Chance",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(6–9)% Spell Block Chance",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(26–30)% chance to avoid Elemental Ailments",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Slow",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Blinding",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Weaken",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Paralysis",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "(-60–-40)% Curse effect against you",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+10% Cooldown Recovery Speed",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Ignite Damage | -100% Ignite Effect received",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Wilt Damage",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Trauma Damage",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+10% Skill Effect Duration",
+     "level": 86,
+     "weight": 103
+    }
+   ],
+   "Random Affix": [
+    {
+     "tier": "0",
+     "text": "+(39–45)% Skill Area",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+32% Skill Area",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+23% Skill Area",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+15% Skill Area",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+52% Projectile Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+40% Projectile Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+30% Projectile Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+20% Projectile Speed",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(26–40)% Affliction Effect",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(20–30)% Affliction Effect",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(14–18)% Affliction Effect",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Affliction Effect",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(26–40)% Reaping Recovery Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(20–30)% Reaping Recovery Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(14–18)% Reaping Recovery Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Reaping Recovery Speed",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(14–20)% Max Life",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(10–16)% Max Life",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Life",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Life",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(14–20)% Max Energy Shield",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(10–16)% Max Energy Shield",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Energy Shield",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Energy Shield",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(40–46)% Armor",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(30–36)% Armor",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–28)% Armor",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Armor",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(40–46)% Evasion",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(30–36)% Evasion",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–28)% Evasion",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Evasion",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(46–58)% attack Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(36–44)% attack Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(26–34)% attack Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(16–24)% attack Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(46–58)% Spell Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(36–44)% Spell Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(26–34)% Spell Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(16–24)% Spell Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Physical Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Physical Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Physical Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Physical Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Fire Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Fire Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Fire Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Fire Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Cold Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Cold Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Cold Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Cold Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Lightning Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Lightning Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Lightning Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Lightning Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Erosion Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Erosion Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Erosion Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Erosion Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Minion Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Minion Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Minion Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Minion Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+104% Attack Critical Strike Rating",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+80% Attack Critical Strike Rating",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+60% Attack Critical Strike Rating",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+40% Attack Critical Strike Rating",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+104% Spell Critical Strike Rating",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+80% Spell Critical Strike Rating",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+60% Spell Critical Strike Rating",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+40% Spell Critical Strike Rating",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+104% Minion Critical Strike Rating",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+80% Minion Critical Strike Rating",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+60% Minion Critical Strike Rating",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+40% Minion Critical Strike Rating",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+18% Attack and Cast Speed | +18% Minion Attack and Cast Speed",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+14% Attack and Cast Speed | +14% Minion Attack and Cast Speed",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+10% Attack and Cast Speed | +10% Minion Attack and Cast Speed",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+6% Attack and Cast Speed | +6% Minion Attack and Cast Speed",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Attack Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Attack Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Attack Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Attack Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Spell Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Spell Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Spell Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Spell Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Physical Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Physical Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Physical Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Physical Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Cold Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Cold Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Cold Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Cold Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Fire Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Fire Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Fire Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Fire Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Lightning Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Lightning Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Lightning Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Lightning Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Erosion Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Erosion Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Erosion Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Erosion Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Damage Over Time",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Damage Over Time",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Damage Over Time",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Damage Over Time",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Minion Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Minion Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Minion Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Minion Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(25–31)% Attack Block Chance",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(17–24)% Attack Block Chance",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(12–16)% Attack Block Chance",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(7–11)% Attack Block Chance",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(25–31)% Spell Block Chance",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(17–24)% Spell Block Chance",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(12–16)% Spell Block Chance",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(7–11)% Spell Block Chance",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(18–23)% Origin of Spirit Magus effect",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(14–18)% Origin of Spirit Magus effect",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(9–12)% Origin of Spirit Magus effect",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(6–8)% Origin of Spirit Magus effect",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(25–32)% Focus Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(18–24)% Focus Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(12–17)% Focus Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(6–11)% Focus Speed",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(22–27)% Max Mana",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(16–21)% Max Mana",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(12–15)% Max Mana",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(9–11)% Max Mana",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(10–12)% additional Attack and Cast Speed for Combo Starters | +(31–40)% Critical Strike Damage for Combo Finishers",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(7–9)% additional Attack and Cast Speed for Combo Starters | +(25–30)% Critical Strike Damage for Combo Finishers",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(5–6)% additional Attack and Cast Speed for Combo Starters | +(20–24)% Critical Strike Damage for Combo Finishers",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+4% additional Attack and Cast Speed for Combo Starters | +(15–19)% Critical Strike Damage for Combo Finishers",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(75–100)% Terra Charge Recovery Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(54–72)% Terra Charge Recovery Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(38–52)% Terra Charge Recovery Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(26–36)% Terra Charge Recovery Speed",
+     "level": 1,
+     "weight": 4000
+    }
+   ]
+  },
+  "Memory of Discipline": {
+   "Base Stats": [
+    {
+     "tier": "1",
+     "text": "+330 Max Life",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+180 Max Mana",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+4320 Armor",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+4320 Evasion",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+525 Max Energy Shield",
+     "level": 0,
+     "weight": 0
+    }
+   ],
+   "Fixed Affix": [
+    {
+     "tier": "1",
+     "text": "+2 to Hero Trait Level",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(18–22)% Movement Speed",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Fire Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Cold Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Lightning Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Erosion Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+32% Skill Area",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+23% Skill Area",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+15% Skill Area",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(38–42)% Critical Strike Damage",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(20–26)% Critical Strike Damage",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Critical Strike Damage",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+30% Projectile Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+24% Projectile Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+16% Projectile Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+80% Critical Strike Rating",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+60% Critical Strike Rating",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+40% Critical Strike Rating",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Attack Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Attack Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Attack Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Cast Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Cast Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Cast Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(20–30)% Affliction Effect",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(14–18)% Affliction Effect",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Affliction Effect",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(24–32)% Reaping Recovery Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(14–22)% Reaping Recovery Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Reaping Recovery Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% damage",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% damage",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% damage",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(10–14)% Max Life",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Life",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Life",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(10–14)% Max Energy Shield",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Energy Shield",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Energy Shield",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(26–30)% Armor",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–25)% Armor",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Armor",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(26–30)% Evasion",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–25)% Evasion",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Evasion",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(28–31)% Minion Critical Strike Damage",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(20–26)% Minion Critical Strike Damage",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Minion Critical Strike Damage",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+80% Minion Critical Strike Rating",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+60% Minion Critical Strike Rating",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+40% Minion Critical Strike Rating",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Minion Attack Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Minion Attack Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Minion Attack Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Minion Cast Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Minion Cast Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Minion Cast Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Minion Damage",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Minion Damage",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Minion Damage",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(15–21)% Attack Block Chance",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(10–14)% Attack Block Chance",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(6–9)% Attack Block Chance",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(15–21)% Spell Block Chance",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(10–14)% Spell Block Chance",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(6–9)% Spell Block Chance",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(26–30)% chance to avoid Elemental Ailments",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Slow",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Blinding",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Weaken",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Paralysis",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "(-60–-40)% Curse effect against you",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+10% Cooldown Recovery Speed",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Ignite Damage | -100% Ignite Effect received",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Wilt Damage",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Trauma Damage",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+10% Skill Effect Duration",
+     "level": 86,
+     "weight": 103
+    }
+   ],
+   "Random Affix": [
+    {
+     "tier": "0",
+     "text": "+(39–45)% Skill Area",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+32% Skill Area",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+23% Skill Area",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+15% Skill Area",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+52% Projectile Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+40% Projectile Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+30% Projectile Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+20% Projectile Speed",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(26–40)% Affliction Effect",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(20–30)% Affliction Effect",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(14–18)% Affliction Effect",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Affliction Effect",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(26–40)% Reaping Recovery Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(20–30)% Reaping Recovery Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(14–18)% Reaping Recovery Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Reaping Recovery Speed",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(14–20)% Max Life",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(10–16)% Max Life",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Life",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Life",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(14–20)% Max Energy Shield",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(10–16)% Max Energy Shield",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Energy Shield",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Energy Shield",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(40–46)% Armor",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(30–36)% Armor",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–28)% Armor",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Armor",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(40–46)% Evasion",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(30–36)% Evasion",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–28)% Evasion",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Evasion",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(46–58)% attack Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(36–44)% attack Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(26–34)% attack Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(16–24)% attack Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(46–58)% Spell Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(36–44)% Spell Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(26–34)% Spell Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(16–24)% Spell Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Physical Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Physical Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Physical Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Physical Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Fire Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Fire Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Fire Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Fire Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Cold Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Cold Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Cold Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Cold Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Lightning Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Lightning Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Lightning Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Lightning Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Erosion Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Erosion Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Erosion Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Erosion Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Minion Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Minion Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Minion Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Minion Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+104% Attack Critical Strike Rating",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+80% Attack Critical Strike Rating",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+60% Attack Critical Strike Rating",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+40% Attack Critical Strike Rating",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+104% Spell Critical Strike Rating",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+80% Spell Critical Strike Rating",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+60% Spell Critical Strike Rating",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+40% Spell Critical Strike Rating",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+104% Minion Critical Strike Rating",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+80% Minion Critical Strike Rating",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+60% Minion Critical Strike Rating",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+40% Minion Critical Strike Rating",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+18% Attack and Cast Speed | +18% Minion Attack and Cast Speed",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+14% Attack and Cast Speed | +14% Minion Attack and Cast Speed",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+10% Attack and Cast Speed | +10% Minion Attack and Cast Speed",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+6% Attack and Cast Speed | +6% Minion Attack and Cast Speed",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Attack Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Attack Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Attack Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Attack Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Spell Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Spell Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Spell Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Spell Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Physical Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Physical Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Physical Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Physical Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Cold Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Cold Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Cold Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Cold Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Fire Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Fire Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Fire Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Fire Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Lightning Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Lightning Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Lightning Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Lightning Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Erosion Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Erosion Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Erosion Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Erosion Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Damage Over Time",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Damage Over Time",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Damage Over Time",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Damage Over Time",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Minion Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Minion Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Minion Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Minion Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(25–31)% Attack Block Chance",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(17–24)% Attack Block Chance",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(12–16)% Attack Block Chance",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(7–11)% Attack Block Chance",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(25–31)% Spell Block Chance",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(17–24)% Spell Block Chance",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(12–16)% Spell Block Chance",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(7–11)% Spell Block Chance",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(18–23)% Origin of Spirit Magus effect",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(14–18)% Origin of Spirit Magus effect",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(9–12)% Origin of Spirit Magus effect",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(6–8)% Origin of Spirit Magus effect",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(25–32)% Focus Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(18–24)% Focus Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(12–17)% Focus Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(6–11)% Focus Speed",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(22–27)% Max Mana",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(16–21)% Max Mana",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(12–15)% Max Mana",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(9–11)% Max Mana",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(10–12)% additional Attack and Cast Speed for Combo Starters | +(31–40)% Critical Strike Damage for Combo Finishers",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(7–9)% additional Attack and Cast Speed for Combo Starters | +(25–30)% Critical Strike Damage for Combo Finishers",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(5–6)% additional Attack and Cast Speed for Combo Starters | +(20–24)% Critical Strike Damage for Combo Finishers",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+4% additional Attack and Cast Speed for Combo Starters | +(15–19)% Critical Strike Damage for Combo Finishers",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(75–100)% Terra Charge Recovery Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(54–72)% Terra Charge Recovery Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(38–52)% Terra Charge Recovery Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(26–36)% Terra Charge Recovery Speed",
+     "level": 1,
+     "weight": 4000
+    }
+   ]
+  },
+  "Memory of Progress": {
+   "Base Stats": [
+    {
+     "tier": "1",
+     "text": "+36% Attack Speed",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+36% Cast Speed",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+30% Movement Speed",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+36% Minion Attack Speed",
+     "level": 0,
+     "weight": 0
+    },
+    {
+     "tier": "1",
+     "text": "+36% Minion Cast Speed",
+     "level": 0,
+     "weight": 0
+    }
+   ],
+   "Fixed Affix": [
+    {
+     "tier": "1",
+     "text": "+2 to Hero Trait Level",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(18–22)% Movement Speed",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Fire Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Cold Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Lightning Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+(2–4)% Max Erosion Resistance",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+32% Skill Area",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+23% Skill Area",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+15% Skill Area",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(38–42)% Critical Strike Damage",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(20–26)% Critical Strike Damage",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Critical Strike Damage",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+30% Projectile Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+24% Projectile Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+16% Projectile Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+80% Critical Strike Rating",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+60% Critical Strike Rating",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+40% Critical Strike Rating",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Attack Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Attack Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Attack Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Cast Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Cast Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Cast Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(20–30)% Affliction Effect",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(14–18)% Affliction Effect",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Affliction Effect",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(24–32)% Reaping Recovery Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(14–22)% Reaping Recovery Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Reaping Recovery Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% damage",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% damage",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% damage",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(10–14)% Max Life",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Life",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Life",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(10–14)% Max Energy Shield",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Energy Shield",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Energy Shield",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(26–30)% Armor",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–25)% Armor",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Armor",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(26–30)% Evasion",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–25)% Evasion",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Evasion",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(28–31)% Minion Critical Strike Damage",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+(20–26)% Minion Critical Strike Damage",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Minion Critical Strike Damage",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+80% Minion Critical Strike Rating",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+60% Minion Critical Strike Rating",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+40% Minion Critical Strike Rating",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Minion Attack Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Minion Attack Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Minion Attack Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+16% Minion Cast Speed",
+     "level": 86,
+     "weight": 615
+    },
+    {
+     "tier": "2",
+     "text": "+10% Minion Cast Speed",
+     "level": 82,
+     "weight": 1229
+    },
+    {
+     "tier": "3",
+     "text": "+6% Minion Cast Speed",
+     "level": 1,
+     "weight": 4612
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Minion Damage",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Minion Damage",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Minion Damage",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(15–21)% Attack Block Chance",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(10–14)% Attack Block Chance",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(6–9)% Attack Block Chance",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(15–21)% Spell Block Chance",
+     "level": 86,
+     "weight": 1333
+    },
+    {
+     "tier": "2",
+     "text": "+(10–14)% Spell Block Chance",
+     "level": 82,
+     "weight": 2664
+    },
+    {
+     "tier": "3",
+     "text": "+(6–9)% Spell Block Chance",
+     "level": 1,
+     "weight": 9992
+    },
+    {
+     "tier": "1",
+     "text": "+(26–30)% chance to avoid Elemental Ailments",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Slow",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Blinding",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Weaken",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Paralysis",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "(-60–-40)% Curse effect against you",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+10% Cooldown Recovery Speed",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Ignite Damage | -100% Ignite Effect received",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Wilt Damage",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "Immune to Trauma Damage",
+     "level": 86,
+     "weight": 103
+    },
+    {
+     "tier": "1",
+     "text": "+10% Skill Effect Duration",
+     "level": 86,
+     "weight": 103
+    }
+   ],
+   "Random Affix": [
+    {
+     "tier": "0",
+     "text": "+(39–45)% Skill Area",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+32% Skill Area",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+23% Skill Area",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+15% Skill Area",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+52% Projectile Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+40% Projectile Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+30% Projectile Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+20% Projectile Speed",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(26–40)% Affliction Effect",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(20–30)% Affliction Effect",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(14–18)% Affliction Effect",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Affliction Effect",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(26–40)% Reaping Recovery Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(20–30)% Reaping Recovery Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(14–18)% Reaping Recovery Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(10–12)% Reaping Recovery Speed",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(14–20)% Max Life",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(10–16)% Max Life",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Life",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Life",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(14–20)% Max Energy Shield",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(10–16)% Max Energy Shield",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(6–8)% Max Energy Shield",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(4–6)% Max Energy Shield",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(40–46)% Armor",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(30–36)% Armor",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–28)% Armor",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Armor",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(40–46)% Evasion",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(30–36)% Evasion",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(20–28)% Evasion",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(12–18)% Evasion",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(46–58)% attack Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(36–44)% attack Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(26–34)% attack Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(16–24)% attack Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(46–58)% Spell Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(36–44)% Spell Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(26–34)% Spell Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(16–24)% Spell Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Physical Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Physical Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Physical Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Physical Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Fire Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Fire Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Fire Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Fire Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Cold Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Cold Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Cold Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Cold Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Lightning Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Lightning Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Lightning Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Lightning Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Erosion Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Erosion Skill Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Erosion Skill Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Erosion Skill Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(55–65)% Minion Critical Strike Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(43–53)% Minion Critical Strike Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(31–41)% Minion Critical Strike Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(19–29)% Minion Critical Strike Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+104% Attack Critical Strike Rating",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+80% Attack Critical Strike Rating",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+60% Attack Critical Strike Rating",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+40% Attack Critical Strike Rating",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+104% Spell Critical Strike Rating",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+80% Spell Critical Strike Rating",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+60% Spell Critical Strike Rating",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+40% Spell Critical Strike Rating",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+104% Minion Critical Strike Rating",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+80% Minion Critical Strike Rating",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+60% Minion Critical Strike Rating",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+40% Minion Critical Strike Rating",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+18% Attack and Cast Speed | +18% Minion Attack and Cast Speed",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+14% Attack and Cast Speed | +14% Minion Attack and Cast Speed",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+10% Attack and Cast Speed | +10% Minion Attack and Cast Speed",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+6% Attack and Cast Speed | +6% Minion Attack and Cast Speed",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Attack Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Attack Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Attack Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Attack Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Spell Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Spell Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Spell Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Spell Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Physical Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Physical Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Physical Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Physical Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Cold Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Cold Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Cold Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Cold Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Fire Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Fire Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Fire Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Fire Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Lightning Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Lightning Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Lightning Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Lightning Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Erosion Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Erosion Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Erosion Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Erosion Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Damage Over Time",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Damage Over Time",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Damage Over Time",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Damage Over Time",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(58–68)% Minion Damage",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(44–52)% Minion Damage",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(30–42)% Minion Damage",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(20–28)% Minion Damage",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(25–31)% Attack Block Chance",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(17–24)% Attack Block Chance",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(12–16)% Attack Block Chance",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(7–11)% Attack Block Chance",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(25–31)% Spell Block Chance",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(17–24)% Spell Block Chance",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(12–16)% Spell Block Chance",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(7–11)% Spell Block Chance",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(18–23)% Origin of Spirit Magus effect",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(14–18)% Origin of Spirit Magus effect",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(9–12)% Origin of Spirit Magus effect",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(6–8)% Origin of Spirit Magus effect",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(22–27)% Max Mana",
+     "level": 86,
+     "weight": 2167
+    },
+    {
+     "tier": "1",
+     "text": "+(16–21)% Max Mana",
+     "level": 86,
+     "weight": 4333
+    },
+    {
+     "tier": "2",
+     "text": "+(12–15)% Max Mana",
+     "level": 82,
+     "weight": 6500
+    },
+    {
+     "tier": "3",
+     "text": "+(9–11)% Max Mana",
+     "level": 1,
+     "weight": 8667
+    },
+    {
+     "tier": "0",
+     "text": "+(25–32)% Focus Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(18–24)% Focus Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(12–17)% Focus Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(6–11)% Focus Speed",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(10–12)% additional Attack and Cast Speed for Combo Starters | +(31–40)% Critical Strike Damage for Combo Finishers",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(7–9)% additional Attack and Cast Speed for Combo Starters | +(25–30)% Critical Strike Damage for Combo Finishers",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(5–6)% additional Attack and Cast Speed for Combo Starters | +(20–24)% Critical Strike Damage for Combo Finishers",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+4% additional Attack and Cast Speed for Combo Starters | +(15–19)% Critical Strike Damage for Combo Finishers",
+     "level": 1,
+     "weight": 4000
+    },
+    {
+     "tier": "0",
+     "text": "+(75–100)% Terra Charge Recovery Speed",
+     "level": 86,
+     "weight": 1000
+    },
+    {
+     "tier": "1",
+     "text": "+(54–72)% Terra Charge Recovery Speed",
+     "level": 86,
+     "weight": 2000
+    },
+    {
+     "tier": "2",
+     "text": "+(38–52)% Terra Charge Recovery Speed",
+     "level": 82,
+     "weight": 3000
+    },
+    {
+     "tier": "3",
+     "text": "+(26–36)% Terra Charge Recovery Speed",
+     "level": 1,
+     "weight": 4000
+    }
+   ]
+  }
+ },
+ "blending": [
+  "+40% Defense gained from Chest Armor",
+  "Restores 3% of Life on defeat",
+  "+10% additional Base Damage for Two-Handed Weapons",
+  "+1 to Attack Skill Level",
+  "Immune to Ignite | Minions are immune to Fire Damage",
+  "+1 to Max Tenacity Blessing Stacks",
+  "Multistrikes deal 16% increasing damage",
+  "-4% to the Max Life and Energy Shield thresholds for inflicting Numbed | Inflicts 1 additional stack(s) of Numbed",
+  "+12% additional Max Damage | +12% additional Max Damage for Minions",
+  "+1% Attack and Cast Speed per 40 Dexterity",
+  "+1 Max Deflection stacks",
+  "+1 to Max Agility Blessing Stacks",
+  "+10% additional damage against Frozen enemies",
+  "Inflicts Frail when dealing Spell Damage",
+  "Immediately starts Energy Shield Charge upon entering Low Energy Shield status",
+  "8% of damage is taken from Mana before life",
+  "Gains 1 stack(s) of Focus Blessing when consuming Spell Burst",
+  "+1 to Max Focus Blessing Stacks",
+  "+12% Steep Strike chance.",
+  "+1% Movement Speed per 10 Fervor Rating",
+  "+5% Block Ratio | Restores 1% Missing Life and Energy Shield when Blocking",
+  "+8% Armor DMG Mitigation Penetration | +8% Armor DMG Mitigation Penetration for Minions",
+  "120% of the increase/decrease on Knockback distance is also applied to damage bonuses, up to +100% damage",
+  "Critical Strikes eliminate enemies under 8% Life",
+  "+20% chance to Blind the target on hit | +25% Critical Strike Damage Mitigation against Blinded enemies",
+  "+30% Ill Omen Cumulative Efficiency",
+  "Gains 1 stack(s) of Focus Blessing when Reaping",
+  "+8% additional Deterioration Damage | +5% additional Deterioration Duration",
+  "+18 Affliction inflicted per second | -8% All Resistance when the enemy has max Affliction",
+  "+1 to All Skills' Levels",
+  "+15% Life Regeneration Speed | -15% additional Energy Shield Charge Interval",
+  "Converts 8% of Physical Damage taken to random Elemental Damage",
+  "+10% additional Sentry Damage if Sentry Skill is not used in the last 1 s",
+  "8% of damage taken is transferred to a random Minion | -80% additional damage taken by Spirit Magi",
+  "+8% Barrier Absorption Rate",
+  "+1 Minion Skill Level",
+  "[Elimination] Attacks eliminate enemies under 18% Life on hit",
+  "[Joined Force] Off-Hand Weapons do not participate in Attacks while Dual Wielding | Adds 60% of the damage of the Off-Hand Weapon to the final damage of the Main-Hand Weapon",
+  "[Sacrifice] Changes the base effect of Tenacity Blessing to: +8% additional damage",
+  "[Conductive] Changes the base effect of Numbed to: +11% additional Lightning Damage taken",
+  "[Gale] 60% of the Projectile Speed bonus is also applied to the additional bonus for Projectile Damage",
+  "[Transition] When casting a skill, there is a 50% chance for that cast to deal +16% additional damage | When casting a skill, there is a 25% chance for that cast to deal +32% additional damage | When casting a skill, there is a 10% chance for that cast to deal +80% additional damage",
+  "[Acquaintance] Has Dormant Entanglement | +25% additional Spell Damage",
+  "[Frostbitten] Inflicts Frostbite when dealing Hit Cold Damage | +40% Frostbite Effect",
+  "[Bunch] +1 to Max Focus Blessing Stacks | +3% additional Spell Damage per stack of Focus Blessing owned",
+  "[Ambition] +100% chance to gain 10 Fervor rating on hit | Gains Fervor when there are enemies Nearby",
+  "[Cohesion] +40% additional Critical Strike Rating for the next Main Skill used every 1 s",
+  "[Blunt] +30% additional Physical Damage | Enemies +20% Injury Buffer",
+  "[Indifference] +1% additional damage and +1% additional Minion Damage for every 5 remaining Energy, up to +50% additional damage",
+  "[Plague] +20% Movement Speed when defeating Wilted enemies recently | +15% additional Wilt Damage",
+  "[Affliction] +30 Affliction inflicted per second | +30% additional Affliction effect",
+  "[Sentry] Max Sentry Quantity +1 | +100% additional Cast Speed for Sentry Skills",
+  "[Reflection] +6% additional damage for each type of Aura you are affected by | Minions +6% additional damage for each type of Aura they are affected by",
+  "[Rally] Synthetic Troop Minions summoned at a time +1 | +25% additional Minion Damage",
+  "[Formless] Doubles Max Warcry Skill Effects | +66% Warcry Skill Area",
+  "[True Flame] When an enemy is Ignited, 65% of the additional bonus to Damage Over Time taken from Affliction is also applied to your Fire Hit Damage",
+  "[No Loose Ends] +40% additional Attack Damage at Low Life | Your Max Energy Shield is fixed at 0",
+  "[Queer Angle] Your and Minions' damage gains Lucky",
+  "[Impermanence] -90% additional Min Physical Damage, and +80% additional Max Physical Damage | -32% additional min damage | +32% additional Max Damage",
+  "[Steady Accumulation] +40% additional Hit Damage | Additional -30% Skill Effect Duration",
+  "[Extreme Coldness] +50 to Max Frostbite Rating | You can only deal Cold Damage",
+  "[Quick Wits] +25% additional Spell Damage when the Energy Shield is not low | -20% additional damage taken at Low Energy Shield",
+  "[Play Safe] 100% of the bonuses and additional bonuses to Cast Speed is also applied to Spell Burst Charge Speed | -33% additional Spell Burst Charge Speed | +40% additional Hit Damage for skills cast by Spell Burst",
+  "[Impending] Every 0.25 s, +6% additional damage taken for enemies within 10 m. Stacks up to 5 times",
+  "[Open Wounds] +2 TraumaLimit | -99% additional Trauma Damage | +12% additional Hit Physical Damage taken for every stack of Trauma the enemy has, up to +60%",
+  "[Last Stand] Block Ratio is set to 0% | For every +3% Attack or Spell Block Chance, +2% additional damage, up to +90%",
+  "[Beyond Cure] Deals more Wilt Damage to enemies with more Life, up to +60% additional Wilt Damage",
+  "[Dirty Tricks] Upon inflicting damage, +12% additional Hit Damage (multiplies) for every type of Ailment the enemy has | When Minions deal damage, +12% additional Hit Damage (multiplies) for every type of Ailment the enemy has",
+  "[Subtle Impact] +30% additional Damage Over Time while Blur is active",
+  "[Mighty Guard] +2 Minion Skill Level | + 4 Command per second | +40 initial Growth for Spirit Magi",
+  "[Source] +50% Sealed Mana Compensation for Spirit Magus Skills | +30% additional Origin of Spirit Magus Effect | Spirit Magi +30% additional Empower Skill Effect",
+  "[Co-resonance] +25% additional Sentry Damage | Attack Speed bonus and 100% of additional bonus are also applied to Attack Sentries' Cast Frequency | Cast Speed bonus and 100% of additional bonus are also applied to Spell Sentries' Cast Frequency",
+  "[Resolve] +4% additional Armor per stack of Tenacity Blessing owned",
+  "[Rock] Converts 5% of Physical Damage taken to Fire Damage for every stack of Tenacity Blessing you have",
+  "[Arcane] Converts 100% of Mana Cost to Life Cost | +25% additional Max Life",
+  "[Master Escapist] +1 Max Deflection stacks | Gains max stacks of Deflection on Evade | Gains max stacks of Deflection if you haven't been hit recently | Deflection is not consumed immediately when hit, but after 0.5s instead",
+  "[Rebirth] Converts 50% of Life Regain and Energy Shield Regain to Restoration Over Time | -50% additional Regain Interval",
+  "[Poisoned Relief] +25% Injury Buffer | -15% additional damage taken at Low Life",
+  "[Barrier of Radiance] Energy Shield Charge started recently cannot be interrupted by damage | +50% Energy Shield Charge Speed",
+  "[Shell] +35% additional Max Energy Shield | Your Max Life is set to 100",
+  "[Mana] 20% of damage is taken from Mana before life | +12% additional Max Mana",
+  "[Determined] Upon taking fatal damage, you have a 50% chance to keep at least 1 Life",
+  "[Centralize] Gains additional Fervor Rating equal to 25% of the current Fervor Rating on hit. Cooldown: 0.3 s | Consumes half of current Fervor Rating when hit. -0.8% additional damage per 1 point consumed",
+  "[Full Defense] -1% additional Damage Over Time taken for every 1% Block Ratio",
+  "[Holiness] -95% Curse effect against you | -15% additional damage taken from Cursed enemies",
+  "[Boss] Can obtain Bond | +5% additional Minion Damage while having Bond",
+  "[Tailored Remedy] The Restoration Effect from Elixir Skills cannot be removed | +60% additional Elixir Skill Effect while affected by no more than 2 Elixir Skills",
+  "[Kinetic Conversion] 100% chance to gain a Barrier for every 5 m you move | Refreshes Barrier when gaining Barrier | -40% additional Barrier Shield",
+  "Ember Armor",
+  "[Defensiveness] +25% Block Ratio",
+  "[Resistance] +1% chance to avoidElemental Ailments for every 1% effective Erosion Resistance",
+  "[Divine Grace] Changes the base effect of all Blessings to: +4% additional damage and -4% additional damage taken (multiplies) | Max stacks of each Blessing: 4",
+  "[Caged Fury] If you have moved 12m or more in the last 1s, +15% additional Attack Speed and +15% Movement Speed | If you have moved less than 12m in the last 1s, +35% additional damage and +35% Physique",
+  "[Rotted Taboo] Takes 100 True Damage when casting a skill. Interval: 0.1s | +3 to All Skill Levels",
+  "[Comradeship] Minions gain the Belt's bonuses.",
+  "[Hallowed Journey] You have a Lv. 1 Precise: Magical Source | Precise: Magical Source gains an additional base effect: 20% of damage is taken from Mana before Life",
+  "[Thrice Lucky] Very Lucky Damage"
+ ],
+ "tower_sequence": [
+  {
+   "text": "+8% additional damage for Main-Hand Weapons",
+   "sequence": "Intermediate Sequence 1|2|6",
+   "gear": [
+    "Claw",
+    "Cane",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Pistol"
+   ]
+  },
+  {
+   "text": "+6% Armor DMG Mitigation Penetration",
+   "sequence": "Intermediate Sequence 2|3|4",
+   "gear": [
+    "Claw",
+    "Cane",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Pistol",
+    "Wand"
+   ]
+  },
+  {
+   "text": "+8% Fire Penetration",
+   "sequence": "Intermediate Sequence 3|4|7",
+   "gear": [
+    "Claw",
+    "Cane",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Pistol",
+    "Wand"
+   ]
+  },
+  {
+   "text": "+8% Cold Penetration",
+   "sequence": "Intermediate Sequence 4|5|6",
+   "gear": [
+    "Claw",
+    "Cane",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Pistol",
+    "Wand"
+   ]
+  },
+  {
+   "text": "+8% Lightning Penetration",
+   "sequence": "Intermediate Sequence 1|3|5",
+   "gear": [
+    "Claw",
+    "Cane",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Pistol",
+    "Wand"
+   ]
+  },
+  {
+   "text": "+8% Erosion Resistance Penetration",
+   "sequence": "Intermediate Sequence 5|6|7",
+   "gear": [
+    "Claw",
+    "Cane",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Pistol",
+    "Wand"
+   ]
+  },
+  {
+   "text": "+8% gear Attack Speed",
+   "sequence": "Intermediate Sequence 3|6|7",
+   "gear": [
+    "Claw",
+    "Cane",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Pistol",
+    "Bow",
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "+20% Attack Critical Strike Rating for this gear",
+   "sequence": "Intermediate Sequence 1|4|7",
+   "gear": [
+    "Claw",
+    "Cane",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Pistol",
+    "Bow",
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "+10% additional damage on Critical Strike",
+   "sequence": "Intermediate Sequence 1|2|5",
+   "gear": [
+    "Claw",
+    "Cane",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Pistol",
+    "Wand"
+   ]
+  },
+  {
+   "text": "+10% All Stats",
+   "sequence": "Intermediate Sequence 1|2|3",
+   "gear": [
+    "Claw",
+    "Cane",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Pistol"
+   ]
+  },
+  {
+   "text": "+16% additional damage for Main-Hand Weapons",
+   "sequence": "Intermediate Sequence 1|2|6",
+   "gear": [
+    "Bow",
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "+12% Armor DMG Mitigation Penetration",
+   "sequence": "Intermediate Sequence 2|3|4",
+   "gear": [
+    "Bow",
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow",
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+16% Fire Penetration",
+   "sequence": "Intermediate Sequence 3|4|7",
+   "gear": [
+    "Bow",
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow",
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+16% Cold Penetration",
+   "sequence": "Intermediate Sequence 4|5|6",
+   "gear": [
+    "Bow",
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow",
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+16% Lightning Penetration",
+   "sequence": "Intermediate Sequence 1|3|5",
+   "gear": [
+    "Bow",
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow",
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+16% Erosion Resistance Penetration",
+   "sequence": "Intermediate Sequence 5|6|7",
+   "gear": [
+    "Bow",
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow",
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+20% additional damage on Critical Strike",
+   "sequence": "Intermediate Sequence 1|2|5",
+   "gear": [
+    "Bow",
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow",
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+16% All Stats",
+   "sequence": "Intermediate Sequence 1|2|3",
+   "gear": [
+    "Bow",
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow",
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+8% additional Spell Damage",
+   "sequence": "Intermediate Sequence 1|2|6",
+   "gear": [
+    "Wand"
+   ]
+  },
+  {
+   "text": "+16% Cast Speed",
+   "sequence": "Intermediate Sequence 3|6|7",
+   "gear": [
+    "Wand"
+   ]
+  },
+  {
+   "text": "+55 Spell Critical Strike Rating",
+   "sequence": "Intermediate Sequence 1|4|7",
+   "gear": [
+    "Wand"
+   ]
+  },
+  {
+   "text": "+8% All Stats",
+   "sequence": "Intermediate Sequence 1|2|3",
+   "gear": [
+    "Wand",
+    "Scepter",
+    "Rod",
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "+16% additional Spell Damage",
+   "sequence": "Intermediate Sequence 1|2|6",
+   "gear": [
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+32% Cast Speed",
+   "sequence": "Intermediate Sequence 3|6|7",
+   "gear": [
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+110 Spell Critical Strike Rating",
+   "sequence": "Intermediate Sequence 1|4|7",
+   "gear": [
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+8% additional Damage Over Time",
+   "sequence": "Intermediate Sequence 1|2|6",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "+16 Affliction inflicted per second | +24% Affliction Effect",
+   "sequence": "Intermediate Sequence 2|3|4",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "+25% Reaping Recovery Speed",
+   "sequence": "Intermediate Sequence 3|4|7",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "+30% Reaping Duration",
+   "sequence": "Intermediate Sequence 4|5|6",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "+10% Movement Speed",
+   "sequence": "Intermediate Sequence 1|3|5",
+   "gear": [
+    "Scepter",
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "+12% Ailment Duration",
+   "sequence": "Intermediate Sequence 5|6|7",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "Max Terra Charge Stacks +1",
+   "sequence": "Intermediate Sequence 3|6|7",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "+16% Blur Effect",
+   "sequence": "Intermediate Sequence 1|4|7",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "-10% All Resistance when the enemy has max Affliction",
+   "sequence": "Intermediate Sequence 1|2|5",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "+8% additional Minion Damage",
+   "sequence": "Intermediate Sequence 1|2|6",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+6% Armor DMG Mitigation Penetration for Minions",
+   "sequence": "Intermediate Sequence 2|3|4",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+8% Minion Fire Penetration",
+   "sequence": "Intermediate Sequence 3|4|7",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+8% Cold Penetration for Minions",
+   "sequence": "Intermediate Sequence 4|5|6",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+8% Lightning Penetration for Minions",
+   "sequence": "Intermediate Sequence 1|3|5",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+8% Erosion Penetration for Minions",
+   "sequence": "Intermediate Sequence 5|6|7",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+16% Minion Attack and Cast Speed",
+   "sequence": "Intermediate Sequence 3|6|7",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+55 Minion Critical Strike Rating",
+   "sequence": "Intermediate Sequence 1|4|7",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+40% Minion Critical Strike Damage",
+   "sequence": "Intermediate Sequence 1|2|5",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+8% Elemental Resistance",
+   "sequence": "Intermediate Sequence 1|2|6",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "+15% Max Life and Max Mana",
+   "sequence": "Intermediate Sequence 2|3|4",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "+40% Defense from Shield",
+   "sequence": "Intermediate Sequence 3|4|7",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "+10% Attack and Spell Block Chance",
+   "sequence": "Intermediate Sequence 4|5|6",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "+80% Critical Strike Rating",
+   "sequence": "Intermediate Sequence 5|6|7",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "+40% Critical Strike Damage",
+   "sequence": "Intermediate Sequence 3|6|7",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "Restores 3% Life on Block. Interval: 0.3s",
+   "sequence": "Intermediate Sequence 1|4|7",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "Restores 3% Energy Shield on Block. Interval: 0.3s",
+   "sequence": "Intermediate Sequence 1|2|5",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "Enemies have a 15% chance to explode when defeated by an Attack or Spell, dealing True Damage equal to 250% of their Max Life to enemies within a 6 m radius",
+   "sequence": "Advanced Sequence 1|4|5|7",
+   "gear": [
+    "Claw",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Cane",
+    "Pistol",
+    "Wand",
+    "Scepter"
+   ]
+  },
+  {
+   "text": "Adds 1 - 3 Lightning Damage to Attacks per 10 Dexterity",
+   "sequence": "Advanced Sequence 1|1|1|5",
+   "gear": [
+    "Claw",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Cane",
+    "Pistol"
+   ]
+  },
+  {
+   "text": "Adds 2 - 2 Fire Damage to Attacks per 10 Strength",
+   "sequence": "Advanced Sequence 6|6|6|7",
+   "gear": [
+    "Claw",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Cane",
+    "Pistol"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 25 Steamroll",
+   "sequence": "Advanced Sequence 2|2|2|3",
+   "gear": [
+    "Claw",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger"
+   ]
+  },
+  {
+   "text": "Adds 1 - 1 Physical Damage to Attacks per 2260 Armor",
+   "sequence": "Advanced Sequence 3|3|6|7",
+   "gear": [
+    "Claw",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Cane",
+    "Pistol"
+   ]
+  },
+  {
+   "text": "+120% Fearless Aura | -20% additional Fearless Sealed Mana Compensation",
+   "sequence": "Advanced Sequence 4|4|5|6",
+   "gear": [
+    "Claw",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger"
+   ]
+  },
+  {
+   "text": "+80% Gear Physical Damage | -20% Attack Critical Strike Rating for this gear",
+   "sequence": "Advanced Sequence 1|3|5|7",
+   "gear": [
+    "Claw",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Cane",
+    "Pistol"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 20 Attack Focus",
+   "sequence": "Advanced Sequence 4|5|5|7",
+   "gear": [
+    "Claw",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Cane",
+    "Pistol"
+   ]
+  },
+  {
+   "text": "+25% Gear Elemental Damage | -25% Gear Physical Damage",
+   "sequence": "Advanced Sequence 1|2|3|4",
+   "gear": [
+    "Claw",
+    "One-Handed Hammer",
+    "One-Handed Sword",
+    "One-Handed Axe",
+    "Dagger",
+    "Cane",
+    "Pistol"
+   ]
+  },
+  {
+   "text": "Enemies have a 30% chance to explode when defeated by an Attack or Spell, dealing True Damage equal to 250% of their Max Life to enemies within a 6 m radius",
+   "sequence": "Advanced Sequence 1|4|5|7",
+   "gear": [
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Bow",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow",
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "Adds 1 - 7 Lightning Damage to Attacks per 10 Dexterity",
+   "sequence": "Advanced Sequence 1|1|1|5",
+   "gear": [
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Bow",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "Adds 3 - 5 Fire Damage to Attacks per 10 Strength",
+   "sequence": "Advanced Sequence 6|6|6|7",
+   "gear": [
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Bow",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 25 Steamroll | +25% additional Melee Damage",
+   "sequence": "Advanced Sequence 2|2|2|3",
+   "gear": [
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel"
+   ]
+  },
+  {
+   "text": "Adds 2 - 2 Physical Damage to Attacks per 2260 Armor",
+   "sequence": "Advanced Sequence 3|3|6|7",
+   "gear": [
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel"
+   ]
+  },
+  {
+   "text": "+200% Fearless Aura | -30% additional Fearless Sealed Mana Compensation",
+   "sequence": "Advanced Sequence 4|4|5|6",
+   "gear": [
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel"
+   ]
+  },
+  {
+   "text": "+60% additional damage for Main-Hand Weapons | -20% Attack Critical Strike Rating for this gear",
+   "sequence": "Advanced Sequence 1|3|5|7",
+   "gear": [
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Bow",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 25 Attack Focus | +25% additional Melee Damage",
+   "sequence": "Advanced Sequence 4|5|5|7",
+   "gear": [
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel"
+   ]
+  },
+  {
+   "text": "+50% Gear Elemental Damage | -25% Gear Physical Damage",
+   "sequence": "Advanced Sequence 1|2|3|4",
+   "gear": [
+    "Two-Handed Sword",
+    "Two-Handed Hammer",
+    "Two-Handed Axe",
+    "Cudgel",
+    "Bow",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 25 Multiple Projectiles",
+   "sequence": "Advanced Sequence 2|2|2|3",
+   "gear": [
+    "Cane",
+    "Pistol"
+   ]
+  },
+  {
+   "text": "+120% Precise Projectiles Aura effect | -20% additional Precise Projectiles Sealed Mana Compensation",
+   "sequence": "Advanced Sequence 4|4|5|6",
+   "gear": [
+    "Cane",
+    "Pistol"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 25 Multiple Projectiles | +25% additional Projectile Damage",
+   "sequence": "Advanced Sequence 2|2|2|3",
+   "gear": [
+    "Bow",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "After reaching their max range, Projectiles will return and travel an additional 0% of that distance, hitting the enemies on their path again | -20% additional Projectile Damage",
+   "sequence": "Advanced Sequence 3|3|6|7",
+   "gear": [
+    "Bow",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "+200% Precise Projectiles Aura effect | -30% additional Precise Projectiles Sealed Mana Compensation",
+   "sequence": "Advanced Sequence 4|4|5|6",
+   "gear": [
+    "Bow",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 25 Attack Focus | +25% additional Projectile Damage",
+   "sequence": "Advanced Sequence 4|5|5|7",
+   "gear": [
+    "Bow",
+    "Musket",
+    "Fire Cannon",
+    "Crossbow"
+   ]
+  },
+  {
+   "text": "+25% additional Hit Damage for skills cast by Spell Burst",
+   "sequence": "Advanced Sequence 1|3|5|7",
+   "gear": [
+    "Wand"
+   ]
+  },
+  {
+   "text": "Adds 200 - 220 Cold Damage to Spells when having at least 800 Intelligence",
+   "sequence": "Advanced Sequence 1|1|1|5",
+   "gear": [
+    "Wand"
+   ]
+  },
+  {
+   "text": "The Main Skill is supported by Lv. 25 Control Spell",
+   "sequence": "Advanced Sequence 2|2|2|4",
+   "gear": [
+    "Wand"
+   ]
+  },
+  {
+   "text": "+120% Spell Amplification Aura | -20% additional Spell Amplification Sealed Mana Compensation",
+   "sequence": "Advanced Sequence 3|3|6|7",
+   "gear": [
+    "Wand"
+   ]
+  },
+  {
+   "text": "+35% additional damage | -10% additional Cast Speed",
+   "sequence": "Advanced Sequence 4|4|5|6",
+   "gear": [
+    "Wand"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 20 Overload",
+   "sequence": "Advanced Sequence 5|5|6|6",
+   "gear": [
+    "Wand"
+   ]
+  },
+  {
+   "text": "-1 to Max Tenacity Blessing Stacks | +1 to Max Focus Blessing Stacks | +1 to Max Agility Blessing Stacks",
+   "sequence": "Advanced Sequence 2|3|5|6",
+   "gear": [
+    "Wand"
+   ]
+  },
+  {
+   "text": "+50% additional Hit Damage for skills cast by Spell Burst",
+   "sequence": "Advanced Sequence 1|3|5|7",
+   "gear": [
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "Adds 420 - 440 Cold Damage to Spells when having at least 800 Intelligence",
+   "sequence": "Advanced Sequence 1|1|1|5",
+   "gear": [
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "The Main Skill is supported by Lv. 25 Control Spell | +25% additional Spell Damage",
+   "sequence": "Advanced Sequence 2|2|2|4",
+   "gear": [
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+200% Spell Amplification Aura | -30% additional Spell Amplification Sealed Mana Compensation",
+   "sequence": "Advanced Sequence 3|3|6|7",
+   "gear": [
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "+70% additional damage | -10% additional Cast Speed",
+   "sequence": "Advanced Sequence 4|4|5|6",
+   "gear": [
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 25 Spell Concentration | +25% additional Spell Damage",
+   "sequence": "Advanced Sequence 5|5|6|6",
+   "gear": [
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "-2 to Max Tenacity Blessing Stacks | +2 to Max Focus Blessing Stacks | +2 to Max Agility Blessing Stacks",
+   "sequence": "Advanced Sequence 2|3|5|6",
+   "gear": [
+    "Tin Staff"
+   ]
+  },
+  {
+   "text": "Triggers Lv. 30 Black Hole when moving. Interval: 1.5 s",
+   "sequence": "Advanced Sequence 1|1|1|5",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 25 Cataclysm",
+   "sequence": "Advanced Sequence 2|2|2|4",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "Upon inflicting damage, +8% additional Ailment Damage (multiplies) for every type of Ailment the enemy has",
+   "sequence": "Advanced Sequence 3|3|6|7",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "+120% Deep Pain Aura | -20% additional Deep Pain Sealed Mana Compensation",
+   "sequence": "Advanced Sequence 4|4|5|6",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "+20% Movement Speed when standing on a Terra Skill. The effect lasts 2s. | +100% Skill Area when standing on a Terra Skill. Lasts for 2 s",
+   "sequence": "Advanced Sequence 1|3|5|7",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 20 Shortened Duration",
+   "sequence": "Advanced Sequence 5|5|6|6",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "+1 to Max Tenacity Blessing Stacks | -1 to Max Focus Blessing Stacks | +1 to Max Agility Blessing Stacks",
+   "sequence": "Advanced Sequence 2|3|5|6",
+   "gear": [
+    "Scepter"
+   ]
+  },
+  {
+   "text": "+80 initial Growth for Spirit Magi",
+   "sequence": "Advanced Sequence 1|4|6|7",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+ 10 Command per second",
+   "sequence": "Advanced Sequence 1|3|5|7",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "Triggers Lv. 10 Entangled Pain Curse and Timid Curse when a Minion deals damage. Cooldown: 1 s | Minions can cast 1 additional Curse(s)",
+   "sequence": "Advanced Sequence 2|2|2|4",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "The Main Skill is supported by a Lv. 25 Servant Damage",
+   "sequence": "Advanced Sequence 1|1|1|5",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "-80 Minion Critical Strike Rating | +200% Minion Critical Strike Damage",
+   "sequence": "Advanced Sequence 4|4|5|6",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+120% Radical Order Aura Effect | -20% additional Radical Order Sealed Mana Compensation",
+   "sequence": "Advanced Sequence 3|3|6|7",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "Main Skill is supported by Lv. 20 Elemental Duo",
+   "sequence": "Advanced Sequence 5|5|6|6",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "When Minions deal damage, inflicts Fire Infiltration. Interval for each enemy: 1 s | When Minions deal damage, inflicts Lightning Infiltration. Interval for each enemy: 1 s | When Minions deal damage, inflicts Cold Infiltration. Interval for each enemy: 1 s",
+   "sequence": "Advanced Sequence 2|3|5|6",
+   "gear": [
+    "Rod"
+   ]
+  },
+  {
+   "text": "+8% Block Ratio Upper limit",
+   "sequence": "Advanced Sequence 1|1|1|5",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "All Passive Skill slots are supported by Lv. 30 Precise: Restrain",
+   "sequence": "Advanced Sequence 2|2|2|4",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "Immune to crowd control effects",
+   "sequence": "Advanced Sequence 3|3|6|7",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "Converts 25% of Physical Damage taken to random Elemental Damage | -25% Defense",
+   "sequence": "Advanced Sequence 4|4|5|6",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "+15% Armor Effective Rate for Non-Physical Damage | +2400 Gear Armor",
+   "sequence": "Advanced Sequence 1|4|6|7",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "Spell Damage will not additionally reduce Evasion by default | +1680 gear Evasion",
+   "sequence": "Advanced Sequence 1|3|5|7",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  },
+  {
+   "text": "Energy Shield starts to Charge when Blocking | +40% Energy Shield Charge Speed",
+   "sequence": "Advanced Sequence 2|5|6|7",
+   "gear": [
+    "STR Shield",
+    "DEX Shield",
+    "INT Shield"
+   ]
+  }
+ ],
+ "soul_candle": [
+  {
+   "text": "The Main Skill is supported by a Lv. 1 Critical Strike Damage Increase, -70% Critical Strike Damage",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "The Main Skill is supported by a Lv. 1 Hardened, -14% Weapon Attack Speed",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "The Main Skill is supported by a Lv. 1 Multifaceted Guard; the character will be randomly Blinded, Weakened, or Paralyzed when a Sentry disappears",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "The Main Skill is supported by a Lv. 1 Control Spell, non-Critical Strikes -55% additional Hit Damage",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "The Main Skill is supported by a Lv. 1 Wind Projectiles, -2 Projectile Quantity",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "The Main Skill is supported by a Lv. 1 Servant Damage, Minions deal Unlucky Critical Strikes",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "Main Skill is supported by Lv. 1 Attack Focus | Unlucky Critical Strike",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "The Main Skill is supported by a Lv. 1 Grudge, +5% Elemental and Erosion Resistance Penetration every second for Cursed enemies. Stacks up to 4 times.",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "The Main Skill is supported by a Lv. 1 Cataclysm, -10% additional damage taken for enemies when their Affliction reaches the upper limit",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "[Rebirth] Converts 50% of Life Regain and Energy Shield Regain to Restoration Over Time | -50% additional Regain Interval | -12% Elemental Resistance",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "[Barrier of Radiance] Energy Shield Charge started recently cannot be interrupted by damage | +50% Energy Shield Charge Speed | -12% Elemental Resistance",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "[Resistance] +1% chance to avoidElemental Ailments for every 1% effective Erosion Resistance | -12% Elemental Resistance",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "[Determined] Upon taking fatal damage, you have a 50% chance to keep at least 1 Life | -12% Elemental Resistance",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "[Full Defense] -1% additional Damage Over Time taken for every 1% Block Ratio | -12% Elemental Resistance",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "[Poisoned Relief] +25% Injury Buffer | -15% additional damage taken at Low Life | -12% Elemental Resistance",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "[Holiness] -95% Curse effect against you | -15% additional damage taken from Cursed enemies | -12% Elemental Resistance",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "[Master Escapist] +1 Max Deflection stacks | Gains max stacks of Deflection on Evade | Gains max stacks of Deflection if you haven't been hit recently | Deflection is not consumed immediately when hit, but after 0.5s instead | -12% Elemental Resistance",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "[Boss] Can obtain Bond | +5% additional Minion Damage while having Bond | -12% Elemental Resistance",
+   "source": "Soul Candle",
+   "type": "Mutated Affix"
+  },
+  {
+   "text": "+10% Aura Effect",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+10% Sealed Mana Compensation for Aura Skills",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "While Warcry is active, refresh the cooldown of the Warcry Skill whenever a number of enemies equal to the number of Warcry buff stacks are defeated",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+20% chance to trigger Lv. 10 Charging Warcry on Melee Skill hit. Interval: 8 s.",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+20% chance to trigger Lv. 10 Raging Warcry on Melee Skill hit. Interval: 8 s",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+20% chance to trigger Lv. 10 Fearless Warcry on Melee Skill hit. Interval: 8 s",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+15% chance to gain 1 stack of any Blessing when triggering a skill.",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "The triggered skill +10% Effect Duration",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+40% Focus Speed",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+12% Sealed Mana Compensation for Focus Skills",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Min Channeled Stacks +1 | -2% additional damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "For every 1 channeled stack(s), +7% Channeled Skill Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Adds 32 - 38 Physical Damage to the Main-Hand Weapon",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+10% additional Physical Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+30% Numbed chance | +20% Numbed Effect",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+10% additional Lightning Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+12% additional damage against Frozen enemies",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+10% additional Cold Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+10% additional Fire Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+65 Fire Skill Critical Strike Rating",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+2% Erosion Damage for every 3% Energy Shield(s) lost",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+10% additional Erosion Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+10% Skill Effect Duration",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+15% Movement Speed if a nearby enemy has reached Max Affliction recently",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Shadow Quantity +1 | -2% additional damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+10% additional Shadow Strike Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+60% Demolisher Skill Damage.",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+36% Demolisher Charge Restoration Speed",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+60% Slash Strike Skill Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+15% Steep Strike chance.",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+60% Horizontal Projectile Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Projectile Quantity +1",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+60% Parabolic Projectile Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+24% Parabolic Projectile Skill Attack Speed | +24% Parabolic Projectile Cast Speed",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+60% Vertical Projectile Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+10% chance to double Vertical Projectile Quantity when casting Vertical Projectile Skills",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+1 Beams | -2% additional damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+35% Beam Length | +30% Beam Skill Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+20% Sentry Skill cast frequency",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+20% Sentry Damage for every 1 Deployable Sentry Quantity Each Time",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Max Terra Charge Stacks +1 | -2% additional damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+33% Terra Charge Recovery Speed",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+21% chance to +1 to Barrage Skill Total Waves when casting a Barrage Skill",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Barrage Skills +80% additional damage. After the first wave, for every +1 wave(s) of Barrage, Barrage Skills -40% additional damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+60% Chain Skill Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "For every 2 enemies defeated by the Chain Skill, +1 Jump(s) for this skill.",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Inflicts Weaken while casting Curse",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "You can cast 1 additional Curses | -5% additional damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "For every 30 Growth a Spirit Magus has, it gains +1% Attack and Cast Speed. The bonus is doubled when an Elite is Nearby the player",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "0.6% Synthetic Troop's Critical Strike Damage for every 1 Command you possess. The bonus is doubled when an Elite is near you.",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+1 Minion Skill Level",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+3% additional damage for every 8 m of movement made recently. Stacks up to 4 times.",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "-8% extra damage taken while moving",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Gains 1 stack of Tenacity Blessing, Agility Blessing, and Focus Blessing every 1 s while standing still",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+25% additional Max Damage while standing still",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Every use of a Non-Main Skill will make the next use of Main Skill gain +3% damage. Stacks up to 5 times.",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+12% Empower Skill Effect and Potion Restoration Effect",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Restores 0.6% of Max Life and Energy Shield on defeat",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+1% damage, Skill Area, and Movement Speed for every enemy defeated recently. Stacks up to 20 times",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "-1.5% additional damage taken for every enemy Nearby. Stacks up to 10 times.",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+15% Injury Buffer when there are no Elites Nearby",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+(23–26)% Deterioration Damage",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+(23–26)% Deterioration Chance",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "+(15–16)% additional Deterioration Duration",
+   "source": "Soul Candle",
+   "type": "Positive Affix"
+  },
+  {
+   "text": "Every use of a Non-Main Skill will make the next use of Main Skill gain -20% additional Critical Strike Rating",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Effects of Control Effects received +50%",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "-10% Spell Burst Charge Speed for every Spell Burst triggered recently",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Loses 20% of current Mana for every 5 time(s) a skill is used",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "-5% Aura effects for every enemy or ally Nearby",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "-50% additional Warcry effect (multiplies) for every 2 uses of the Warcry Skill recently",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Takes 1200 Secondary Erosion Damage every second while a Restoration effect is active",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Loses 2% Max Mana upon triggering the skill",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Randomly lose 6 stack(s) of Blessing when the Channeled Skill ends",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "When starting to channel, -30% additional damage for 0.2 s",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Converts 50% of Physical Damage to random Elemental Damage",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "For every (40–60)% Erosion Resistance, -1% Elemental Max Resistance",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "+1% Cold Resistance for every hit the enemy took recently. Interval: 1 s.",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Reduces the enemy's Frostbite Rating by 15 on hit",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Enemy deals +10% additional Fire Damage per stack of Ignite on it",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "+1% Erosion Resistance for every stack of Wilt the enemy has",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "1% chance to remove all Wilt on hit",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "-2% additional Skill Area for every recent skill use. Stacks up to 50 times.",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Inflicts Affliction per second and -2% additional Skill Effect Duration for every 10 of this",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Upon dealing damage to an enemy with HP below 10% , the hit deals -80% additional Melee Damage",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "2% chance to deal -99% additional damage on hit for every 1 Shadow Thrust(s)",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "When Demolisher Charge is consumed, the skill cannot inflict Ailments",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "-30% additional Sweep Slash Attack Speed",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "+1% Movement Speed and +10% additional damage taken for every enemy in Proximity",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "-20% additional Projectile Speed, -20% additional Projectile Duration",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "-3 Horizontal Projectile Penetration(s)",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Parabolic Projectiles' landing points are more scattered after splitting",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "+20% additional Skill Area and -3 Projectile Quantity for Vertical Skills",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "-10% Life Regeneration Speed and -10% Energy Shield Charge Speed for every Sentry Nearby",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Gains 1 Lv. 10 random curse for 5 s after casting a Curse Skill",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "-50% additional Movement Speed when there is only one minion Nearby",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  },
+  {
+   "text": "Loses 5 Command every second when there are no Elites Nearby",
+   "source": "Soul Candle",
+   "type": "Negative Affix"
+  }
+ ],
+ "memory_revival": [
+  {
+   "text": "-20% All Stats | +(98–100) to All Stats",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "-15% All Stats | +(72–75) to All Stats",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "-10% All Stats | +(47–50) to All Stats",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Loses 50 Life and 80 Energy Shield every second | +(24–25)% additional Minion Damage when Life or Energy Shield is 50% or higher",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Loses 30 Life and 50 Energy Shield every second | +(18–20)% additional Minion Damage when Life or Energy Shield is 50% or higher",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Loses 15 Life and 30 Energy Shield every second | +(13–15)% additional Minion Damage when Life or Energy Shield is 50% or higher",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+2% Attack Speed for every Main Attack Skill cast recently. Stacks up to 6 time(s). At max stacks, this skill is guaranteed to deal Double Damage after every 4 cast(s) of the Main Attack Skill (except Sentry and Channeled Skills)",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+2% Attack Speed for every Main Attack Skill cast recently. Stacks up to 6 time(s). At max stacks, this skill is guaranteed to deal Double Damage after every 6 cast(s) of the Main Attack Skill (except Sentry and Channeled Skills)",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+1% Attack Speed for every Main Attack Skill cast recently. Stacks up to 6 time(s). At max stacks, this skill is guaranteed to deal Double Damage after every 6 cast(s) of the Main Attack Skill (except Sentry and Channeled Skills)",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Torment gains an additional effect: +4% additional Reaping Recovery Speed | Restores (6–7)% of Missing Life and Energy Shield when gaining Torment. Interval: 0.3 s",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Torment gains an additional effect: +3% additional Reaping Recovery Speed | Restores (4–5)% of Missing Life and Energy Shield when gaining Torment. Interval: 0.3 s",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Torment gains an additional effect: +2% additional Reaping Recovery Speed | Restores (2–3)% of Missing Life and Energy Shield when gaining Torment. Interval: 0.5 s",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "1.4% Spell Critical Strike Rating for every 1 Intelligence. Up to +(205–210)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+1% Spell Critical Strike Rating for every 1 Intelligence. Up to +(148–160)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+1% Spell Critical Strike Rating for every 1 Intelligence. Up to +(96–110)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Every 10 time(s) Lightning Damage is dealt, inflicts 5 stack(s) of Numbed on enemies within 10 m nearby. Interval: 0.5 s | +5% Numbed Effect",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Every 10 time(s) Lightning Damage is dealt, inflicts 1 stack(s) of Numbed on enemies within 10 m nearby. Interval: 0.5 s | +(4–5)% Numbed Effect",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Every 10 time(s) Lightning Damage is dealt, inflicts 1 stack(s) of Numbed on enemies within 10 m nearby. Interval: 0.5 s | -10% Numbed Effect",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+(144–150) Critical Strike Rating against Frostbitten enemies",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+(104–110) Critical Strike Rating against Frostbitten enemies",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+(68–75) Critical Strike Rating against Frostbitten enemies",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "For every enemy within 20 m nearby, +(18–20)% Affliction Effect, up to +120%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "For every enemy within 20 m nearby, +(13–15)% Affliction Effect, up to +90%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "For every enemy within 20 m nearby, +(8–10)% Affliction Effect, up to +60%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+(18–20)% Armor DMG Mitigation Penetration against Traumatized enemies",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+(13–15)% Armor DMG Mitigation Penetration against Traumatized enemies",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "+(8–10)% Armor DMG Mitigation Penetration against Traumatized enemies",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "20% of the bonus to Erosion Damage also applied to Deterioration Damage, up to +40%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "15% of the bonus to Erosion Damage also applied to Deterioration Damage, up to +(27–30)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "10% of the bonus to Erosion Damage also applied to Deterioration Damage, up to +(18–20)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Base Traits now have Base Trait slots that can be installed with a Epic or lower Origin Memory. Base Stats and the value of Random Affixes of the Memory installed in this slot: (-60–-55)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Base Traits now have Base Trait slots that can be installed with a Rare or lower Origin Memory. Base Stats and the value of Random Affixes of the Memory installed in this slot: (-35–-30)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Base Traits now have Base Trait slots that can be installed with a Epic or lower Progress Memory. Base Stats and the value of Random Affixes of the Memory installed in this slot: (-60–-55)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Base Traits now have Base Trait slots that can be installed with a Rare or lower Progress Memory. Base Stats and the value of Random Affixes of the Memory installed in this slot: (-35–-30)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Base Traits now have Base Trait slots that can be installed with a Epic or lower Discipline Memory. Base Stats and the value of Random Affixes of the Memory installed in this slot: (-60–-55)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "Base Traits now have Base Trait slots that can be installed with a Rare or lower Discipline Memory. Base Stats and the value of Random Affixes of the Memory installed in this slot: (-35–-30)%",
+   "source": "Memory Revival",
+   "type": "Revived Affix"
+  },
+  {
+   "text": "[Hero's Resourcefulness] Burst becomes Burst Blast and can activate Spell Burst | All conditions of this trait that trigger on attack are changed to trigger on hit | The Base Trait effect that generates Rage from using Melee Skills is changed to generating Rage upon skill use. The effect that triggers Burst on attack hit is changed to triggering Burst Blaston hit | Hero Trait Exclusive: Berserker Rehan|Anger",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Furious Roar] Attacks trigger Burst once on Critical Strike while Berserk is active. Cooldown: 0.3s | -20% additional Burst Damage | Hero Trait Exclusive: Berserker Rehan | Anger",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Ancestral Hate] Additional bonuses to Energy Shield Regain Interval also apply to Life Regain Interval, up to -65% | For every Attack Skill used by Seething Spirit within 2s, +3% additional Hit Damage taken by you, up to 30% | Seething Spirit consumes 30% of current Life when using skills | Hero Trait Exclusive: Berserker Rehan | Seething Silhouette",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Starfall Wasteland] Seething Spirit now only uses Ranged Attack Projectile Skills (except Channeled and Parabolic Skills) | Generates 15 Rage when using a Ranged Skill | +1 to Projectile Quantity, +1 Horizontal Projectile Jump(s), +1 Horizontal Projectile Penetration(s), +11% Projectile Size for Ranged Skills cast by Seething Spirit | 33% chance for Ranged Skills cast by Seething Spirit to return after reaching their max range | Hero Trait Exclusive: Berserker Rehan | Seething Silhouette",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Between the Holy Land and Hell] Gains Repent to the Light for 8s after casting the Trait Skill | Hero Trait Exclusive: Lightbringer Rosa|High Court Chariot",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Mercury Purged] When inflicting Frostbite, gains Baptism: Impassive for 8s | When inflicting Ignite, gains Baptism: Rage for 8s | When inflicting Numbed, gains Baptism: Indolent for 8s | Hero Trait Exclusive: Lightbringer Rosa | Unsullied Blade",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Telepathy Expert] When Spacetime Illusion consumes Spell Burst, it also attempts to consume Spell Burst for Youga | -20% additional Spell Burst Hit Damage | Hero Trait Exclusive: Spacetime Witness Youga | Spacetime Illusion",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Fifth Cosmic Velocity] -99% additional Spell Burst Charge Speed | 100% chance to immediately gain 2 stack(s) of Spell Burst Charge. Interval: 0.03s | -20% additional Spell Burst Hit Damage | Hero Trait Exclusive: Spacetime Witness Youga | Spacetime Illusion",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[To Myself in Another Spacetime] When dealing damage to enemies in Twisted Spacetime, Reaps 1s of Damage Over Time. This effect has a 2s interval for the same target | The casting interval of Twisted Spacetime is reduced to 1s | Hero Trait Exclusive: Spacetime Witness Youga | Spacetime Elapse",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Private Universe] +200% additional Twisted Spacetime Skill Area | +40% Spacetime Turbulence Duration | Twisted Spacetime only follows you | Hero Trait Exclusive: Spacetime Witness Youga|Spacetime Elapse",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Artificial Moon: Origin] Base Traits now have Special Memory slots that can be installed with an Ultimate or lower Origin Memory. Reduces the Base Stats and the value of Random Affixes of Memories installed in this slot by 60% | Base Traits gain additional affixes upon reaching max level",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Artificial Moon: Discipline] Base Traits now have Special Memory slots that can be installed with an Ultimate or lower Discipline Memory. Reduces the Base Stats and the value of Random Affixes of Memories installed in this slot by 60% | Base Traits gain additional affixes upon reaching max level",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Artificial Moon: Progress] Base Traits now have Special Memory slots that can be installed with an Ultimate or lower Progress Memory. Reduces the Base Stats and the value of Random Affixes of Memories installed in this slot by 60% | Base Traits gain additional affixes upon reaching max level",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Discord of the Second Will] When dealing damage, inflicts a random crowd control effect (except Freeze and Knockback), prioritizing effects that have not yet been inflicted. Interval: 1s",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Omni-Elixir Side Effect] Adds the unselected Ingredient effects to Scent Bottles, and the selected Ingredients and their effects will no longer take effect | -50% Elixir Skill Effect | Hero Trait Exclusive: Scent Weaver Sage | Licorice Note",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Basic Pharmacology Manuscript] +80% additional Ingredient Effect applied to Basic Scent Bottle | Hero Trait Exclusive: Scent Weaver Sage|Licorice Note",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Soft Storm] While in Vigilant, for every 2 use(s) of Enhanced Skills by Spirit Magi, triggers the Ultimate | Spirit Magi cannot use the Ultimate. -45% additional Ultimate Damage | Hero Trait Exclusive: The Forsaken Iris|Vigilant Breeze",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Blowing Breeze] While in Vigilant, for every 1 use(s) of the Ultimate by Spirit Magi, +1 to Max Breeze Stacks, up to 7 Stacks, lasting until Reconjuring | Hero Trait Exclusive: The Forsaken Iris|Vigilant Breeze",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Nourishing Spring Rain] Nourishment can be applied to Synthetic Troop Minions | When Spirit Magi are present, +5% additional damage for Synthetic Troop Minions for every 10 Growth, up to +300% | When Spirit Magi are present, -2% chance for Synthetic Troop Minions to lose Nourishment for every 1% chance to use Enhanced Skills | The cooldown of Modularization Skills is reduced to 0.1s | Hero Trait Exclusive: The Forsaken Iris | Growing Breeze",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Nature's Party] Nourishment applies additional base effects: | Frost Magus: Restores 5% of Missing Life and Energy Shield to you on hit. Interval: 0.2s. +5 Max Frostbite Rating per Nourishment stack | Thunder Magus: Inflicts Numbed on hit. Interval: 0.2s. +2% additional Lightning Damage dealt to Numbed enemies per Nourishment stack | Fire Magus: +9% additional Critical Strike Damage and -20% Critical Strike Rating per Nourishment stack | Rock Magus: Transfers 20% of damage taken to this Minion, and adds Physical Damage equal to 0.05% of Armor per Nourishment stack, up to 70 Physical Damage per stack | Erosion Magus: Inflicts Deterioration on hit | Hero Trait Exclusive: The Forsaken Iris | Growing Breeze",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Machine's Joy] +3% additional Overload Effect on hit. Stacks up to 30 time(s) (multiplies). Removes all stacks when casting a Trait Skill | Hero Trait Exclusive: Commander Moto|Order Calling",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Peril of Synthetic Troops] Adds 9% of the player's Max Life to the Base Life of Synthetic Troop Minions | Adds 6% of the player's Max Energy Shield to the Base Energy Shield of Synthetic Troop | Hero Trait Exclusive: Commander Moto|Charge Calling",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Three-Chambered Heart] The Main Skill is supported by a Lv. 40 Advanced Elemental Impact | Hero Trait Exclusive: Frostfire Gemma|Ice-Fire Fusion",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[First Flake of Strange Snow] -50% additional Frostbite Effect | Each type of Crowd Control Effect, Ailment, and Curse afflicting an enemy is deemed to have 50 additional Frostbite Rating, up to 350 | Hero Trait Exclusive: Frostfire Gemma|Frostbitten Heart",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Sweet Pain] Converts 99% Fire Damage to Erosion Damage | Has Lv. 20 Precise: Corrosion Focus Buff | Has Lv. 20 Erosion Magus Origin of Spirit Magus Effect | Hero Trait Exclusive: Frostfire Gemma | Flame of Pleasure",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Royal Arsenal] For every activated Magnificent Support Skill, +50% Projectile Speed, up to 150% | For every activated Noble Support Skill, +10% additional Projectile Damage, up to 30% | Hero Trait Exclusive: Divineshot Carino|Ranger of Glory",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Into the Night] +2 to Max Deflection | Deflection is no longer consumed when hit, but Deflection now only lasts for 3s | +20% additional Projectile Damage when Deflection is active | Hero Trait Exclusive: Divineshot Carino|Lethal Flash",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Self-Imposed Shackles] +30% additional Heat Up Effect after stopping movement. Lasts 8s | +20% Attack and Spell Block Chance and +20% Block Ratio Upper Limit after stopping movement, Lasts 8s | -60% Max Elemental and Erosion Resistance while moving | Hero Trait Exclusive: Divineshot Carino | Zealot of War",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Cat's Night Safari] Gains 1 stack of Interest upon dealing damage to an Elite enemy. Interval: 1s | Gains Hunting Instinct when having 5 stack(s) of Interest | Hero Trait Exclusive: Cateye Erika|Wind Stalker",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Charging Tail] Feline Figure can now land Critical Strikes | When Feline Figure lands a Critical Strike, the effect of Numbed inflicted within 10s by it is additionally increased by 50% | Hero Trait Exclusive: Cateye Erika | Lightning Shadow",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Vengeful Night Wraith] For every 3 casts of Vendetta, generates 1 Phantom that casts Vendetta 1 additional time on a random target within 9m | +30% additional Phantom Damage | Hero Trait Exclusive: Cateye Erika | Vendetta's Sting",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[The Place of Oracle: Agility] +2 to Max Agility Blessing Stacks | Hero Trait Exclusive: Oracle Thea | Wisdom of The Gods",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Crossing the Divine Threshold] Immune to Crowd Control Effects and Curses while inside the Divine Realm | +1 to max stacks of all Blessings while outside the Divine Realm | Hero Trait Exclusive: Oracle Thea | Incarnation of the Gods",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Inverted Shrine] Inflicts Desecration on yourself when inflicting Desecration on enemies | +50% additional Erosion Damage when you have Desecration | Hero Trait Exclusive: Oracle Thea|Blasphemer",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Bing's Big Bang Pack] When bombs deal damage, they can generate 3 additional Spare Bomb(s), with a chance equal to 35% of the bomb's Critical Strike Chance. -60% additional Spare Bomb Damage | Hero Trait Exclusive: Escapist Bing | Blast Nova",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Genius Idea Generator] +2 to Whimsy Explosion Projectile Quantity, +100% Whimsy Effect, +40% Whimsy Signal Effect | Hero Trait Exclusive: Escapist Bing | Creative Genius",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Ceaseless Tide] Deemed to be in the Loud Song state while in the Bard state | Movement Speed is no longer additionally reduced while in the Loud Song state | Hero Trait Exclusive: Tide Whisper Selena | Sing with the Tide",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Radical Evolution Theory: Cruelty] 40% of the final bonus applied to Origin of Spirit Magus Effect is also applied to Cruelty's Aura Effect bonus",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Radical Evolution Theory: Spell Amplification] 40% of the final bonus applied to Origin of Spirit Magus Effect is also applied to Spell Amplification's Aura Effect bonus",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Radical Evolution Theory: Radical Order] 40% of the final bonus applied to Origin of Spirit Magus Effect is also applied to Radical Order's Aura Effect bonus",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Radical Evolution Theory: Deep Pain] 40% of the final bonus applied to Origin of Spirit Magus Effect is also applied to Deep Pain's Aura Effect bonus",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Reactive Rainbow] For every 2% excess chance to avoid Elemental Ailments, +0.7% chance to deem your Max Elemental Resistance as the effective Elemental Resistance when taking Elemental Damage | For every 2% excess chance to avoid Elemental Ailments, +0.7% chance to inflict Elemental Resistance Reversal on enemies when dealing Elemental Damage",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Approaching Nightfall] -50% additional Ailment Duration. Additionally settles 35% of the remaining total Damage Over Time when Reaping, then removes all Damage Over Time acting on the target",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[Red Shoes of Cruelty] While Main Terra Skill is active, takes True Damage equal to a percentage of Max Life and Energy Shield. This percentage equals 8% of Movement Speed bonus, up to 15% | While Main Terra Skill is active, additionally increases the damage taken by enemies within the Terra Skill Area by a percentage that equals 38% of Movement Speed bonus, up to 75% | Hero Trait Exclusive: Tide Whisper Selena | Dance of the Deep",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[+1 Max Youga Count in the Universe] Most believe activating three Traits is the absolute ceiling, but for me, that is merely the starting point. Once you systematically unlock those initial three Traits, you claim my exclusive privilege: mastery over a fourth Hero Trait. This chosen exception ascends instantly to its maximum power! While others are forced to choose, you and I can become the perfect superposition of all power across every parallel world. | Hero Trait Exclusive: Spacetime Witness Youga | The Ultimate One",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[The Place of Oracle: Focus] +2 to Max Focus Blessing Stacks | Hero Trait Exclusive: Oracle Thea | Wisdom of The Gods",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  },
+  {
+   "text": "[The Place of Oracle: Tenacity] +2 to Max Tenacity Blessing Stacks | Hero Trait Exclusive: Oracle Thea | Wisdom of The Gods",
+   "source": "Memory Revival",
+   "type": "Special Random Affix"
+  }
+ ]
+}

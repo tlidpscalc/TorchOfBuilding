@@ -30,16 +30,37 @@ void describe(const SkillDpsResult& r) {
 
 } // namespace
 
-TEST_CASE("Youga build: every damage-relevant line parses") {
+TEST_CASE("Youga build: every line parses") {
     BuildState b = loadBuild(gameData(), youga());
     int failures = 0;
     for (const LineReport& l : b.lines) {
-        // Supports without a scraped level table (defensive/utility ones) are expected for now.
-        if (l.ok || l.error == "no level table for this support") continue;
+        if (l.ok) continue;
         UNSCOPED_INFO(l.source << ": \"" << l.line << "\" -> " << l.error);
         ++failures;
     }
     CHECK(failures == 0);
+}
+
+TEST_CASE("Activation Mediums use the chosen tier, bonus and rolls") {
+    nlohmann::json build = youga();
+    for (auto& skill : build["skills"]["active"])
+        if (skill["name"] == "Selves of All Realms")
+            skill["supports"][0] = {{"name", "Activation Medium: Preparation"}, {"tier", "1"}, {"bonus", "duration"},
+                                    {"values", {5, 15}}};
+    BuildState b = loadBuild(gameData(), build);
+    std::vector<std::string> lines;
+    for (const LineReport& l : b.lines)
+        if (l.source == "Support: Activation Medium: Preparation (Selves of All Realms)") lines.push_back(l.line);
+    REQUIRE(lines.size() == 2);
+    CHECK(lines[0] == "Prepares the supported skill every 5 s");
+    CHECK(lines[1] == "+15% additional Duration for the supported skill");   // the Cooldown bonus is left out
+
+    // Defaults: the best tier with the Cooldown bonus at the top of its range.
+    lines.clear();
+    for (const LineReport& l : loadBuild(gameData(), youga()).lines)
+        if (l.source == "Support: Activation Medium: Preparation (Biting Cold)") lines.push_back(l.line);
+    REQUIRE(lines.size() == 1);
+    CHECK(lines[0] == "The supported skill +25% additional Cooldown Recovery Speed");
 }
 
 // Reference values: tools/verify/youga_handcalc.py with no blinking (Periodic Burst uptime 0),

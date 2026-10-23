@@ -5494,7 +5494,41 @@
    ]
   ],
   "id": 8000,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "Prepares the supported skill every 8 s",
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "Prepares the supported skill every (6–7) s",
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "Prepares the supported skill every (4–5) s",
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Leap Attack": {
   "slug": "Leap_Attack",
@@ -175942,7 +175976,42 @@
    ]
   ],
   "id": 8002,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill. Interval: 0.2s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill. Interval: 0.2s"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill. Interval: 0.2s"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill. Interval: 0.2s"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Elite": {
   "slug": "Activation_Medium_Elite",
@@ -175969,7 +176038,42 @@
    ]
   ],
   "id": 8003,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when there is an Elite within (6–20) m. Interval: 0.2 s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when there is an Elite within (6–20) m. Interval: 0.2 s"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when there is an Elite within (6–20) m. Interval: 0.2 s"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when there is an Elite within (6–20) m. Interval: 0.2 s"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Boss": {
   "slug": "Activation_Medium_Boss",
@@ -175996,7 +176100,42 @@
    ]
   ],
   "id": 8004,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when there is a boss within (6–20) m. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when there is a boss within (6–20) m. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when there is a boss within (6–20) m. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when there is a boss within (6–20) m. Interval: 0.1s"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Life": {
   "slug": "Activation_Medium_Life",
@@ -176023,7 +176162,42 @@
    ]
   ],
   "id": 8005,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Always attempts to trigger the Supported Skill when HP is lower than (20–95)% . Disabled while any Restoration Skill is active"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Always attempts to trigger the Supported Skill when HP is lower than (20–95)% . Disabled while any Restoration Skill is active"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Always attempts to trigger the Supported Skill when HP is lower than (20–95)% . Disabled while any Restoration Skill is active"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Always attempts to trigger the Supported Skill when HP is lower than (20–95)% . Disabled while any Restoration Skill is active"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Energy Shield": {
   "slug": "Activation_Medium_Energy_Shield",
@@ -176050,7 +176224,42 @@
    ]
   ],
   "id": 8006,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when Energy Shield is lower than (20–95)% . Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when Energy Shield is lower than (20–95)% . Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when Energy Shield is lower than (20–95)% . Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Always attempts to trigger the supported skill when Energy Shield is lower than (20–95)% . Interval: 0.1s"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Severe Injury": {
   "slug": "Activation_Medium_Severe_Injury",
@@ -176077,7 +176286,42 @@
    ]
   ],
   "id": 8007,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Triggers the supported skill when suffering a Severe Injury"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Triggers the supported skill when suffering a Severe Injury"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Triggers the supported skill when suffering a Severe Injury"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Triggers the supported skill when suffering a Severe Injury"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Multistrike": {
   "slug": "Activation_Medium_Multistrike",
@@ -176104,7 +176348,42 @@
    ]
   ],
   "id": 8008,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Triggers the supported skill upon reaching the max Multistrike Count. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Triggers the supported skill upon reaching the max Multistrike Count. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Triggers the supported skill upon reaching the max Multistrike Count. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Triggers the supported skill upon reaching the max Multistrike Count. Interval: 0.1s"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Demolisher": {
   "slug": "Activation_Medium_Demolisher",
@@ -176131,7 +176410,42 @@
    ]
   ],
   "id": 8009,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Triggers the supported skill upon gaining Demolisher Charge. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Triggers the supported skill upon gaining Demolisher Charge. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Triggers the supported skill upon gaining Demolisher Charge. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Triggers the supported skill upon gaining Demolisher Charge. Interval: 0.1s"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Spell Burst": {
   "slug": "Activation_Medium_Spell_Burst",
@@ -176158,7 +176472,42 @@
    ]
   ],
   "id": 8010,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Triggers the supported skill when activating Spell Burst. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Triggers the supported skill when activating Spell Burst. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Triggers the supported skill when activating Spell Burst. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Triggers the supported skill when activating Spell Burst. Interval: 0.1s"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Start": {
   "slug": "Activation_Medium_Start",
@@ -176185,7 +176534,42 @@
    ]
   ],
   "id": 8011,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Triggers the supported skill upon starting to move. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Triggers the supported skill upon starting to move. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Triggers the supported skill upon starting to move. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Triggers the supported skill upon starting to move. Interval: 0.1s"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Root": {
   "slug": "Activation_Medium_Root",
@@ -176212,7 +176596,42 @@
    ]
   ],
   "id": 8012,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Triggers the supported skill upon stopping moving. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Triggers the supported skill upon stopping moving. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Triggers the supported skill upon stopping moving. Interval: 0.1s"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Triggers the supported skill upon stopping moving. Interval: 0.1s"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Resonance Activation": {
   "slug": "Activation_Medium_Resonance_Activation",
@@ -176239,7 +176658,42 @@
    ]
   ],
   "id": 8013,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Activates Resonance when you use the supported skill"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Activates Resonance when you use the supported skill"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Activates Resonance when you use the supported skill"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Activates Resonance when you use the supported skill"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Resonance": {
   "slug": "Activation_Medium_Resonance",
@@ -176266,7 +176720,42 @@
    ]
   ],
   "id": 8014,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill (-25–-15)% additional Cooldown Recovery Speed",
+     "(-25–-15)% additional Duration for the supported skill",
+     "Triggers the supported skill when Resonance is activated"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill +(7–11)% additional Cooldown Recovery Speed",
+     "+(7–11)% additional Duration for the supported skill",
+     "Triggers the supported skill when Resonance is activated"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill +(12–19)% additional Cooldown Recovery Speed",
+     "+(12–19)% additional Duration for the supported skill",
+     "Triggers the supported skill when Resonance is activated"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill +(20–25)% additional Cooldown Recovery Speed",
+     "+(20–25)% additional Duration for the supported skill",
+     "Triggers the supported skill when Resonance is activated"
+    ]
+   }
+  ],
+  "bonus_choice": true
  },
  "Activation Medium: Rhythm": {
   "slug": "Activation_Medium_Rhythm",
@@ -176296,7 +176785,41 @@
    ]
   ],
   "id": 8015,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "Triggers the supported skill on the closest enemy within 20m every (1.1–1.5)s.",
+     "The next skill triggered by the supported skill +2% additional damage for every 1m of movement made during the trigger interval, up to +(10–12)%.",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "Triggers the supported skill on the closest enemy within 20m every (0.6–1.0)s.",
+     "The next skill triggered by the supported skill +2% additional damage for every 1m of movement made during the trigger interval, up to +(14–16)%.",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "Triggers the supported skill on the closest enemy within 20m every (0.3–0.5)s.",
+     "The next skill triggered by the supported skill +3% additional damage for every 1m of movement made during the trigger interval, up to +(18–21)%.",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The next skill triggered by the supported skill +3% additional damage for every 1m of movement made during the trigger interval, up to +(24–27)%.",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Wind Rhythm": {
   "slug": "Activation_Medium_Wind_Rhythm",
@@ -176326,7 +176849,42 @@
    ]
   ],
   "id": 8017,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "Always attempts to trigger the supported skill on the closest enemy within 25m. Cooldown: 0.8 s",
+     "(40–50)% of the bonuses and additional bonuses for Cast Speed is also applied to the Cooldown Recovery Speed of this Support Skill and the supported skill",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "Always attempts to trigger the supported skill on the closest enemy within 25m. Cooldown: 0.7 s",
+     "(60–70)% of the bonuses and additional bonuses for Cast Speed is also applied to the Cooldown Recovery Speed of this Support Skill and the supported skill",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "Always attempts to trigger the supported skill on the closest enemy within 25m. Cooldown: 0.6 s",
+     "(80–85)% of the bonuses and additional bonuses for Cast Speed is also applied to the Cooldown Recovery Speed of this Support Skill and the supported skill",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "Always attempts to trigger the supported skill on the closest enemy within 25m. Cooldown: 0.5 s",
+     "(90–100)% of the bonuses and additional bonuses for Cast Speed is also applied to the Cooldown Recovery Speed of this Support Skill and the supported skill",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Root Attack": {
   "slug": "Activation_Medium_Root_Attack",
@@ -176353,7 +176911,38 @@
    ]
   ],
   "id": 8018,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "Automatically attempts to use a supported Attack Skill on the closest enemy when stopping moving. Interval: (0.6–0.7) s",
+     "Every 1m moved adds +(6–12)% damage to the next auto used supported skill, up to +(26–45)% . During Multistrike, the bonus persists until the multistrike ends"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "Automatically attempts to use a supported Attack Skill on the closest enemy when stopping moving. Interval: (0.4–0.5) s",
+     "Every 1m moved adds +(8–16)% damage to the next auto used supported skill, up to +(36–55)% . During Multistrike, the bonus persists until the multistrike ends"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "Automatically attempts to use a supported Attack Skill on the closest enemy when stopping moving. Interval: (0.2–0.3) s",
+     "Every 1m moved adds +(10–20)% damage to the next auto used supported skill, up to +(46–65)% . During Multistrike, the bonus persists until the multistrike ends"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "Automatically attempts to use a supported Attack Skill on the closest enemy when stopping moving. Interval: (0.1–0.2) s",
+     "Every 1m moved adds +(12–24)% damage to the next auto used supported skill, up to +(66–78)% . During Multistrike, the bonus persists until the multistrike ends"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Still Attack": {
   "slug": "Activation_Medium_Still_Attack",
@@ -176380,7 +176969,38 @@
    ]
   ],
   "id": 8019,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "The supported skill is supported by Lv. (6–10) Willpower",
+     "Automatically use the Supported Attack Skill to continuously attack the nearest enemy within 25m while standing still"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "The supported skill is supported by Lv. (11–15) Willpower",
+     "Automatically use the Supported Attack Skill to continuously attack the nearest enemy within 25m while standing still"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "The supported skill is supported by Lv. (16–20) Willpower",
+     "Automatically use the Supported Attack Skill to continuously attack the nearest enemy within 25m while standing still"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "The supported skill is supported by Lv. (20–30) Willpower",
+     "Automatically use the Supported Attack Skill to continuously attack the nearest enemy within 25m while standing still"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Sentry": {
   "slug": "Activation_Medium_Sentry",
@@ -176409,7 +177029,41 @@
    ]
   ],
   "id": 8020,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "+(9–11)% additional damage for the supported skill",
+     "-1 Sentries that can be deployed at a time by the supported skill | -30% Movement Speed",
+     "Always attempts to trigger the Supported Skill if no Sentries are within (10–20) m. Interval: 0.1 s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "+(12–15)% additional damage for the supported skill",
+     "+1 Sentries that can be deployed at a time by the supported skill | -30% Movement Speed",
+     "Always attempts to trigger the Supported Skill if no Sentries are within (10–20) m. Interval: 0.1 s"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "+(16–19)% additional damage for the supported skill",
+     "+2 Sentries that can be deployed at a time by the supported skill | -30% Movement Speed",
+     "Always attempts to trigger the Supported Skill if no Sentries are within (10–20) m. Interval: 0.1 s"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "+(20–25)% additional damage for the supported skill",
+     "Always attempts to trigger the Supported Skill if no Sentries are within (10–20) m. Interval: 0.1 s"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Minion": {
   "slug": "Activation_Medium_Minion",
@@ -176435,7 +177089,38 @@
    ]
   ],
   "id": 8021,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "+(18–24)% additional damage for Minions summoned by the supported skill",
+     "Triggers the supported skill and replenishes the Minions of the supported skill to the maximum upon entering the stage"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "+(24–30)% additional damage for Minions summoned by the supported skill",
+     "Triggers the supported skill and replenishes the Minions of the supported skill to the maximum upon entering the stage"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "+(30–36)% additional damage for Minions summoned by the supported skill",
+     "Triggers the supported skill and replenishes the Minions of the supported skill to the maximum upon entering the stage"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "+(36–42)% additional damage for Minions summoned by the supported skill",
+     "Triggers the supported skill and replenishes the Minions of the supported skill to the maximum upon entering the stage"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Critical Strike": {
   "slug": "Activation_Medium_Critical_Strike",
@@ -176459,7 +177144,34 @@
    ]
   ],
   "id": 8022,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "When the supported skill lands a Critical Strike, sends (1–3) Instruction(s). Interval: 0.09 s."
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "When the supported skill lands a Critical Strike, sends (2–3) Instruction(s). Interval: 0.06 s."
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "When the supported skill lands a Critical Strike, sends (2–3) Instruction(s). Interval: 0.03 s."
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "When the supported skill lands a Critical Strike, sends 4 Instruction(s). Interval: 0.03 s."
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Channel": {
   "slug": "Activation_Medium_Channel",
@@ -176482,7 +177194,34 @@
    ]
   ],
   "id": 8023,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "When channeling the Supported Skill, sends 1 Instruction for every 4 stack(s) channeled"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "When channeling the Supported Skill, sends 1 Instruction for every 3 stack(s) channeled"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "When channeling the Supported Skill, sends 1 Instruction for every 2 stack(s) channeled"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "When channeling the Supported Skill, sends 1 Instruction for every 1 stack(s) channeled"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Instruction": {
   "slug": "Activation_Medium_Instruction",
@@ -176512,7 +177251,41 @@
    ]
   ],
   "id": 8024,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "Triggers the supported skill on the closest enemy within 20m every (1.0–2.0)s.",
+     "During the trigger interval, each Instruction adds +(4–5)% damage to the next skill triggered by the Supported Skill, up to +(36–45)% additional damage",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "Triggers the supported skill on the closest enemy within 20m every (1.1–2.0)s.",
+     "During the trigger interval, each Instruction adds +(4–5)% damage to the next skill triggered by the Supported Skill, up to +(36–45)% additional damage",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "Triggers the supported skill on the closest enemy within 20m every (0.4–1.0)s.",
+     "During the trigger interval, each Instruction adds +(6–7)% damage to the next skill triggered by the Supported Skill, up to +(54–63)% additional damage",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "During the trigger interval, each Instruction adds +(8–10)% damage to the next skill triggered by the Supported Skill, up to +(72–90)% additional damage",
+     "-80% additional damage for manually used Supported Skill"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Lock On": {
   "slug": "Activation_Medium_Lock_On",
@@ -176535,7 +177308,9 @@
    ]
   ],
   "id": 8025,
-  "levels": []
+  "levels": [],
+  "tiers": [],
+  "bonus_choice": false
  },
  "Activation Medium: Track": {
   "slug": "Activation_Medium_Track",
@@ -176562,7 +177337,36 @@
    ]
   ],
   "id": 8026,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "Triggers the supported skill once on up to 2 Locked-On enemy(ies) within (10–20) m every (0.9–1.0) s"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "Triggers the supported skill once on up to 2 Locked-On enemy(ies) within (10–20) m every (0.9–1.0) s",
+     "Removes Lock On when the supported skill deals damage"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "Triggers the supported skill once on up to 3 Locked-On enemy(ies) within (10–20) m every (0.7–0.8) s",
+     "Always Locks On enemies within 20m."
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "Triggers the supported skill once on up to 3 Locked-On enemy(ies) within (10–20) m every (0.5–0.6) s"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Burst Activation": {
   "slug": "Activation_Medium_Burst_Activation",
@@ -176592,7 +177396,34 @@
    ]
   ],
   "id": 8027,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "2",
+    "lines": [
+     "(-25–-16)% additional Hit Damage for the supported skills cast by Spell Burst",
+     "When Spell Burst is fully charged, triggers the supported skill on the nearest enemy within 25m and attempts to trigger the supported skill's Spell Burst",
+     "-40% Movement Speed for 2 s when the supported skill activates Spell Burst"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "(-15–-1)% additional Hit Damage for the supported skills cast by Spell Burst",
+     "When Spell Burst is fully charged, triggers the supported skill on the nearest enemy within 25m and attempts to trigger the supported skill's Spell Burst",
+     "-40% Movement Speed for 2 s when the supported skill activates Spell Burst"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "+(1–5)% additional Hit Damage for the supported skills cast by Spell Burst",
+     "When Spell Burst is fully charged, triggers the supported skill on the nearest enemy within 25m and attempts to trigger the supported skill's Spell Burst",
+     "-40% Movement Speed for 2 s when the supported skill activates Spell Burst"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Motionless": {
   "slug": "Activation_Medium_Motionless",
@@ -176619,7 +177450,38 @@
    ]
   ],
   "id": 8028,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "3",
+    "lines": [
+     "Auto-used supported skills (-15–-4)% additional damage",
+     "Automatically and continuously cast the supported skill at the nearest enemy within 25m while standing still"
+    ]
+   },
+   {
+    "tier": "2",
+    "lines": [
+     "Auto-used supported skills (-15–-4)% additional damage",
+     "Automatically and continuously cast the supported skill at the nearest enemy within 25m while standing still"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "Auto-used supported skills +10% additional damage",
+     "Automatically and continuously cast the supported skill at the nearest enemy within 25m while standing still"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "Auto-used supported skills +(12–15)% additional damage",
+     "Automatically and continuously cast the supported skill at the nearest enemy within 25m while standing still"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Tangle": {
   "slug": "Activation_Medium_Tangle",
@@ -176654,7 +177516,34 @@
    ]
   ],
   "id": 8030,
-  "levels": []
+  "levels": [],
+  "tiers": [
+   {
+    "tier": "2",
+    "lines": [
+     "+(1–5)% additional damage for the supported skill",
+     "When the number of Tangles within 10 m is below the upper limit, triggers the supported skill, creating it in the form of a Tangle. Interval: 0.5 s | Creates 1 additional Tangle",
+     "+(60–90)% Tangle Attach Range | -30% Movement Speed"
+    ]
+   },
+   {
+    "tier": "1",
+    "lines": [
+     "+(11–15)% additional damage for the supported skill",
+     "When the number of Tangles within 10 m is below the upper limit, triggers the supported skill, creating it in the form of a Tangle. Interval: 0.4 s | Creates 1 additional Tangle",
+     "+(91–120)% Tangle Attach Range | -30% Movement Speed"
+    ]
+   },
+   {
+    "tier": "0",
+    "lines": [
+     "+(21–25)% additional damage for the supported skill",
+     "When the number of Tangles within 10 m is below the upper limit, triggers the supported skill, creating it in the form of a Tangle. Interval: 0.3 s | Creates 1 additional Tangle",
+     "+(121–150)% Tangle Attach Range | -30% Movement Speed"
+    ]
+   }
+  ],
+  "bonus_choice": false
  },
  "Activation Medium: Rejuvenation": {
   "slug": "Activation_Medium_Rejuvenation",
@@ -176680,7 +177569,9 @@
    ]
   ],
   "id": 8031,
-  "levels": []
+  "levels": [],
+  "tiers": [],
+  "bonus_choice": false
  },
  "Focused Shot: Aspire (Magnificent)": {
   "slug": "Focused_Shot_Aspire_Magnificent",

@@ -442,7 +442,26 @@ def parse_legendary(slug: str, html: str) -> dict:
         if header in variants:
             continue
         variants[header] = [ln for s in spans for ln in text_lines(s)]
-    return {"slug": slug, "name": h1.get_text(strip=True) if h1 else slug, "variants": variants}
+
+    # Implicit lines (above the rule, e.g. "+1777 Gear Armor") stay on corrosion. Every other line has exactly
+    # one corroded counterpart; tlidb gives both the same modifier id apart from the last digit (1 normal,
+    # 0 corroded), so they are paired by id // 10. Multi-line effects are joined with " | ".
+    implicit: list[str] = []
+    paired: dict[int, dict] = {}
+    for card in soup.select("div.card"):
+        header = card_header(card) or "Normal"
+        if header not in ("Normal", "Corroded"):
+            continue
+        block = card.select_one('[data-block="attrs2"]')
+        if block and header == "Normal" and not implicit:
+            implicit = [" | ".join(text_lines(s)) for s in block.select("span[data-modifier-id]")]
+        for s in card.select(".tierParent span[data-modifier-id]"):
+            mod_id = int(s["data-modifier-id"])
+            entry = paired.setdefault(mod_id // 10, {"id": mod_id // 10})
+            entry["corroded" if header == "Corroded" else "text"] = " | ".join(text_lines(s))
+    lines = [e for e in paired.values() if "text" in e]
+    return {"slug": slug, "name": h1.get_text(strip=True) if h1 else slug, "variants": variants,
+            "implicit": implicit, "lines": lines}
 
 
 def cmd_bulk(f: Fetcher, kind: str, dry_run: bool) -> None:
@@ -473,6 +492,173 @@ def cmd_bulk(f: Fetcher, kind: str, dry_run: bool) -> None:
             failures.append({"slug": slug, "error": str(e)})
     write_json(out_name, results)
     write_json(out_name.replace(".json", "_failures.json"), failures)
+
+
+# The 38 craftable gear types, as named in the Source column of tlidb's Craft page.
+GEAR_TYPES = [
+    "Claw", "Dagger", "One-Handed Sword", "One-Handed Hammer", "One-Handed Axe", "Two-Handed Sword",
+    "Two-Handed Hammer", "Two-Handed Axe", "Wand", "Rod", "Scepter", "Cane", "Tin Staff", "Cudgel", "Pistol", "Bow",
+    "Crossbow", "Musket", "Fire Cannon", "STR Helmet", "DEX Helmet", "INT Helmet", "STR Chest Armor",
+    "DEX Chest Armor", "INT Chest Armor", "STR Gloves", "DEX Gloves", "INT Gloves", "STR Boots", "DEX Boots",
+    "INT Boots", "STR Shield", "DEX Shield", "INT Shield", "Necklace", "Ring", "Spirit Ring", "Belt",
+]
+
+
+def _modifier_text(span: Tag) -> str:
+    """In-game text of a modifier span: tier markers dropped, <br> as ' | ' for multi-line effects."""
+    for tier in span.select("span.tier"):
+        tier.decompose()
+    return " | ".join(text_lines(span))
+
+
+def parse_gear_type(name: str, html: str) -> dict:
+    """A gear type page (e.g. STR_Helmet): its base items and its craft affix pools.
+
+    Prefix/suffix rows come from the "<Type> Craft" tab: tier ("0+", "0".."8"), required item level, weight and
+    library (Basic/Advanced/Ultimate Affix). Rows of one affix share a family id (modifier id without the tier).
+    """
+    out = {"name": name, "bases": [], "prefixes": [], "suffixes": [], "base_affixes": [], "corrosion_base": []}
+    # Tabs are <div id="STRHelmet" class="tab-pane ...">; the base items are in the tab named after the type
+    # (Belt's first tab is Blending Rituals instead).
+    parts = re.split(r'<div id="([^"]+)" class="tab-pane', html)
+    panes = parts[0::2]
+    tabs = dict(zip(parts[1::2], parts[2::2]))
+    key = re.sub(r"[^a-z0-9]", "", name.lower())
+    base_pane = next((p for tab, p in tabs.items() if re.sub(r"[^a-z0-9]", "", tab.lower()) == key),
+                     panes[1] if len(panes) > 1 else html)
+    soup = BeautifulSoup(base_pane, "html.parser")
+    for card in soup.select("div.flex-grow-1"):
+        link = card.find("a", href=True)
+        if not link:
+            continue
+        divs = card.find_all("div", recursive=False)
+        level = re.search(r"Require lv (\d+)", card.get_text(" ", strip=True))
+        out["bases"].append({
+            "name": link.get_text(strip=True),
+            "slug": link["href"],
+            "level": int(level.group(1)) if level else 1,
+            "lines": [_modifier_text(s) for s in card.select("span[data-modifier-id]")],
+            "category": divs[-1].get_text(strip=True) if divs else "",
+        })
+
+    # Legendaries of this gear type (their lines are what organs carry onto Vorax limbs), and for Vorax limbs
+    # the organ slots they accept: "Graftable: Organs with Gloves、Chest Armor affixes".
+    out["legendaries"] = list(dict.fromkeys(
+        slug for slug, _ in re.findall(r'href="([^"]+)">([^<]+)</a>', tabs.get("LegendaryGear", ""))))
+    graft = re.search(r"Graftable: Organs with (.*?) affixes", html)
+    if graft:
+        out["graftable"] = [g.strip() for g in re.split(r"[、,]", graft.group(1)) if g.strip()]
+
+    craft = next((p for p in panes if "Craft</h1>" in p), "")
+    pre, _, rest = craft.partition("Suffix")
+    suf, _, tail = rest.partition('card-title">Base Affix')
+    row_re = re.compile(r'<tr data-tier="([^"]+)"><td>[^<]*<td>(<span data-modifier-id="(\d+)">.*?</span>)\s*'
+                        r'<td>(\d+)<td>(\d+)<td>([^<\n]+)', re.S)
+    for part, key in ((pre, "prefixes"), (suf, "suffixes")):
+        for tier, span_html, mod_id, lvl, weight, library in row_re.findall(part):
+            span = BeautifulSoup(span_html, "html.parser").span
+            out[key].append({
+                "family": int(mod_id) // 100,
+                "tier": tier,
+                "text": _modifier_text(span),
+                "level": int(lvl),
+                "weight": int(weight),
+                "library": library.strip().replace(" Affix", ""),
+            })
+    base_html, _, corrosion_html = tail.partition('card-title">Corrosion Base')
+    for part, key in ((base_html, "base_affixes"), (corrosion_html, "corrosion_base")):
+        for span in BeautifulSoup(part, "html.parser").select("span[data-modifier-id]"):
+            out[key].append(_modifier_text(span))
+    return out
+
+
+VORAX_TYPES = [
+    "Vorax Limb: Head", "Vorax Limb: Chest", "Vorax Limb: Hands", "Vorax Limb: Legs", "Vorax Aberrant Limb: Legs",
+    "Vorax Limb: Neck", "Vorax Limb: Digits", "Vorax Aberrant Limb: Digits", "Vorax Limb: Waist",
+    "Vorax Aberrant Limb: Waist",
+]
+
+
+def _cell(row: dict, col: str) -> str:
+    cell = row.get(col) or {}
+    return " | ".join(cell.get("text", []))
+
+
+def parse_medium_tiers(html: str) -> list[dict]:
+    """Activation Medium "Progression" table: [{"tier": "3", "lines": [...]}, ...], best tier last."""
+    i = html.find("Progression /")
+    if i < 0:
+        return []
+    table = html[i:html.find("</table>", i)]
+    tiers = []
+    for tier, cell in re.findall(r"<tr><td>(\d+)</td><td>(.*?)</td></tr>", table, re.S):
+        soup = BeautifulSoup(cell, "html.parser")
+        tiers.append({"tier": tier, "lines": [_modifier_text(s) for s in soup.select("span[data-modifier-id]")]})
+    return tiers
+
+
+def cmd_mediums(f: Fetcher) -> None:
+    """Adds tier tables to the Activation Medium supports in skills.json. They have no level table: each
+    tier has a trigger and bonus lines, and most let the player pick a Cooldown Recovery Speed or a
+    Duration bonus ("bonus_choice")."""
+    path = JSON_DIR / "skills.json"
+    skills = json.loads(path.read_text(encoding="utf-8"))
+    for name, card in skills.items():
+        if "Activation Medium" not in card.get("tags", []):
+            continue
+        card["tiers"] = parse_medium_tiers(f.get(card["slug"]))
+        text = " ".join(line for block in card.get("description", []) for line in block)
+        card["bonus_choice"] = "<Cooldown Recovery Speed or Duration Bonus>" in text
+        print(f"  {name}: {len(card['tiers'])} tiers{', bonus choice' if card['bonus_choice'] else ''}")
+    write_json("skills.json", skills)
+
+
+def cmd_crafting(f: Fetcher) -> None:
+    """Crafting pools beyond the gear types: Hero Memories (with tiers), Blending Rituals (belts), TOWER
+    Sequence (weapons), Soul Candle and Memory Revival affixes, from tlidb's Craft and Hero Memories pages."""
+    craft = parse_tables(f.get("Craft"))
+    by_type = lambda table: [{"text": _cell(r, "Affix Effect"), "source": _cell(r, "Source"), "type": _cell(r, "Type")}
+                             for r in table["rows"]]
+    find = lambda source: next(t for t in craft if t["rows"] and _cell(t["rows"][0], "Source").startswith(source))
+
+    memories = {}
+    for table in parse_tables(f.get("Hero_Memories")):
+        kind = table["header"].split(" /")[0]
+        if kind not in ("Base Stats", "Fixed Affix", "Random Affix"):
+            continue
+        for r in table["rows"]:
+            memories.setdefault(_cell(r, "Source"), {}).setdefault(kind, []).append({
+                "tier": _cell(r, "Tier"), "text": _cell(r, "Modifier"),
+                "level": int(_cell(r, "Level") or 0), "weight": int(_cell(r, "Weight") or 0)})
+
+    tower = []
+    for r in find("Claw, Cane")["rows"]:
+        tower.append({"text": _cell(r, "Affix Effect"), "sequence": _cell(r, "Type"),
+                      "gear": [g.strip() for g in _cell(r, "Source").split(",")]})
+    data = {
+        "hero_memories": memories,
+        "blending": [r["text"] for r in by_type(find("Belt")) if r["type"] == "Blending Rituals"],
+        "tower_sequence": tower,
+        "soul_candle": by_type(find("Soul Candle")),
+        "memory_revival": by_type(find("Memory Revival")),
+    }
+    write_json("crafting.json", data)
+
+
+def cmd_gear(f: Fetcher) -> None:
+    data = {}
+    for name in GEAR_TYPES:
+        g = parse_gear_type(name, f.get(name.replace(" ", "_")))
+        print(f"  {name}: {len(g['bases'])} bases, {len(g['prefixes'])} prefix rows, {len(g['suffixes'])} suffix rows, "
+              f"{len(g['base_affixes'])} base affixes, {len(g['corrosion_base'])} corrosion")
+        data[name] = g
+    write_json("gear_types.json", data)
+    vorax = {}
+    for name in VORAX_TYPES:
+        g = parse_gear_type(name, f.get(name.replace(": ", "_").replace(" ", "_")))
+        print(f"  {name}: {len(g['prefixes'])} prefix rows, {len(g['suffixes'])} suffix rows, {len(g['base_affixes'])} base affixes")
+        vorax[name] = g
+    write_json("vorax.json", vorax)
 
 
 def cmd_boards(f: Fetcher) -> None:
@@ -511,6 +697,9 @@ def main(argv: list[str] | None = None) -> int:
         b = sub.add_parser(kind)
         b.add_argument("--dry-run", action="store_true", help="only count entries")
     t = sub.add_parser("tables"); t.add_argument("slug")
+    sub.add_parser("gear")
+    sub.add_parser("crafting")
+    sub.add_parser("mediums")
     args = ap.parse_args(argv)
 
     f = Fetcher(delay=max(args.delay, 1.0), refresh=args.refresh)
@@ -528,6 +717,12 @@ def main(argv: list[str] | None = None) -> int:
         cmd_bulk(f, "skills" if args.cmd == "skills-all" else "legendaries", args.dry_run)
     elif args.cmd == "altyouga":
         write_json("alternate_spacetime_youga.json", parse_alternate_youga(f.get("Alternate_Spacetime_Youga")))
+    elif args.cmd == "gear":
+        cmd_gear(f)
+    elif args.cmd == "mediums":
+        cmd_mediums(f)
+    elif args.cmd == "crafting":
+        cmd_crafting(f)
     elif args.cmd == "tables":
         write_json(f"tables_{args.slug}.json", parse_tables(f.get(args.slug)))
     return 0

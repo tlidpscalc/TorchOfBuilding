@@ -2,6 +2,7 @@
 
 #include <cctype>
 #include <functional>
+#include <mutex>
 #include <regex>
 #include <tuple>
 #include <unordered_map>
@@ -527,6 +528,11 @@ const std::vector<Rule>& rules() {
             r.push_back(qualifiedRule("deterioration duration", "DeteriorationDuration", t));
         }
 
+        // Activation Medium bonuses: "The supported skill +19% additional Cooldown Recovery Speed",
+        // "+19% additional Duration for the supported skill".
+        r.push_back(qualifiedRule("cooldown recovery speed", "CooldownRecoverySpeed", ModType::Additional));
+        r.push_back(qualifiedRule("(?:skill effect )?duration", "SkillEffectDuration", ModType::Additional));
+
         // Reaping scales only through its duration (seconds reaped) and recovery speed (confirmed).
         for (ModType t : {ModType::Additional, ModType::Increased}) {
             r.push_back(qualifiedRule("reaping duration", "ReapingDuration", t));
@@ -654,7 +660,7 @@ std::string canonicalFlag(std::string f) {
     return f;
 }
 
-ParseResult parseModLine(std::string_view line, const std::string& source) {
+static ParseResult parseUncached(std::string_view line, const std::string& source) {
     ParseResult result;
     result.line = std::string(line);
     std::string s = preprocess(line, result);
@@ -912,6 +918,22 @@ ParseResult parseModLine(std::string_view line, const std::string& source) {
     }
     result.mods = std::move(all);
     result.ok = true;
+    return result;
+}
+
+// Parsing is a pure function of the line text, and the UI reloads the whole build on every edit, so
+// results are cached by line; only the source label differs between uses.
+ParseResult parseModLine(std::string_view line, const std::string& source) {
+    static std::mutex mutex;
+    static std::unordered_map<std::string, ParseResult> cache;
+    ParseResult result;
+    {
+        std::lock_guard lock(mutex);
+        auto it = cache.find(std::string(line));
+        if (it == cache.end()) it = cache.emplace(std::string(line), parseUncached(line, {})).first;
+        result = it->second;
+    }
+    for (Mod& mod : result.mods) mod.source = source;
     return result;
 }
 

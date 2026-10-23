@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <fstream>
 #include <regex>
+#include <sstream>
 #include <stdexcept>
 
 namespace tob {
@@ -246,6 +247,61 @@ void loadMainSkillCard(BuildState& b, const nlohmann::json& card) {
     if (std::regex_search(text, m, kEfficiency)) s.condensationCastSpeedEfficiency = std::stod(m[1].str()) / 100.0;
 }
 
+// Activation Medium supports have tiers instead of levels. The build entry picks "tier" (default: the
+// best one) and, for mediums with "<Cooldown Recovery Speed or Duration Bonus>", one "bonus" ("cooldown"
+// or "duration", default cooldown). Rolled ranges "(12–19)" take "values" in order, else the top.
+// Mediums without a tier table use their description lines.
+std::vector<std::string> activationMediumLines(const nlohmann::json& card, const nlohmann::json& sup) {
+    std::vector<std::string> lines;
+    const auto& tiers = card["tiers"];
+    if (tiers.empty()) {
+        const auto& description = card.value("description", nlohmann::json::array());
+        for (std::size_t i = 1; i < description.size(); ++i)
+            for (const auto& l : description[i]) lines.push_back(l.get<std::string>());
+        return lines;
+    }
+    const std::string wanted = sup.value("tier", tiers.back().value("tier", ""));
+    const nlohmann::json* tier = &tiers.back();
+    for (const auto& t : tiers)
+        if (t.value("tier", "") == wanted) tier = &t;
+    const bool choice = card.value("bonus_choice", false);
+    const std::string bonus = sup.value("bonus", "cooldown");
+    for (const auto& l : (*tier)["lines"]) {
+        const std::string line = l.get<std::string>();
+        if (choice) {
+            const bool cooldown = line.find("Cooldown Recovery Speed") != std::string::npos;
+            const bool duration = line.find("Duration") != std::string::npos;
+            if ((cooldown && bonus != "cooldown") || (duration && !cooldown && bonus != "duration")) continue;
+        }
+        // Multi-line effects are joined with " | ".
+        std::size_t start = 0;
+        for (std::size_t bar; (bar = line.find(" | ", start)) != std::string::npos; start = bar + 3)
+            lines.push_back(line.substr(start, bar - start));
+        lines.push_back(line.substr(start));
+    }
+    // Rolled ranges, in order across the kept lines.
+    static const std::regex kRange(R"(\(\s*(-?[\d.]+)\s*(?:–|-)\s*(-?[\d.]+)\s*\))");
+    const auto values = sup.value("values", nlohmann::json::array());
+    std::size_t next = 0;
+    for (std::string& line : lines) {
+        std::string out;
+        auto begin = std::sregex_iterator(line.begin(), line.end(), kRange);
+        std::size_t last = 0;
+        for (auto it = begin; it != std::sregex_iterator(); ++it) {
+            const std::smatch& m = *it;
+            const double lo = std::stod(m[1].str()), hi = std::stod(m[2].str());
+            double v = next < values.size() ? values[next].get<double>() : std::max(lo, hi);
+            ++next;
+            std::ostringstream num;
+            num << v;
+            out += line.substr(last, m.position(0) - last) + num.str();
+            last = m.position(0) + m.length(0);
+        }
+        line = out + line.substr(last);
+    }
+    return lines;
+}
+
 void loadSupports(BuildState& b, const GameData& data, const nlohmann::json& supports, const std::string& skill) {
     const int supportLevel = skillLevel(b, bit(SkillTag::Support));
     for (const auto& sup : supports) {
@@ -268,6 +324,10 @@ void loadSupports(BuildState& b, const GameData& data, const nlohmann::json& sup
             continue;
         }
         const nlohmann::json* card = data.skill(name);
+        if (card && card->contains("tiers")) {
+            for (const std::string& line : activationMediumLines(*card, sup)) addLine(b, line, source, {.scope = skill});
+            continue;
+        }
         if (!card || card->value("levels", nlohmann::json::array()).empty()) {
             b.lines.push_back({source, name, false, false, "no level table for this support"});
             continue;
@@ -400,6 +460,8 @@ BuildState loadBuild(const GameData& data, const nlohmann::json& build) {
         if (m.stat == "GrantSkill") granted.emplace_back(m.group, static_cast<int>(m.value));
     for (const auto& [name, level] : granted) loadAura(b, data, name, level, "Granted: " + name);
 
+    // Flags the user switched off, applied last so they also override flags set while loading (e.g. "cursed").
+    for (const auto& f : arr(cfg, "flags_off")) b.config.flags[f.get<std::string>()] = false;
     return b;
 }
 

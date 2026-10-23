@@ -3,6 +3,8 @@
 //
 // Usage: tob_coverage <data dir> <output.md>
 
+#include "tob/Build.h"
+#include "tob/GameData.h"
 #include "tob/ModParser.h"
 #include "tob/SkillDps.h"
 
@@ -96,9 +98,36 @@ void collectTraits(const nlohmann::json& traits, std::vector<Line>& out) {
 
 } // namespace
 
+// One build's lines the calculator leaves out: unsupported, or parsed into stats it does not use.
+int reportBuild(const std::string& dataDir, const std::string& buildFile) {
+    const tob::GameData data = tob::GameData::load(dataDir);
+    const tob::BuildState b = tob::loadBuildFile(data, buildFile);
+    int unsupported = 0, unused = 0;
+    for (const tob::LineReport& l : b.lines) {
+        if (!l.ok) {
+            std::cout << "UNSUPPORTED  " << l.source << " | " << l.line << " | " << l.error << "\n";
+            ++unsupported;
+            continue;
+        }
+        if (l.inert) continue;
+        std::set<std::string> stats;
+        for (const tob::Mod& m : tob::parseModLine(l.line).mods)
+            if (!tob::isModelledStat(m.stat)) stats.insert(m.stat);
+        if (stats.empty()) continue;
+        std::string list;
+        for (const std::string& s : stats) list += (list.empty() ? "" : ", ") + s;
+        std::cout << "NOT MODELLED " << l.source << " | " << l.line << " | " << list << "\n";
+        ++unused;
+    }
+    std::cout << unsupported << " unsupported, " << unused << " parsed but not used\n";
+    return 0;
+}
+
 int main(int argc, char** argv) {
+    if (argc == 4 && std::string(argv[2]) == "--build") return reportBuild(argv[1], argv[3]);
     if (argc < 3) {
-        std::cerr << "usage: tob_coverage <data dir> <output.md>\n";
+        std::cerr << "usage: tob_coverage <data dir> <output.md>\n"
+                     "       tob_coverage <data dir> --build <build.json>\n";
         return 2;
     }
     const std::string dir = std::string(argv[1]) + "/json/";

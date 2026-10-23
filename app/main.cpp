@@ -4,6 +4,7 @@
 
 int main(int argc, char* argv[]) {
     QApplication app(argc, argv);
+    QApplication::setOrganizationName("TorchOfBuilding");
     QApplication::setApplicationName("TorchOfBuilding");
     MainWindow w;
     w.resize(1280, 800);

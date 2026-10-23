@@ -13,6 +13,17 @@ qt_add_executable(TorchOfBuilding
     main.cpp
     MainWindow.h
     MainWindow.cpp
+    Editors.h
+    Editors.cpp
+    CraftDialog.h
+    CraftDialog.cpp
 )
 target_link_libraries(TorchOfBuilding PRIVATE tob_engine Qt6::Widgets)
+if(WIN32)
+    target_link_libraries(TorchOfBuilding PRIVATE dwmapi)   # dark title bars
+endif()
 set_target_properties(TorchOfBuilding PROPERTIES WIN32_EXECUTABLE ON)
+
+# Headless crafter check (not shipped): QT_QPA_PLATFORM=offscreen tob_craft_selftest <data dir>
+qt_add_executable(tob_craft_selftest craft_selftest.cpp CraftDialog.h CraftDialog.cpp Editors.h Editors.cpp)
+target_link_libraries(tob_craft_selftest PRIVATE tob_engine Qt6::Widgets)

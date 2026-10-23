@@ -46,6 +46,8 @@ bool isModelledStat(std::string_view stat) {
         "AfflictionPerSecond", "AfflictionEffect", "DotDamage", "AilmentDamage", "IgniteDamage", "WiltDamage", "TraumaDamage",
         "ReapSource", "ReapingDuration", "ReapingRecoverySpeed",
         "DeteriorationChance", "DeteriorationExtraStacks", "DeteriorationDamage", "DeteriorationDuration",
+        "MaxSpellBurst", "SpellBurstChargeSpeed",
+        "MultistrikeChance", "MultistrikeIncrement", "MultistrikeAttackSpeed",
     };
     return kUsed.contains(stat);
 }
@@ -400,8 +402,36 @@ SkillDpsResult calculateMainSkillDps(const BuildState& build) {
         // Skills alternate weapons by default, one hit per weapon in turn (confirmed); each swing
         // takes its own weapon's time (ASSUMED; the owner is not sure yet).
         r.castsPerSecond = timePerCycle > 0 ? static_cast<double>(weapons.size()) / timePerCycle : 0.0;
+
+        // Multistrike (owner, confirmed): each full 100% chance is a guaranteed extra attack, the rest is the
+        // chance of one more; the count does not grow between uses. The k-th extra attack deals
+        // (1 + increment)^k as its own multiplier, where additional increment multiplies the increment, and
+        // gets +20% increased attack speed (flat, not growing per strike). Moving interrupts it; the dummy is
+        // fought standing still. The increment does not apply to ailments (owner's best guess, untested).
+        // ASSUMED: increment mods from several sources add.
+        double msDamage = 1.0, msTime = 1.0;
+        const TagMask noMultistrike = bit(SkillTag::Mobility) | bit(SkillTag::Channeled) | bit(SkillTag::Sentry);
+        const double msChance = std::max(0.0, base("MultistrikeChance") / 100.0);
+        if (msChance > 0.0 && !(s.tags & noMultistrike)) {
+            const double increment = base("MultistrikeIncrement") / 100.0 * db.more({"MultistrikeIncrement"}, ctx);
+            const double full = std::floor(msChance);
+            const double extraChance = msChance - full;
+            // Time of an extra attack relative to an attack outside Multistrike.
+            const double extraTime = (1.0 + speedInc / 100.0) /
+                                     (1.0 + (speedInc + kMultistrikeAttackSpeed + base("MultistrikeAttackSpeed")) / 100.0);
+            for (double k = 1; k <= full + 1; ++k) {
+                const double weight = k <= full ? 1.0 : extraChance;
+                msDamage += weight * std::pow(1.0 + increment, k);
+                msTime += weight * extraTime;
+            }
+            r.multistrikeAttacks = 1.0 + msChance;
+            r.breakdown.add("Multistrike", std::format("{:.2f} attacks per chain, +{:.1f}% increment: x{:.3f} damage over x{:.3f} time",
+                                                       r.multistrikeAttacks, increment * 100.0, msDamage, msTime));
+        }
+        const double attacksPerSecond = r.castsPerSecond;   // outside Multistrike
+        r.castsPerSecond = attacksPerSecond * r.multistrikeAttacks / msTime;
         const double dpsAt100 = (damagePerCycle / static_cast<double>(weapons.size())) * r.hitsPerCast *
-                                r.castsPerSecond * r.tangles;
+                                attacksPerSecond * msDamage / msTime * r.tangles;
 
         // Multi-part attacks (e.g. Ice Shot's lances and explosion) each get their own DPS; whether a
         // part hits the main target depends on the situation, so each can be excluded from the total.
@@ -482,16 +512,51 @@ SkillDpsResult calculateMainSkillDps(const BuildState& build) {
 
     r.averageHit = baseAvg;
     for (const DpsFactor& f : r.factors) r.averageHit *= f.value;
-    r.dps = r.averageHit * r.hitsPerCast * r.castsPerSecond * r.tangles;
+    // --- Spell Burst ---------------------------------------------------------------------------------
+    // tlidb: when fully charged, the next cast consumes every stack and casts the spell that many times.
+    // Owner (confirmed): a full recharge is 2 s at base speed whatever Max Spell Burst is; burst casts are
+    // instant; charging starts again after the burst, so a cast rate faster than the recharge waits for
+    // the next cast after it. The activating cast is counted as one of the burst casts (tlidb; the owner
+    // notes the difference is negligible). Tangled, channelled, summon and sentry skills cannot burst.
+    double castsLanding = r.castsPerSecond;   // casts per second including those cast by Spell Burst
+    double castDamage = r.castsPerSecond;     // the same, weighted by burst-only hit damage
+    const TagMask noBurst = bit(SkillTag::Channeled) | bit(SkillTag::Summon) | bit(SkillTag::Sentry);
+    if ((s.tags & bit(SkillTag::Spell)) && !(s.tags & noBurst) && !s.clockworkCore && base("MaxSpellBurst") >= 1.0 &&
+        r.castsPerSecond > 0.0) {
+        r.spellBurstCasts = std::floor(base("MaxSpellBurst"));
+        const double recharge = kSpellBurstRechargeSeconds /
+                                ((1.0 + db.sum(ModType::Increased, {"SpellBurstChargeSpeed"}, ctx) / 100.0) *
+                                 db.more({"SpellBurstChargeSpeed"}, ctx));
+        // The burst fires on the first cast after the recharge completes.
+        const double castsPerBurst = std::max(1.0, std::ceil(recharge * r.castsPerSecond - 1e-9));
+        r.spellBurstsPerSecond = r.castsPerSecond / castsPerBurst;
+
+        Config burstCfg = cfg;
+        burstCfg.flags["cast by spell burst"] = true;
+        EvalContext burstCtx = hitCtx;
+        burstCtx.config = &burstCfg;
+        const double burstScale = (1.0 + db.sum(ModType::Increased, {"Damage", "HitDamage"}, burstCtx) / 100.0) /
+                                  (1.0 + inc / 100.0) * db.more({"Damage", "HitDamage"}, burstCtx) /
+                                  db.more({"Damage", "HitDamage"}, hitCtx);
+        const double normalCasts = r.castsPerSecond - r.spellBurstsPerSecond;
+        castsLanding = normalCasts + r.spellBurstsPerSecond * r.spellBurstCasts;
+        castDamage = normalCasts + r.spellBurstsPerSecond * r.spellBurstCasts * burstScale;
+        r.breakdown.add("Spell Burst", std::format("{:.3f} s recharge, every {:.0f} casts: {:.3f} bursts/s x {:.0f} casts, "
+                                                   "burst hits x{:.3f}",
+                                                   recharge, castsPerBurst, r.spellBurstsPerSecond, r.spellBurstCasts,
+                                                   burstScale));
+    }
+
+    r.dps = r.averageHit * r.hitsPerCast * castDamage * r.tangles;
     r.hitDps = r.dps;
-    addDeterioration(s.damageType == DamageType::Erosion ? r.hitDps : 0.0, r.castsPerSecond * projectiles * r.tangles);
+    addDeterioration(s.damageType == DamageType::Erosion ? r.hitDps : 0.0, castsLanding * projectiles * r.tangles);
     {
         // Spells: added flat damage is the flat added damage only (tlidb). Every projectile hit rolls.
         EvalContext allTypes = ctx;
         allTypes.damageTypes = kAllDamageTypesMask;
         const double flat =
             (db.sum(ModType::Base, {"AddedDamageMin"}, allTypes) + db.sum(ModType::Base, {"AddedDamageMax"}, allTypes)) / 2.0;
-        addAilments(r.castsPerSecond * projectiles * r.tangles, flat);
+        addAilments(castsLanding * projectiles * r.tangles, flat);
     }
 
     for (const DpsFactor& f : r.factors) r.breakdown.add("Hit", std::format("{}: x{:.3f}", f.name, f.value));

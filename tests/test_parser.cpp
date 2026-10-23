@@ -224,6 +224,41 @@ TEST_CASE("Reap sources and reaping modifiers") {
     CHECK(parseModLine("+25% additional Reaping Recovery Speed").mods.at(0).type == ModType::Additional);
 }
 
+TEST_CASE("Spell Burst wordings") {
+    ParseResult speed = parseModLine("+20% Spell Burst Charge Speed");
+    REQUIRE(speed.ok);
+    CHECK(speed.mods[0].stat == "SpellBurstChargeSpeed");
+    CHECK(parseModLine("-30% additional Spell Burst Charge Speed").mods.at(0).type == ModType::Additional);
+
+    ParseResult support = parseModLine("+25% additional Hit Damage for the supported skills cast by Spell Burst");
+    REQUIRE(support.ok);
+    CHECK(support.supportScoped);
+    CHECK(support.mods[0].stat == "HitDamage");
+    REQUIRE(support.mods[0].conditions.size() == 1);
+    CHECK(support.mods[0].conditions[0].flag == "cast by spell burst");
+
+    ParseResult next = parseModLine("+30% additional Hit Damage for skills cast by Spell Burst during the next 2 Spell "
+                                    "Burst(s) activated after casting the supported skill");
+    REQUIRE(next.ok);
+    CHECK(next.mods[0].conditions.at(0).flag == "cast by spell burst");
+}
+
+TEST_CASE("Multistrike wordings") {
+    ParseResult support = parseModLine("+101% chance for the supported skill to trigger Multistrike");
+    REQUIRE(support.ok);
+    CHECK(support.supportScoped);
+    CHECK(support.mods[0].stat == "MultistrikeChance");
+    CHECK(support.mods[0].value == Approx(101));
+    CHECK(parseModLine("+30% Multistrike Chance for this skill").mods.at(0).stat == "MultistrikeChance");
+    CHECK(parseModLine("Multistrikes of the supported skill deal 12% increasing damage").mods.at(0).stat ==
+          "MultistrikeIncrement");
+    CHECK(parseModLine("+40% additional Multistrike damage increment").mods.at(0).type == ModType::Additional);
+    ParseResult speed = parseModLine("+8% Attack Speed for this skill for every attack made during Multistrike");
+    REQUIRE(speed.ok);
+    CHECK(speed.mods[0].stat == "MultistrikeAttackSpeed");
+    CHECK_FALSE(speed.mods[0].per.has_value());
+}
+
 TEST_CASE("(multiplies) is reported") {
     ParseResult r = parseModLine("+10% additional Spell Damage (multiplies)");
     REQUIRE(r.ok);

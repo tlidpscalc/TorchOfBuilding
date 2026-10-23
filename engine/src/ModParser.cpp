@@ -3,6 +3,7 @@
 #include <cctype>
 #include <functional>
 #include <regex>
+#include <tuple>
 #include <unordered_map>
 
 namespace tob {
@@ -329,12 +330,15 @@ const std::vector<Rule>& rules() {
                              return true;
                          }});
 
-        // Counts the calculator does not use yet, recorded so the coverage report can show them.
+        // Spell Burst: full recharge 2 s / charge speed; Max Spell Burst = casts per activation.
+        for (ModType t : {ModType::Additional, ModType::Increased})
+            r.push_back(qualifiedRule("spell burst charge speed", "SpellBurstChargeSpeed", t));
         r.push_back(Rule{re(std::string("^") + kNum + " max spell burst$"),
                          [](const std::smatch& m, std::vector<Mod>& out, std::string&) {
                              out.push_back(make("MaxSpellBurst", ModType::Base, std::stod(m[1].str())));
                              return true;
                          }});
+        // Counts the calculator does not use yet, recorded so the coverage report can show them.
         r.push_back(Rule{re(std::string("^you can cast ") + kNum + " additional curses?$"),
                          [](const std::smatch& m, std::vector<Mod>& out, std::string&) {
                              out.push_back(make("MaxCurses", ModType::Base, std::stod(m[1].str())));
@@ -553,6 +557,11 @@ std::string preprocess(std::string_view line, ParseResult& result) {
     for (std::size_t pos; (pos = s.find("clockwork core")) != std::string::npos;) s.replace(pos, 14, "clockworkcore");
 
     if (strip(s, " (multiplies)")) result.multiplies = true;
+    // Before the strips below, which would cut "for the supported skill" out of "for the supported skills cast by".
+    for (std::size_t pos; (pos = s.find("the supported skills cast by")) != std::string::npos;) {
+        s.erase(pos, 14);   // drop "the supported "
+        result.supportScoped = true;
+    }
     if (strip(s, " for the supported skill")) result.supportScoped = true;
     if (strip(s, " of the supported skill")) result.supportScoped = true;
     if (stripPrefix(s, "the supported skill deals ")) result.supportScoped = true;
@@ -646,6 +655,27 @@ ParseResult parseModLine(std::string_view line, const std::string& source) {
         return result;
     }
 
+    // Multistrike. Matched before the condition and per clauses, which would misread "for every attack
+    // made during Multistrike" and "when performing Multistrikes". Attack speed during Multistrike does not
+    // grow per strike (confirmed): both speed wordings are one flat bonus on the extra attacks.
+    static const std::regex kMsChance = re(R"(^\+?(-?\d+(?:\.\d+)?)% (?:multistrike chance|chance to (?:trigger )?multistrike)$)");
+    static const std::regex kMsIncrement = re(R"(^multistrikes deal (-?\d+(?:\.\d+)?)% increasing damage$)");
+    static const std::regex kMsMoreIncrement = re(R"(^\+?(-?\d+(?:\.\d+)?)% additional multistrike damage increment$)");
+    static const std::regex kMsSpeedPerAttack = re(R"(^\+?(-?\d+(?:\.\d+)?)% attack speed for every attack made during multistrike$)");
+    static const std::regex kMsSpeed = re(R"(^\+?(-?\d+(?:\.\d+)?)% attack speed when performing multistrikes$)");
+    for (auto [pattern, stat, type] : {std::tuple{&kMsChance, "MultistrikeChance", ModType::Base},
+                                       std::tuple{&kMsIncrement, "MultistrikeIncrement", ModType::Base},
+                                       std::tuple{&kMsMoreIncrement, "MultistrikeIncrement", ModType::Additional},
+                                       std::tuple{&kMsSpeedPerAttack, "MultistrikeAttackSpeed", ModType::Base},
+                                       std::tuple{&kMsSpeed, "MultistrikeAttackSpeed", ModType::Base}}) {
+        if (!std::regex_match(s, m, *pattern)) continue;
+        Mod mod = make(stat, type, std::stod(m[1].str()));
+        mod.source = source;
+        result.mods.push_back(std::move(mod));
+        result.ok = true;
+        return result;
+    }
+
     // Buffs a support grants the player, e.g. Periodic Burst: "Gains a stack of buff when using the
     // supported skill every 6s: +34.5% Attack and Cast Speed after using a Mobility Skill".
     static const std::regex kBuffOnUse = re(R"(^gains a stack of buff when using the supported skill every [\d.]+ ?s: (.+?) after using an? (\w+) skill$)");
@@ -699,9 +729,18 @@ ParseResult parseModLine(std::string_view line, const std::string& source) {
     static const std::regex kAgainst = re(R"(^(.*) (?:against|to) (\w+) (?:enemies|targets?)$)");
     static const std::regex kIfCursed = re(R"(^(.*) if affected by curses.*$)");
     static const std::regex kIfYouHave = re(R"(^(.*) if you have (.+)$)");
+    // "+20% additional Hit Damage for (the supported) skills cast by Spell Burst", "... for skills cast by
+    // Spell Burst during the next 2 Spell Burst(s) activated after casting the supported skill".
+    static const std::regex kCastByBurst = re(
+        R"(^(.*) (?:for|to|dealt by) skills cast by (?:your )?spell burst)"
+        R"((?: during the next \d+ spell burst activated after casting the supported skill)?$)");
     for (bool changed = true; changed;) {
         changed = false;
-        if (std::regex_match(s, m, kAtLeast) || std::regex_match(s, m, kOrMore)) {
+        if (std::regex_match(s, m, kCastByBurst)) {
+            conditions.push_back({"cast by spell burst"});
+            s = m[1].str();
+            changed = true;
+        } else if (std::regex_match(s, m, kAtLeast) || std::regex_match(s, m, kOrMore)) {
             conditions.push_back({{}, false, canonicalVar(m[3].str()), std::stod(m[2].str())});
             s = m[1].str();
             changed = true;

@@ -342,6 +342,74 @@ TEST_CASE("Spell damage mods do not apply to ailments from spells") {
     CHECK(ailmentDps(scaled, "wilt") == Approx(20 * 3 * 0.7 * 1.5 * std::pow(1.1, 5)));
 }
 
+TEST_CASE("Spell Burst: full recharge in 2 s, fires on the next cast, casts Max Spell Burst times") {
+    auto burst = [](std::initializer_list<const char*> lines) {
+        nlohmann::json build = attackBuild(false, false);
+        build["skills"]["main"] = "Test Bolt";
+        build["skills"]["active"][0]["name"] = "Test Bolt";
+        nlohmann::json ring = {{"slot", "Ring 1"}, {"name", "Test Ring"}, {"lines", nlohmann::json::array()}};
+        for (const char* l : lines) ring["lines"].push_back(l);
+        build["items"].push_back(ring);
+        return calculateMainSkillDps(loadBuild(attackData(), build));
+    };
+    const SkillDpsResult plain = burst({});
+    CHECK(plain.spellBurstsPerSecond == 0.0);
+
+    // 2 casts/s, 2 s recharge: every 4th cast bursts 3 times -> 1.5 normal + 1.5 burst casts/s.
+    const SkillDpsResult three = burst({"+3 Max Spell Burst"});
+    CHECK(three.spellBurstsPerSecond == Approx(0.5));
+    CHECK(three.hitDps == Approx(plain.hitDps * 1.5));
+
+    // Recharge 1 s: every 2nd cast bursts.
+    CHECK(burst({"+3 Max Spell Burst", "+100% Spell Burst Charge Speed"}).hitDps == Approx(plain.hitDps * 2.0));
+    // Recharge 1.33 s is not a whole number of casts: the burst waits for the 3rd cast.
+    CHECK(burst({"+3 Max Spell Burst", "+50% Spell Burst Charge Speed"}).spellBurstsPerSecond == Approx(2.0 / 3.0));
+    // Casting slower than the recharge bursts on every cast.
+    CHECK(burst({"+3 Max Spell Burst", "-75% Cast Speed"}).hitDps == Approx(plain.hitDps * 0.25 * 3));
+
+    // Burst-only hit damage scales the burst casts alone: 1.5 + 1.5 x 1.5 = 3.75 of 2 casts.
+    CHECK(burst({"+3 Max Spell Burst", "+50% additional Hit Damage for skills cast by Spell Burst"}).hitDps ==
+          Approx(plain.hitDps * 3.75 / 2));
+
+    // Burst casts roll ailments too: 3 casts/s x 1.5 s Wilt = 4.5 stacks.
+    CHECK(ailmentDps(burst({"+3 Max Spell Burst", "Adds 10 - 30 Base Wilt Damage", "+100% Wilt chance"}), "wilt") ==
+          Approx(20 * 4.5 * 0.7));
+}
+
+TEST_CASE("Multistrike: extra attacks with compounding increment and faster follow-ups") {
+    const SkillDpsResult plain = withLines({});
+    CHECK(plain.multistrikeAttacks == 1.0);
+
+    // 100%: one guaranteed extra attack at +20% increased attack speed (no global attack speed here).
+    const SkillDpsResult one = withLines({"+100% Multistrike Chance for this skill"});
+    CHECK(one.multistrikeAttacks == Approx(2.0));
+    CHECK(one.hitDps == Approx(plain.hitDps * 2.0 / (1.0 + 1.0 / 1.2)));
+
+    // 150% with 10% increment: attacks deal 1, 1.1 and (half the time) 1.1^2.
+    const double time = 1.0 + 1.5 / 1.2;
+    CHECK(withLines({"+150% chance to Multistrike", "Multistrikes deal 10% increasing damage"}).hitDps ==
+          Approx(plain.hitDps * (1.0 + 1.1 + 0.5 * 1.21) / time));
+    // Additional increment multiplies the increment: 10% x 1.5 = 15%.
+    CHECK(withLines({"+150% chance to Multistrike", "Multistrikes deal 10% increasing damage",
+                     "+50% additional Multistrike damage increment"}).hitDps ==
+          Approx(plain.hitDps * (1.0 + 1.15 + 0.5 * 1.15 * 1.15) / time));
+    // Extra speed during Multistrike is one flat bonus, not growing per strike (confirmed).
+    CHECK(withLines({"+200% Multistrike Chance", "+10% Attack Speed for this skill for every attack made during Multistrike"}).hitDps ==
+          Approx(plain.hitDps * 3.0 / (1.0 + 2.0 / 1.3)));
+
+    // The increment does not raise ailment damage (one refreshed Ignite stack either way).
+    const double ignite = ailmentDps(withLines({"Adds 100 - 100 Base Ignite Damage", "+50% Ignite chance"}), "ignite");
+    CHECK(ailmentDps(withLines({"Adds 100 - 100 Base Ignite Damage", "+50% Ignite chance", "+100% Multistrike Chance",
+                                "Multistrikes deal 50% increasing damage"}), "ignite") == Approx(ignite));
+
+    // Spells do not Multistrike in this model's attack branch.
+    nlohmann::json build = attackBuild(false, false);
+    build["skills"]["main"] = "Test Bolt";
+    build["skills"]["active"][0]["name"] = "Test Bolt";
+    build["items"].push_back({{"slot", "Gloves"}, {"name", "Test Gloves"}, {"lines", {"+100% Multistrike Chance"}}});
+    CHECK(calculateMainSkillDps(loadBuild(attackData(), build)).multistrikeAttacks == 1.0);
+}
+
 TEST_CASE("Youga build without Biting Cold matches the curse-off prediction") {
     nlohmann::json build = youga();
     auto& active = build["skills"]["active"];

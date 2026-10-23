@@ -21,6 +21,8 @@ inline constexpr double kBaseMaxTangles = 2.0;
 inline constexpr double kMaxTangleCap = 4.0;
 inline constexpr double kDualWieldAttackBlock = 30.0;
 inline constexpr int kUnfiredBoltHoldCap = 10;
+inline constexpr double kMultistrikeAttackSpeed = 20.0;      // increased attack speed for the extra attacks
+inline constexpr double kSpellBurstRechargeSeconds = 2.0;   // full recharge at base speed, any Max Spell Burst
 } // namespace constants
 
 struct DpsFactor {
@@ -57,6 +59,9 @@ struct SkillDpsResult {
     double critChance = 0.0;
     double critMultiplier = 1.0;
     double unfiredBolts = 0.0;
+    double multistrikeAttacks = 1.0;     // expected attacks per Multistrike chain (1 = no Multistrike)
+    double spellBurstsPerSecond = 0.0;   // activations; each casts the spell Max Spell Burst times
+    double spellBurstCasts = 0.0;        // casts per activation
     double frostbiteRating = 0.0;
     std::vector<DpsFactor> factors; // every multiplier on the hit, for breakdowns and tests
     Breakdown breakdown;

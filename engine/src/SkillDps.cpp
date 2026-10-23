@@ -48,6 +48,8 @@ bool isModelledStat(std::string_view stat) {
         "DeteriorationChance", "DeteriorationExtraStacks", "DeteriorationDamage", "DeteriorationDuration",
         "MaxSpellBurst", "SpellBurstChargeSpeed",
         "MultistrikeChance", "MultistrikeIncrement", "MultistrikeAttackSpeed",
+        "FervorSource", "FervorEffect", "AgilityBlessingSource", "MaxAgilityBlessing", "BlurSource", "BlurEffect",
+        "InflictIntimidated", "IntimidatingEffect", "LuckyDamage", "MaxDamage", "MinDamage", "GainAs",
     };
     return kUsed.contains(stat);
 }
@@ -83,6 +85,36 @@ SkillDpsResult calculateMainSkillDps(const BuildState& build) {
         return db.sum(ModType::Base, {stat}, ctx) * (1.0 + db.sum(ModType::Increased, {stat}, ctx) / 100.0);
     };
 
+    // Average of one damage roll. "additional Min/Max Damage" scale that end of the range; Lucky damage
+    // rolls twice and keeps the higher, which averages min + 2/3 of the range (tlidb, confirmed). Applied to
+    // the whole hit, not per damage type (owner unsure). Ailments keep the plain average.
+    auto rollAverage = [&](double min, double max, const EvalContext& c) {
+        const double lo = min * db.more({"MinDamage"}, c);
+        const double hi = std::max(lo, max * db.more({"MaxDamage"}, c));
+        return lo + (hi - lo) * (flagSet("LuckyDamage") ? 2.0 / 3.0 : 0.5);
+    };
+    // "Adds X% of <from> Damage as <to> Damage": extra damage of the new type on top, counting as both
+    // types for additional mods like converted damage (ASSUMED, owner agrees for now).
+    auto withGained = [&](std::vector<DamagePortion> portions) {
+        const std::size_t original = portions.size();
+        for (const Mod& m : db.mods()) {
+            if (m.stat != "GainAs" || !db.applies(m, ctx)) continue;
+            const auto sep = m.group.find('>');
+            const auto from = damageTypeMaskFromString(m.group.substr(0, sep));
+            const auto to = damageTypeMaskFromString(m.group.substr(sep + 1));
+            if (!from || !to) continue;
+            const double share = db.effectiveValue(m, ctx) / 100.0;
+            for (DamageType t : kAllDamageTypeList) {
+                if (bit(t) != *to) continue;
+                for (std::size_t i = 0; i < original; ++i)
+                    if (bit(portions[i].type) & *from)
+                        portions.push_back({t, static_cast<DamageTypeMask>(portions[i].history | *to),
+                                            {portions[i].damage.min * share, portions[i].damage.max * share}});
+            }
+        }
+        return portions;
+    };
+
     // --- Situational state derived from the build ------------------------------------------------
     if (cfg.flag("dual wielding")) db.add(builtin("AttackBlock", ModType::Base, kDualWieldAttackBlock, "Dual wielding"));
 
@@ -99,6 +131,50 @@ SkillDpsResult calculateMainSkillDps(const BuildState& build) {
         Mod m = builtin("Damage", ModType::Additional, 5.0, "Focus Blessing");
         m.per = perVar("focus blessing");
         db.add(m);
+    }
+
+    // Agility Blessing (tlidb, confirmed): per stack +4% increased attack and cast speed and +2% additional
+    // damage; 4 stacks at base; assumed at max when the build generates it. Tenacity Blessing is defensive,
+    // but its stack count is set for lines that check it.
+    const double maxAgility = kBaseMaxBlessings + base("MaxAgilityBlessing");
+    const double agility =
+        std::min(maxAgility, cfg.var("agility blessing").value_or(flagSet("AgilityBlessingSource") ? maxAgility : 0.0));
+    cfg.vars["agility blessing"] = agility;
+    if (agility > 0) {
+        for (const char* stat : {"AttackSpeed", "CastSpeed"}) {
+            Mod m = builtin(stat, ModType::Increased, 4.0, "Agility Blessing");
+            m.per = perVar("agility blessing");
+            db.add(m);
+        }
+        Mod m = builtin("Damage", ModType::Additional, 2.0, "Agility Blessing");
+        m.per = perVar("agility blessing");
+        db.add(m);
+    }
+    if (!cfg.var("tenacity blessing")) cfg.vars["tenacity blessing"] = 0.0;
+
+    // Fervor (owner, confirmed): +2% Critical Strike Rating per point of Fervor Rating, max 100 and no decay
+    // by default, so a dummy sits at max. Fervor Effect scales this and every "Fervor gains an additional
+    // base effect" line, but not lines that only count Fervor Rating.
+    if (flagSet("FervorSource") || cfg.flag("fervor")) {
+        const double rating = std::clamp(cfg.var("fervor rating").value_or(100.0), 0.0, 100.0);
+        cfg.vars["fervor rating"] = rating;
+        cfg.flags["fervor"] = rating > 0;
+        Mod m = builtin("CritRating", ModType::Increased, 2.0, "Fervor");
+        m.per = perVar("fervor rating");
+        m.effectStat = "FervorEffect";
+        db.add(m);
+    } else {
+        cfg.vars["fervor rating"] = 0.0;
+    }
+
+    // Blur: its rating is a config value (owner) because it decays and refills in play; it defaults to the
+    // max of 100 when the build gains Blur. Blur's own effect is defensive; Blur Effect scales "Blur gains an
+    // additional effect" lines only (confirmed).
+    {
+        const double rating =
+            std::clamp(cfg.var("blur rating").value_or(flagSet("BlurSource") ? 100.0 : 0.0), 0.0, 100.0);
+        cfg.vars["blur rating"] = rating;
+        cfg.flags["blur"] = rating > 0;
     }
 
     // Night Feather Entanglement (Witch of the Night): one stack per active Tangle, max 2.
@@ -157,6 +233,13 @@ SkillDpsResult calculateMainSkillDps(const BuildState& build) {
         Mod m = builtin("DamageTaken", ModType::Additional, 13.0, "Cold Infiltration");
         m.damageTypes = bit(DamageType::Cold);
         m.effectStat = "ColdInfiltrationEffect";
+        db.add(m);
+    }
+    // Intimidated (tlidb, confirmed): +12% additional damage taken, scaled by Intimidating Effect.
+    if (flagSet("InflictIntimidated") || cfg.flag("intimidated")) {
+        cfg.flags["intimidated"] = true;
+        Mod m = builtin("DamageTaken", ModType::Additional, 12.0, "Intimidated");
+        m.effectStat = "IntimidatingEffect";
         db.add(m);
     }
     if (flagSet("InflictParalysis"))  // ASSUMED: Paralysis' +15% damage taken is its own multiplier
@@ -368,11 +451,11 @@ SkillDpsResult calculateMainSkillDps(const BuildState& build) {
                                  w.damage[index(t)].max * pct / 100.0 + addMax * pct / 100.0};
             }
             double hit = 0.0, erosion = 0.0;
-            for (const DamagePortion& p : applyConversions(raw, s.conversions)) {
+            for (const DamagePortion& p : withGained(applyConversions(raw, s.conversions))) {
                 EvalContext finalCtx = ctx, historyCtx = ctx;
                 finalCtx.damageTypes = bit(p.type);
                 historyCtx.damageTypes = p.history;
-                double v = p.damage.avg() * (1.0 + db.sum(ModType::Increased, {"Damage", "HitDamage"}, finalCtx) / 100.0) *
+                double v = rollAverage(p.damage.min, p.damage.max, historyCtx) * (1.0 + db.sum(ModType::Increased, {"Damage", "HitDamage"}, finalCtx) / 100.0) *
                            db.more({"Damage", "HitDamage"}, historyCtx) * db.more({"DamageTaken"}, finalCtx);
                 if (cfg.flag("frostbitten") && p.type == DamageType::Cold)
                     v *= 1.0 + r.frostbiteRating / 100.0 *
@@ -474,8 +557,9 @@ SkillDpsResult calculateMainSkillDps(const BuildState& build) {
     auto factor = [&](std::string name, double v) { r.factors.push_back({std::move(name), v}); };
 
     // Flat added damage scales with the skill's added damage effectiveness (confirmed).
-    const double added = (db.sum(ModType::Base, {"AddedDamageMin"}, hitCtx) + db.sum(ModType::Base, {"AddedDamageMax"}, hitCtx)) / 2.0;
-    const double baseAvg = (s.baseMin + s.baseMax) / 2.0 + added * s.addedDamageEffectiveness;
+    const double baseAvg =
+        rollAverage(s.baseMin + db.sum(ModType::Base, {"AddedDamageMin"}, hitCtx) * s.addedDamageEffectiveness,
+                    s.baseMax + db.sum(ModType::Base, {"AddedDamageMax"}, hitCtx) * s.addedDamageEffectiveness, hitCtx);
     factor(std::format("Skill level {}", s.level), skillLevelDamageMultiplier(s.level));
     double mainStat = 0.0;
     for (const std::string& st : s.mainStats) mainStat += attribute(st);
@@ -497,6 +581,29 @@ SkillDpsResult calculateMainSkillDps(const BuildState& build) {
     const double armor = (s.damageType == DamageType::Physical ? build.enemyArmorPhysical : build.enemyArmorNonPhysical) -
                          db.sum(ModType::Base, {"ArmorPenetration"}, hitCtx);
     factor(std::format("Enemy armor mitigation {:.1f}%", armor), 1.0 - armor / 100.0);
+
+    // Damage gained as another type: each gained portion goes through its own type's scaling and
+    // mitigation, shown as one factor relative to the skill's own type.
+    {
+        auto typeFactor = [&](DamageType t, DamageTypeMask history) {
+            EvalContext fc = ctx, hc = ctx;
+            fc.damageTypes = bit(t);
+            hc.damageTypes = history;
+            double v = (1.0 + db.sum(ModType::Increased, {"Damage", "HitDamage"}, fc) / 100.0) *
+                       db.more({"Damage", "HitDamage"}, hc) * db.more({"DamageTaken"}, fc);
+            if (cfg.flag("frostbitten") && t == DamageType::Cold)
+                v *= 1.0 + r.frostbiteRating / 100.0 * (1.0 + db.sum(ModType::Increased, {"FrostbiteEffect"}, fc) / 100.0);
+            if (t != DamageType::Physical)
+                v *= 1.0 - (build.enemyResistance - db.sum(ModType::Base, {"Penetration"}, fc)) / 100.0;
+            v *= 1.0 - ((t == DamageType::Physical ? build.enemyArmorPhysical : build.enemyArmorNonPhysical) -
+                        db.sum(ModType::Base, {"ArmorPenetration"}, fc)) / 100.0;
+            return v;
+        };
+        double gained = 0.0;
+        for (const DamagePortion& p : withGained({{s.damageType, bit(s.damageType), {1.0, 1.0}}}))
+            if (p.history != bit(s.damageType)) gained += p.damage.min * typeFactor(p.type, p.history);
+        if (gained > 0.0) factor("Damage gained as other types", 1.0 + gained / typeFactor(s.damageType, bit(s.damageType)));
+    }
 
     const double flatCrit = ((s.tags & bit(SkillTag::Spell)) ? kBaseSpellCritRating : 0.0) + base("CritRating");
     const double critRating = flatCrit * (1.0 + db.sum(ModType::Increased, {"CritRating"}, ctx) / 100.0) *

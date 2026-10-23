@@ -137,6 +137,9 @@ constexpr StatWords kPercentStats[] = {
     {"spell aggression effect", "SpellAggressionEffect", ModType::Increased},
     {"night feather entanglement effect", "NightFeatherEffect", ModType::Increased},
     {"effect for selves of all realms", "SelvesEffect", ModType::Increased},
+    {"fervor effect", "FervorEffect", ModType::Increased},
+    {"blur effect", "BlurEffect", ModType::Increased},
+    {"intimidating effect", "IntimidatingEffect", ModType::Increased},
     {"attack block chance", "AttackBlock", ModType::Base},
     {"spell block chance", "SpellBlock", ModType::Base},
     {"chance to deal double damage", "DoubleDamageChance", ModType::Base},
@@ -173,6 +176,15 @@ const std::unordered_map<std::string, std::string>& flagLines() {
         {"conspire", "Conspire"},
         // Same, with 60% of the off-hand's damage.
         {"joined forces", "JoinedForces"},
+        {"gains fervor when this skill hits", "FervorSource"},
+        {"have fervor", "FervorSource"},
+        {"has blur", "BlurSource"},
+        {"gains blur when the supported skill deals damage over time", "BlurSource"},
+        {"grants you blur when the shadows of this skill hit", "BlurSource"},
+        // Lucky damage: the damage roll is made twice and the higher one kept.
+        {"lucky damage", "LuckyDamage"},
+        {"deals lucky damage", "LuckyDamage"},
+        {"damage triggers lucky", "LuckyDamage"},
     };
     return k;
 }
@@ -529,6 +541,19 @@ const std::vector<Rule>& rules() {
             r.push_back(qualifiedRule("trauma damage", "TraumaDamage", t));
         }
 
+        // Extra damage of another type: "Adds 30% of Physical Damage as Fire Damage". group = "<from>><to>".
+        r.push_back(Rule{re(std::string("^adds ") + kNum + R"(% of (physical|fire|cold|lightning|erosion) damage (?:as|to) )"
+                                                          R"((physical|fire|cold|lightning|erosion) damage$)"),
+                         [](const std::smatch& m, std::vector<Mod>& out, std::string&) {
+                             Mod mod = make("GainAs", ModType::Base, std::stod(m[1].str()));
+                             mod.group = m[2].str() + ">" + m[3].str();
+                             out.push_back(std::move(mod));
+                             return true;
+                         }});
+        // Scaling of one end of the damage roll.
+        r.push_back(qualifiedRule("max damage", "MaxDamage", ModType::Additional));
+        r.push_back(qualifiedRule("min damage", "MinDamage", ModType::Additional));
+
         // Damage lines last: they are the broadest patterns.
         r.push_back(qualifiedRule("damage", "Damage", ModType::Additional));
         r.push_back(qualifiedRule("damage", "Damage", ModType::Increased));
@@ -564,6 +589,7 @@ std::string preprocess(std::string_view line, ParseResult& result) {
     }
     if (strip(s, " for the supported skill")) result.supportScoped = true;
     if (strip(s, " of the supported skill")) result.supportScoped = true;
+    if (strip(s, " to the supported skill")) result.supportScoped = true;
     if (stripPrefix(s, "the supported skill deals ")) result.supportScoped = true;
     if (stripPrefix(s, "the supported skill ")) result.supportScoped = true;
     if (strip(s, " for this skill")) result.selfScoped = true;
@@ -601,6 +627,10 @@ std::string canonicalVar(std::string v) {
     v = trim(normalizeText(v));
     if (v.size() > 6 && v.compare(v.size() - 6, 6, " owned") == 0) v.resize(v.size() - 6);
     if (contains(v, "focus blessing")) return "focus blessing";
+    if (contains(v, "agility blessing")) return "agility blessing";
+    if (contains(v, "tenacity blessing")) return "tenacity blessing";
+    if (contains(v, "fervor rating")) return "fervor rating";
+    if (contains(v, "blur rating")) return "blur rating";
     if (contains(v, "ailment") && contains(v, "type")) return "ailment types";
     if (contains(v, "unfired frost bolt")) return "unfired bolts";
     if (contains(v, "tangle") && (contains(v, "activ"))) return "activated tangles";
@@ -614,6 +644,8 @@ std::string canonicalFlag(std::string f) {
     if (contains(f, "cursed") || contains(f, "curse")) return "cursed";
     if (contains(f, "affected by ailment")) return "affected by ailments";
     if (contains(f, "focus blessing")) return "focus blessing active";
+    if (contains(f, "fervor")) return "fervor";
+    if (f == "blur" || f == "blur is active" || f == "having blur") return "blur";
     if (contains(f, "spell aggression")) return "spell aggression";
     if (contains(f, "night feather")) return "night feather";
     if (contains(f, "sealed mana") && contains(f, "life")) return "sealed mana and life";
@@ -653,6 +685,34 @@ ParseResult parseModLine(std::string_view line, const std::string& source) {
         result.mods.push_back(std::move(mod));
         result.ok = true;
         return result;
+    }
+
+    // Sources with numbers in them.
+    static const std::regex kFervorGain = re(R"(^gains \d+ fervor rating when .*hits?(?: an enemy)?$)");
+    static const std::regex kIntimidateNear = re(R"(^enemies within \d+ ?m are intimidated$)");
+    static const std::regex kDivineBlessing = re(R"(^gain a divine blessing every [\d.]+ ?s in the following order: .*$)");
+    for (auto [pattern, flags] : {std::pair{&kFervorGain, std::vector<std::string>{"FervorSource"}},
+                                  std::pair{&kIntimidateNear, std::vector<std::string>{"InflictIntimidated"}},
+                                  std::pair{&kDivineBlessing, std::vector<std::string>{"FocusBlessingSource", "AgilityBlessingSource"}}}) {
+        if (!std::regex_match(s, *pattern)) continue;
+        for (const std::string& f : flags) {
+            Mod mod = make(f, ModType::Flag, 1.0);
+            mod.source = source;
+            result.mods.push_back(std::move(mod));
+        }
+        result.ok = true;
+        return result;
+    }
+
+    // "Fervor gains an additional base effect: +3% additional Attack Damage for every 4 Fervor Rating":
+    // a player buff while Fervor (Blur) is active, scaled by Fervor (Blur) Effect (confirmed).
+    std::string effectStat, effectFlag;
+    static const std::regex kGainsEffect = re(R"(^(fervor|blur) gains an additional (?:base )?effect: (.+)$)");
+    if (std::regex_match(s, m, kGainsEffect)) {
+        effectFlag = m[1].str();
+        effectStat = effectFlag == "fervor" ? "FervorEffect" : "BlurEffect";
+        s = m[2].str();
+        result.playerBuff = true;
     }
 
     // Multistrike. Matched before the condition and per clauses, which would misread "for every attack
@@ -844,6 +904,10 @@ ParseResult parseModLine(std::string_view line, const std::string& source) {
             mod.per->limit = limit;
         }
         mod.source = source;
+        if (!effectStat.empty()) {
+            mod.effectStat = effectStat;
+            mod.conditions.push_back({effectFlag});
+        }
     }
     result.mods = std::move(all);
     result.ok = true;

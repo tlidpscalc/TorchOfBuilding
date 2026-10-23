@@ -259,6 +259,40 @@ TEST_CASE("Multistrike wordings") {
     CHECK_FALSE(speed.mods[0].per.has_value());
 }
 
+TEST_CASE("Fervor, Blessing, Blur, Intimidated, Lucky and gained-damage wordings") {
+    CHECK(parseModLine("Gains 10 Fervor Rating when the supported skill hits an enemy").mods.at(0).stat == "FervorSource");
+    ParseResult buff = parseModLine("Fervor gains an additional base effect: +3% additional Damage for every 4 Fervor Rating");
+    REQUIRE(buff.ok);
+    CHECK(buff.playerBuff);
+    CHECK(buff.mods[0].effectStat == "FervorEffect");
+    CHECK(buff.mods[0].conditions.at(0).flag == "fervor");
+    CHECK(buff.mods[0].per->var == "fervor rating");
+
+    ParseResult blur = parseModLine("Blur gains an additional effect: +0.75% additional Damage Over Time for each Blur Rating");
+    REQUIRE(blur.ok);
+    CHECK(blur.mods[0].stat == "DotDamage");
+    CHECK(blur.mods[0].effectStat == "BlurEffect");
+
+    ParseResult divine = parseModLine(
+        "Gain a Divine Blessing every 2s in the following order: Focus Blessing - Agility Blessing - Tenacity Blessing");
+    REQUIRE(divine.mods.size() == 2);
+    CHECK(divine.mods[1].stat == "AgilityBlessingSource");
+    CHECK(parseModLine("+2% additional damage for the supported skill for each stack of Agility Blessing").mods.at(0).per->var ==
+          "agility blessing");
+
+    CHECK(parseModLine("Enemies within 12m are Intimidated").mods.at(0).stat == "InflictIntimidated");
+    CHECK(parseModLine("+20% Intimidating effect").mods.at(0).stat == "IntimidatingEffect");
+    CHECK(parseModLine("The supported skill deals Lucky Damage").mods.at(0).stat == "LuckyDamage");
+    CHECK(parseModLine("+30% additional Max Damage").mods.at(0).stat == "MaxDamage");
+    CHECK(parseModLine("-20% additional min damage").mods.at(0).value == Approx(-20));
+
+    ParseResult gain = parseModLine("Adds 30% of Physical Damage as Fire Damage to the supported skill");
+    REQUIRE(gain.ok);
+    CHECK(gain.supportScoped);
+    CHECK(gain.mods[0].group == "physical>fire");
+    CHECK(parseModLine("Adds 10% of Physical Damage to Cold Damage").mods.at(0).group == "physical>cold");
+}
+
 TEST_CASE("(multiplies) is reported") {
     ParseResult r = parseModLine("+10% additional Spell Damage (multiplies)");
     REQUIRE(r.ok);

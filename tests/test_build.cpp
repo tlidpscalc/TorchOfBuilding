@@ -98,6 +98,10 @@ GameData attackData() {
     for (int i = 1; i <= 20; ++i) erosion.push_back({{"level", i}, {"text", {"Deals 100-100 Spell Erosion Damage"}}});
     d.skills["Test Rot"] = {{"name", "Test Rot"}, {"tags", {"Spell", "Erosion"}},
                             {"stats", {{"Cast Speed", "2"}}}, {"levels", erosion}};
+    nlohmann::json ranged = nlohmann::json::array();
+    for (int i = 1; i <= 20; ++i) ranged.push_back({{"level", i}, {"text", {"Deals 0-300 Spell Lightning Damage"}}});
+    d.skills["Test Spark"] = {{"name", "Test Spark"}, {"tags", {"Spell", "Lightning"}},
+                              {"stats", {{"Cast Speed", "1"}}}, {"levels", ranged}};
     d.skills["Test Bolt"] = {{"name", "Test Bolt"}, {"tags", {"Spell", "Cold"}},
                              {"stats", {{"Cast Speed", "2"}, {"Main Stat", "Intelligence"}}}, {"levels", spell}};
     return d;
@@ -408,6 +412,99 @@ TEST_CASE("Multistrike: extra attacks with compounding increment and faster foll
     build["skills"]["active"][0]["name"] = "Test Bolt";
     build["items"].push_back({{"slot", "Gloves"}, {"name", "Test Gloves"}, {"lines", {"+100% Multistrike Chance"}}});
     CHECK(calculateMainSkillDps(loadBuild(attackData(), build)).multistrikeAttacks == 1.0);
+}
+
+namespace {
+
+// The given main skill with extra ring lines and config vars.
+SkillDpsResult skillWith(const std::string& skill, std::initializer_list<const char*> lines,
+                         const nlohmann::json& vars = nlohmann::json::object()) {
+    nlohmann::json build = attackBuild(false, false);
+    build["skills"]["main"] = skill;
+    build["skills"]["active"][0]["name"] = skill;
+    nlohmann::json ring = {{"slot", "Ring 1"}, {"name", "Test Ring"}, {"lines", nlohmann::json::array()}};
+    for (const char* l : lines) ring["lines"].push_back(l);
+    build["items"].push_back(ring);
+    if (!vars.empty()) build["config"]["vars"] = vars;
+    return calculateMainSkillDps(loadBuild(attackData(), build));
+}
+
+} // namespace
+
+TEST_CASE("Fervor: +2% crit rating per point at 100; Fervor Effect scales its base effects only") {
+    // Spells start at 500 crit rating (5%).
+    CHECK(skillWith("Test Bolt", {}).critChance == Approx(0.05));
+    CHECK(skillWith("Test Bolt", {"Have Fervor"}).critChance == Approx(0.15));
+    CHECK(skillWith("Test Bolt", {"Have Fervor", "+50% Fervor effect"}).critChance == Approx(0.20));
+    CHECK(skillWith("Test Bolt", {"Have Fervor"}, {{"fervor rating", 50}}).critChance == Approx(0.10));
+
+    const double plain = skillWith("Test Bolt", {"Have Fervor"}).hitDps;
+    // "Fervor gains an additional base effect" is scaled: 25% x 2. Fervor Effect also lifts crit from
+    // 15% to 25% (crit factor 1.075 -> 1.125 at 150% crit damage).
+    CHECK(skillWith("Test Bolt", {"Have Fervor", "+100% Fervor effect",
+                                  "Fervor gains an additional base effect: +1% additional damage for every 4 Fervor Rating"})
+              .hitDps == Approx(plain * 1.5 * 1.125 / 1.075));
+    // Lines that only count Fervor Rating are not scaled.
+    const SkillDpsResult counted = skillWith("Test Bolt", {"Have Fervor", "+1% additional damage for every 4 Fervor Rating"});
+    CHECK(counted.hitDps == Approx(plain * 1.25));
+    // Without Fervor the buff line does nothing.
+    CHECK(skillWith("Test Bolt", {"Fervor gains an additional base effect: +1% additional damage for every 4 Fervor Rating"})
+              .hitDps == Approx(skillWith("Test Bolt", {}).hitDps));
+}
+
+TEST_CASE("Agility Blessing: +4% increased speed and +2% additional damage per stack") {
+    const SkillDpsResult plain = withLines({});
+    nlohmann::json build = attackBuild(false, false);
+    build["config"]["vars"]["agility blessing"] = 4;
+    const SkillDpsResult blessed = calculateMainSkillDps(loadBuild(attackData(), build));
+    CHECK(blessed.castsPerSecond == Approx(plain.castsPerSecond * 1.16));
+    CHECK(blessed.hitDps == Approx(plain.hitDps * 1.16 * 1.08));
+    // Divine Blessing generates Focus and Agility Blessing at max stacks.
+    const SkillDpsResult divine = skillWith("Test Strike", {"Gain a Divine Blessing every 2s in the following order: "
+                                                            "Focus Blessing - Agility Blessing - Tenacity Blessing"});
+    CHECK(divine.hitDps == Approx(plain.hitDps * 1.16 * 1.08 * 1.20));
+}
+
+TEST_CASE("Blur rating comes from config; Blur Effect scales only Blur's added effects") {
+    const double plain = skillWith("Test Bolt", {}).hitDps;
+    const char* added = "Blur gains an additional effect: +1% additional damage for each Blur Rating";
+    CHECK(skillWith("Test Bolt", {added}).hitDps == Approx(plain));                     // no Blur
+    CHECK(skillWith("Test Bolt", {"Has Blur", added}).hitDps == Approx(plain * 2.0));   // 100 rating by default
+    CHECK(skillWith("Test Bolt", {"Has Blur", added, "+50% Blur Effect"}, {{"blur rating", 60}}).hitDps ==
+          Approx(plain * 1.9));
+    // A line that only checks Blur is not scaled.
+    CHECK(skillWith("Test Bolt", {"Has Blur", "+50% Blur Effect", "+20% additional damage while Blur is active"}).hitDps ==
+          Approx(plain * 1.2));
+}
+
+TEST_CASE("Intimidated: +12% additional damage taken, scaled by Intimidating Effect") {
+    const double plain = skillWith("Test Bolt", {}).hitDps;
+    CHECK(skillWith("Test Bolt", {"Enemies within 12m are Intimidated"}).hitDps == Approx(plain * 1.12));
+    CHECK(skillWith("Test Bolt", {"Enemies within 12m are Intimidated", "+50% Intimidating effect"}).hitDps ==
+          Approx(plain * 1.18));
+}
+
+TEST_CASE("Lucky damage and min/max damage change the average roll") {
+    const double plain = skillWith("Test Spark", {}).averageHit;   // 0-300 rolls 150 on average
+    CHECK(skillWith("Test Spark", {"Lucky Damage"}).averageHit == Approx(plain * 200.0 / 150.0));
+    CHECK(skillWith("Test Spark", {"+50% additional Max Damage"}).averageHit == Approx(plain * 225.0 / 150.0));
+    CHECK(skillWith("Test Spark", {"Lucky Damage", "+50% additional Max Damage"}).averageHit == Approx(plain * 2.0));
+}
+
+TEST_CASE("Damage gained as another type is added on top and scaled by both types") {
+    // Physical attack: the gained fire meets resistance and non-physical armor (0.7 x 0.7) instead of
+    // 50% physical armor.
+    const double plain = withLines({}).hitDps;
+    CHECK(withLines({"Adds 50% of Physical Damage as Fire Damage"}).hitDps == Approx(plain * (1 + 0.5 * 0.49 / 0.5)));
+    CHECK(withLines({"Adds 50% of Physical Damage as Fire Damage", "+100% additional Fire Damage"}).hitDps ==
+          Approx(plain * (1 + 2 * 0.5 * 0.49 / 0.5)));
+    CHECK(withLines({"Adds 50% of Physical Damage as Fire Damage", "+100% additional Physical Damage"}).hitDps ==
+          Approx(plain * 2 * (1 + 0.5 * 0.49 / 0.5)));
+    // Cold spell: fire meets the same mitigation as cold.
+    const double bolt = skillWith("Test Bolt", {}).hitDps;
+    CHECK(skillWith("Test Bolt", {"Adds 50% of Cold Damage as Fire Damage"}).hitDps == Approx(bolt * 1.5));
+    CHECK(skillWith("Test Bolt", {"Adds 50% of Cold Damage as Fire Damage", "+100% additional Fire Damage"}).hitDps ==
+          Approx(bolt * 2.0));
 }
 
 TEST_CASE("Youga build without Biting Cold matches the curse-off prediction") {

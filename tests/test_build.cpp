@@ -465,6 +465,18 @@ TEST_CASE("Agility Blessing: +4% increased speed and +2% additional damage per s
     CHECK(divine.hitDps == Approx(plain.hitDps * 1.16 * 1.08 * 1.20));
 }
 
+TEST_CASE("Stack-count conditions follow the Blessing stacks") {
+    nlohmann::json build = attackBuild(false, false);
+    build["items"].push_back({{"slot", "Ring 1"}, {"name", "Test Ring"},
+                              {"lines", {"+30% additional damage when you have at least 4 stack(s) of Agility Blessing"}}});
+    build["config"]["vars"]["agility blessing"] = 3;
+    const SkillDpsResult three = calculateMainSkillDps(loadBuild(attackData(), build));
+    build["config"]["vars"]["agility blessing"] = 4;
+    const SkillDpsResult four = calculateMainSkillDps(loadBuild(attackData(), build));
+    // The 4th stack adds +4% speed and 2% damage (1.08 / 1.06) and switches on the +30%.
+    CHECK(four.hitDps == Approx(three.hitDps * (1.16 / 1.12) * (1.08 / 1.06) * 1.3));
+}
+
 TEST_CASE("Blur rating comes from config; Blur Effect scales only Blur's added effects") {
     const double plain = skillWith("Test Bolt", {}).hitDps;
     const char* added = "Blur gains an additional effect: +1% additional damage for each Blur Rating";

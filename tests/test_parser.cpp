@@ -293,6 +293,22 @@ TEST_CASE("Fervor, Blessing, Blur, Intimidated, Lucky and gained-damage wordings
     CHECK(parseModLine("Adds 10% of Physical Damage to Cold Damage").mods.at(0).group == "physical>cold");
 }
 
+TEST_CASE("'When you have at least N stacks of' is a stack-count condition") {
+    ParseResult r = parseModLine("+135% Critical Strike Damage when you have at least 8 stack(s) of Agility Blessing");
+    REQUIRE(r.ok);
+    CHECK(r.mods[0].stat == "CritDamage");
+    REQUIRE(r.mods[0].conditions.size() == 1);
+    CHECK(r.mods[0].conditions[0].var == "agility blessing");
+    CHECK(r.mods[0].conditions[0].atLeast == Approx(8));
+
+    ParseResult adds = parseModLine("Adds 200 - 330 additional Physical Damage when you have at least 8 stack(s) of Agility Blessing");
+    REQUIRE(adds.ok);
+    CHECK(adds.mods[0].stat == "AddedDamageMin");
+    CHECK(adds.mods[0].conditions.at(0).var == "agility blessing");
+    CHECK(parseModLine("+30% additional Spell Damage when you have at least 6 stack(s) of Focus Blessing")
+              .mods.at(0).conditions.at(0).var == "focus blessing");
+}
+
 TEST_CASE("(multiplies) is reported") {
     ParseResult r = parseModLine("+10% additional Spell Damage (multiplies)");
     REQUIRE(r.ok);

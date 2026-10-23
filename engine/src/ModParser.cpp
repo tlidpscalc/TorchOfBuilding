@@ -267,7 +267,7 @@ const std::vector<Rule>& rules() {
 
         // "Adds 10 - 20 Fire Damage to Attacks"; "... to the gear" is local to the weapon it is on.
         r.push_back(Rule{re(std::string("^adds ") + kNum + " ?- ?" + kNum +
-                            R"( ([a-z]+) damage(?: to (attacks and spells|attacks|spells|the gear))?$)"),
+                            R"( (?:additional )?([a-z]+) damage(?: to (attacks and spells|attacks|spells|the gear))?$)"),
                          [](const std::smatch& m, std::vector<Mod>& out, std::string& err) {
                              auto mask = damageTypeMaskFromString(m[3].str());
                              if (!mask) {
@@ -781,7 +781,8 @@ ParseResult parseModLine(std::string_view line, const std::string& source) {
     }
 
     // Trailing conditions, repeatedly ("... against Frozen enemies for ..." etc.).
-    static const std::regex kAtLeast = re(R"(^(.*) when having at least (\d+) (.+)$)");
+    // "when having at least 3 ...", "when you have at least 8 stack(s) of Agility Blessing".
+    static const std::regex kAtLeast = re(R"(^(.*) when (?:having|you have) at least (\d+) (?:stacks? of )?(.+)$)");
     static const std::regex kOrMore = re(R"(^(.*) when affected by (\d+) or more (.+)$)");
     static const std::regex kWhenHaving = re(R"(^(.*) when having (.+)$)");
     static const std::regex kWhile = re(R"(^(.*) while (not )?(.+)$)");

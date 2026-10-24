@@ -305,6 +305,7 @@ std::vector<std::string> activationMediumLines(const nlohmann::json& card, const
 void loadSupports(BuildState& b, const GameData& data, const nlohmann::json& supports, const std::string& skill) {
     const int supportLevel = skillLevel(b, bit(SkillTag::Support));
     for (const auto& sup : supports) {
+        if (!sup.is_object() || sup.value("name", "").empty()) continue;   // empty support slot
         const std::string name = sup.value("name", "");
         const std::string source = "Support: " + name + " (" + skill + ")";
         if (name == "Clockwork Core") {
@@ -411,6 +412,7 @@ BuildState loadBuild(const GameData& data, const nlohmann::json& build) {
     const auto& skills = build.value("skills", nlohmann::json::object());
     b.main.name = skills.value("main", "");
     for (const auto& s : skills.value("active", nlohmann::json::array())) {
+        if (!s.is_object() || s.value("name", "").empty()) continue;   // empty skill slot
         const std::string name = s.value("name", "");
         b.activeSkills.push_back(name);
         const nlohmann::json* card = data.skill(name);
@@ -447,6 +449,7 @@ BuildState loadBuild(const GameData& data, const nlohmann::json& build) {
     }
 
     for (const auto& p : skills.value("passive", nlohmann::json::array())) {
+        if (!p.is_object() || p.value("name", "").empty()) continue;   // empty skill slot
         if (!p.value("enabled", true)) continue;
         const std::string name = p.value("name", "");
         const nlohmann::json* card = data.skill(name);

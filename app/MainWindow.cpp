@@ -313,7 +313,7 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
         return;
     }
 
-    skillsEditor_ = new SkillsEditor(data_.skills);
+    skillsEditor_ = new SkillsEditor(data_.skills, data_.traits);
     gearEditor_ = new GearEditor(craftData_);
     editTabs->addTab(skillsEditor_, "Skills");
     editTabs->addTab(gearEditor_, "Gear");

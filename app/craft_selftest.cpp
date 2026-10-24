@@ -104,6 +104,27 @@ int main(int argc, char* argv[]) {
     check(build["inventory"].size() == build["items"].size(), "every item is in the inventory and worn");
     check(std::abs(after - before) <= before * 1e-9, "same DPS after migration");
 
+    // Skills move into the game's slots without changing DPS; canvas supports go to their slots.
+    SkillsEditor::normalize(build, game.skills);
+    // Youga's "I Am the Ultimate One" puts Clockwork Core in the main skill's second support slot.
+    build["skills"]["active"][0]["supports"][1] = {{"name", "Multiple Projectiles"}};
+    check(SkillsEditor::applyTraitSupports(build, game.skills, game.traits), "trait restores Clockwork Core");
+    check(build["skills"]["active"][0]["supports"][1].value("name", "") == "Clockwork Core", "Clockwork Core in slot 2");
+    build["skills"]["active"][0]["supports"][1] = {{"name", "Clockwork Core"}};
+    build["skills"]["active"][0]["supports"][3] = {{"name", "Multiple Projectiles"}};
+    const double slotted = tob::calculateMainSkillDps(tob::loadBuild(game, build)).dps;
+    const auto& hfb = build["skills"]["active"][0];
+    std::cout << "Homing Frost Bolt support slots:";
+    for (const auto& s : hfb["supports"]) std::cout << " [" << (s.is_object() ? s.value("name", "") : "-") << "]";
+    std::cout << "\n";
+    check(hfb.value("name", "") == "Homing Frost Bolt", "main skill in slot 1");
+    check(hfb["supports"].size() == 5, "5 support slots");
+    check(hfb["supports"][2].value("name", "") == "Homing Frost Bolt: Frost Barb (Magnificent)", "Magnificent in slot 3");
+    check(hfb["supports"][4].value("name", "") == "Homing Frost Bolt: Deep Chill (Noble)", "Noble in slot 5");
+    check(build["skills"]["active"][1]["supports"][0].value("name", "") == "Activation Medium: Preparation",
+          "Activation Medium in slot 1");
+    check(std::abs(slotted - before) <= before * 1e-9, "same DPS after slotting skills");
+
     std::cout << (failures ? "FAILED" : "all passed") << "\n";
     return failures ? 1 : 0;
 }

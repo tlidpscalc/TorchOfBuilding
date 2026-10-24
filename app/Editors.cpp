@@ -1,6 +1,10 @@
 #include "Editors.h"
 
 #include <QCheckBox>
+#include <QSpinBox>
+#include <QRadioButton>
+#include <QGridLayout>
+#include <QButtonGroup>
 #include <QComboBox>
 #include <QCompleter>
 #include <QFormLayout>
@@ -17,6 +21,7 @@
 #include <QVBoxLayout>
 
 #include <algorithm>
+#include <set>
 
 namespace {
 
@@ -51,41 +56,301 @@ QPushButton* button(const QString& text, QHBoxLayout* row) {
 
 // --- Skills ------------------------------------------------------------------------------------
 
-SkillsEditor::SkillsEditor(const nlohmann::json& skillData, QWidget* parent) : QWidget(parent), skillData_(skillData) {
+namespace {
+
+constexpr int kActiveSlots = 5;    // slot 1 is the main skill (owner)
+constexpr int kPassiveSlots = 4;   // (owner)
+constexpr int kSupportSlots = 5;
+
+// "This skill can only be installed in the first/third/fifth Support Skill Slot": 1, 3 or 5; 0 = any.
+int requiredSupportSlot(const nlohmann::json& card) {
+    static const QRegularExpression re("only be installed in the (first|second|third|fourth|fifth) Support Skill Slot");
+    for (const auto& block : card.value("description", nlohmann::json::array()))
+        for (const auto& line : block) {
+            const auto m = re.match(qs(line.get<std::string>()));
+            if (!m.hasMatch()) continue;
+            const QStringList order = {"first", "second", "third", "fourth", "fifth"};
+            return static_cast<int>(order.indexOf(m.captured(1))) + 1;
+        }
+    return 0;
+}
+
+bool isCanvas(const std::string& name) {
+    return name.ends_with("(Noble)") || name.ends_with("(Magnificent)");
+}
+
+bool isMedium(const nlohmann::json& card) {
+    const auto tags = card.value("tags", nlohmann::json::array());
+    return std::find(tags.begin(), tags.end(), "Activation Medium") != tags.end();
+}
+
+const nlohmann::json* cardFor(const nlohmann::json& skillData, const std::string& name) {
+    return skillData.contains(name) ? &skillData[name] : nullptr;
+}
+
+// A canvas support's lines from its card: the fixed lines, then the rolled ones.
+QStringList canvasTemplate(const nlohmann::json& card) {
+    QStringList out;
+    const auto& d = card.value("description", nlohmann::json::array());
+    for (std::size_t b = 1; b < d.size(); ++b)
+        for (const auto& l : d[b])
+            for (const QString& part : qs(l.get<std::string>()).replace("\\n", "\n").split('\n'))
+                if (!part.trimmed().isEmpty()) out << part.trimmed();
+    return out;
+}
+
+// Values of the template's ranges read back from lines already in the build, so existing builds keep
+// their rolls when shown.
+std::vector<double> inferValues(const QStringList& templ, const nlohmann::json& lines) {
+    static const QRegularExpression range(QStringLiteral("\\(\\s*(-?[\\d.]+)\\s*[–-]\\s*(-?[\\d.]+)\\s*\\)"));
+    std::vector<double> values;
+    for (const QString& t : templ) {
+        QString pattern;
+        qsizetype last = 0;
+        std::vector<double> tops;
+        auto it = range.globalMatch(t);
+        while (it.hasNext()) {
+            const auto m = it.next();
+            pattern += QRegularExpression::escape(t.mid(last, m.capturedStart() - last)) + "(-?[\\d.]+)";
+            tops.push_back(std::max(m.captured(1).toDouble(), m.captured(2).toDouble()));
+            last = m.capturedEnd();
+        }
+        if (tops.empty()) continue;
+        pattern = "^" + pattern + QRegularExpression::escape(t.mid(last)) + "$";
+        const QRegularExpression re(pattern);
+        std::vector<double> found = tops;
+        for (const auto& l : lines)
+            if (const auto m = re.match(qs(l.get<std::string>())); m.hasMatch())
+                for (std::size_t i = 0; i < tops.size(); ++i) found[i] = m.captured(static_cast<int>(i) + 1).toDouble();
+        values.insert(values.end(), found.begin(), found.end());
+    }
+    return values;
+}
+
+} // namespace
+
+// Puts a build's skills into the game's slots: 5 active skills with the main one first, and 5 support
+// slots per skill with slot-bound supports (Activation Medium 1, Magnificent 3, Noble 5) in their slot.
+// Nothing is dropped: anything that does not fit stays after the slots.
+void SkillsEditor::normalize(nlohmann::json& build, const nlohmann::json& skillData) {
+    nlohmann::json& skills = build["skills"];
+    if (!skills.is_object()) skills = nlohmann::json::object();
+    nlohmann::json& active = arrayAt(skills, "active");
+    const std::string main = skills.value("main", "");
+    for (std::size_t i = 1; i < active.size(); ++i)
+        if (active[i].is_object() && active[i].value("name", "") == main) {
+            std::swap(active[0], active[i]);
+            break;
+        }
+    while (active.size() < kActiveSlots) active.push_back(nullptr);
+
+    auto placeSupports = [&skillData](nlohmann::json& skill) {
+        if (!skill.is_object()) return;
+        nlohmann::json& old = arrayAt(skill, "supports");
+        // Already slotted: 5 entries with every slot-bound support in its own slot.
+        bool slotted = old.size() == kSupportSlots;
+        for (std::size_t i = 0; slotted && i < old.size(); ++i)
+            if (old[i].is_object())
+                if (const auto* c = cardFor(skillData, old[i].value("name", ""));
+                    c && requiredSupportSlot(*c) && requiredSupportSlot(*c) != static_cast<int>(i) + 1)
+                    slotted = false;
+        if (slotted) return;
+        nlohmann::json placed = nlohmann::json::array();
+        for (int i = 0; i < kSupportSlots; ++i) placed.push_back(nullptr);
+        std::vector<nlohmann::json> rest, overflow;
+        for (const auto& s : old) {
+            if (!s.is_object() || s.value("name", "").empty()) continue;
+            const auto* c = cardFor(skillData, s.value("name", ""));
+            const int want = c ? requiredSupportSlot(*c) : 0;
+            if (want && placed[want - 1].is_null()) placed[want - 1] = s;
+            else rest.push_back(s);
+        }
+        for (auto& s : rest) {
+            auto free = std::find_if(placed.begin(), placed.end(), [&](const nlohmann::json& x) { return x.is_null(); });
+            // Slot-bound slots stay free for their kind when possible: fill slots 2 and 4 first.
+            for (int pref : {1, 3, 0, 2, 4})
+                if (placed[pref].is_null()) {
+                    free = placed.begin() + pref;
+                    break;
+                }
+            if (free == placed.end()) overflow.push_back(s);
+            else *free = s;
+        }
+        for (auto& s : overflow) placed.push_back(s);
+        old = placed;
+    };
+    nlohmann::json& passive = arrayAt(skills, "passive");
+    while (passive.size() < kPassiveSlots) passive.push_back(nullptr);
+    for (auto& s : active) placeSupports(s);
+    for (auto& s : passive) placeSupports(s);
+}
+
+bool SkillsEditor::applyTraitSupports(nlohmann::json& build, const nlohmann::json& skillData,
+                                      const nlohmann::json& traitData) {
+    // Trait lines of the chosen nodes in the build's trait tree.
+    const auto traits = build.value("traits", nlohmann::json::object());
+    std::set<std::string> chosen;
+    for (const auto& n : traits.value("nodes", nlohmann::json::array())) chosen.insert(n.value("name", ""));
+    bool clockwork = false;
+    for (const auto& tree : traitData) {
+        if (tree.value("slug", "") != traits.value("tree", "")) continue;
+        for (const auto& node : tree["nodes"]) {
+            if (!chosen.contains(node.value("name", ""))) continue;
+            for (const auto& lv : node["levels"])
+                for (const char* key : {"affix", "server_affix"})
+                    for (const auto& a : lv.value(key, nlohmann::json::array()))
+                        if (a.get<std::string>().find("supported by Clockwork Core, replacing the support skill in the "
+                                                      "second support skill slot") != std::string::npos)
+                            clockwork = true;
+        }
+    }
+    nlohmann::json& active = arrayAt(build["skills"], "active");
+    if (!clockwork || active.empty() || !active[0].is_object()) return false;
+    // Only Main Active Spell Skills (ASSUMED: every main spell counts as tanglable).
+    const auto* card = cardFor(skillData, active[0].value("name", ""));
+    const auto tags = card ? card->value("tags", nlohmann::json::array()) : nlohmann::json::array();
+    if (std::find(tags.begin(), tags.end(), "Spell") == tags.end()) return false;
+    nlohmann::json& supports = arrayAt(active[0], "supports");
+    while (supports.size() < kSupportSlots) supports.push_back(nullptr);
+    if (supports[1].is_object() && supports[1].value("name", "") == "Clockwork Core") return false;
+    // Whatever sat in slot 2 is replaced, as in the game; another copy elsewhere is removed.
+    for (auto& s : supports)
+        if (s.is_object() && s.value("name", "") == "Clockwork Core") s = nullptr;
+    supports[1] = {{"name", "Clockwork Core"}, {"trait", true}};
+    return true;
+}
+
+bool SkillsEditor::traitLocked(int supportSlot) const {
+    if (!build_ || selKind_ != "active" || selIndex_ != 0 || supportSlot != 1) return false;
+    const auto& active = (*build_)["skills"]["active"];
+    if (active.empty() || !active[0].is_object()) return false;
+    const auto& supports = active[0].value("supports", nlohmann::json::array());
+    return supports.size() > 1 && supports[1].is_object() && supports[1].value("trait", false);
+}
+
+SkillsEditor::SkillsEditor(const nlohmann::json& skillData, const nlohmann::json& traitData, QWidget* parent)
+    : QWidget(parent), skillData_(skillData), traitData_(traitData) {
     for (auto it = skillData.begin(); it != skillData.end(); ++it) {
+        const QString name = qs(it->value("name", it.key()));
+        // Tartarus and Origin Tartarus skills belong to followers (the Tartarus mechanic), not heroes (owner).
+        if (name.startsWith("Tartarus:") || name.startsWith("Origin Tartarus:")) continue;
         const auto tags = it->value("tags", nlohmann::json::array());
         const bool support = std::find(tags.begin(), tags.end(), "Support") != tags.end();
-        (support ? supportNames_ : skillNames_) << qs(it->value("name", it.key()));
+        (support ? supportNames_ : skillNames_) << name;
     }
     skillNames_.sort();
     supportNames_.sort();
 
     auto* layout = new QVBoxLayout(this);
-    auto* form = new QFormLayout;
-    main_ = new QComboBox;
-    main_->addItems(skillNames_);
-    containsCompleter(main_);
-    form->addRow("Main skill", main_);
-    layout->addLayout(form);
+    auto* activeBox = new QGroupBox("Active skill slots (slot 1 is the main skill)");
+    auto* activeGrid = new QGridLayout(activeBox);
+    skillGroup_ = new QButtonGroup(this);
+    for (int i = 0; i < kActiveSlots; ++i) {
+        auto* pick = new QRadioButton(i == 0 ? "1 (Main)" : QString::number(i + 1));
+        auto* combo = new QComboBox;
+        combo->addItem("(empty)");
+        combo->addItems(skillNames_);
+        containsCompleter(combo);
+        activeGrid->addWidget(pick, i, 0);
+        activeGrid->addWidget(combo, i, 1);
+        skillGroup_->addButton(pick, i);
+        activeSlots_[i] = combo;
+        connect(combo, &QComboBox::currentIndexChanged, this, [this, i, combo] {
+            if (updating_ || !build_) return;
+            const QString name = combo->currentText();
+            if (name != "(empty)" && !skillNames_.contains(name)) return;
+            nlohmann::json& skills = (*build_)["skills"];
+            nlohmann::json& active = arrayAt(skills, "active");
+            while (active.size() < kActiveSlots) active.push_back(nullptr);
+            nlohmann::json supports = nlohmann::json::array();
+            for (int s = 0; s < kSupportSlots; ++s) supports.push_back(nullptr);
+            active[i] = name == "(empty)" ? nlohmann::json(nullptr)
+                                          : nlohmann::json{{"name", name.toStdString()}, {"supports", supports}};
+            if (i == 0) {
+                skills["main"] = name == "(empty)" ? "" : name.toStdString();
+                applyTraitSupports(*build_, skillData_, traitData_);
+            }
+            selectSkill("active", i);
+            emit changed();
+        });
+    }
+    connect(skillGroup_, &QButtonGroup::idClicked, this, [this](int id) {
+        if (id < kActiveSlots) selectSkill("active", id);
+        else selectSkill("passive", id - kActiveSlots);
+    });
+    layout->addWidget(activeBox);
 
-    layout->addWidget(new QLabel("Skills"));
-    skills_ = new QListWidget;
-    layout->addWidget(skills_, 1);
-    auto* skillButtons = new QHBoxLayout;
-    QPushButton* addActive = button("Add active", skillButtons);
-    QPushButton* addPassive = button("Add passive", skillButtons);
-    QPushButton* removeSkill = button("Remove", skillButtons);
-    layout->addLayout(skillButtons);
-    enabled_ = new QCheckBox("Passive skill enabled");
-    layout->addWidget(enabled_);
+    auto* passiveBox = new QGroupBox("Passive skill slots");
+    auto* passiveGrid = new QGridLayout(passiveBox);
+    for (int i = 0; i < kPassiveSlots; ++i) {
+        auto* pick = new QRadioButton(QString::number(i + 1));
+        auto* combo = new QComboBox;
+        combo->addItem("(empty)");
+        combo->addItems(skillNames_);
+        containsCompleter(combo);
+        auto* enabled = new QCheckBox("Enabled");
+        passiveGrid->addWidget(pick, i, 0);
+        passiveGrid->addWidget(combo, i, 1);
+        passiveGrid->addWidget(enabled, i, 2);
+        skillGroup_->addButton(pick, kActiveSlots + i);
+        passiveSlots_[i] = combo;
+        passiveEnabled_[i] = enabled;
+        connect(combo, &QComboBox::currentIndexChanged, this, [this, i, combo] {
+            if (updating_ || !build_) return;
+            const QString name = combo->currentText();
+            if (name != "(empty)" && !skillNames_.contains(name)) return;
+            nlohmann::json& passive = arrayAt((*build_)["skills"], "passive");
+            while (passive.size() < kPassiveSlots) passive.push_back(nullptr);
+            nlohmann::json supports = nlohmann::json::array();
+            for (int s = 0; s < kSupportSlots; ++s) supports.push_back(nullptr);
+            passive[i] = name == "(empty)" ? nlohmann::json(nullptr)
+                                           : nlohmann::json{{"name", name.toStdString()}, {"enabled", true}, {"supports", supports}};
+            selectSkill("passive", i);
+            emit changed();
+        });
+        connect(enabled, &QCheckBox::toggled, this, [this, i](bool on) {
+            if (updating_ || !build_) return;
+            nlohmann::json& passive = arrayAt((*build_)["skills"], "passive");
+            if (i >= static_cast<int>(passive.size()) || !passive[i].is_object()) return;
+            passive[i]["enabled"] = on;
+            emit changed();
+        });
+    }
+    layout->addWidget(passiveBox);
 
-    layout->addWidget(new QLabel("Supports of the selected skill"));
-    supports_ = new QListWidget;
-    layout->addWidget(supports_, 1);
-    auto* supportButtons = new QHBoxLayout;
-    QPushButton* addSupport = button("Add support", supportButtons);
-    QPushButton* removeSupport = button("Remove support", supportButtons);
-    layout->addLayout(supportButtons);
+    supportBox_ = new QGroupBox("Support slots");
+    auto* supportGrid = new QGridLayout(supportBox_);
+    supportGroup_ = new QButtonGroup(this);
+    const char* labels[] = {"1 (Activation Medium)", "2", "3 (Magnificent)", "4", "5 (Noble)"};
+    for (int k = 0; k < kSupportSlots; ++k) {
+        auto* pick = new QRadioButton(labels[k]);
+        auto* combo = new QComboBox;
+        combo->setSizeAdjustPolicy(QComboBox::AdjustToMinimumContentsLengthWithIcon);
+        combo->setMinimumContentsLength(30);
+        containsCompleter(combo);
+        supportGrid->addWidget(pick, k, 0);
+        supportGrid->addWidget(combo, k, 1);
+        supportGroup_->addButton(pick, k);
+        supportSlots_[k] = combo;
+        connect(combo, &QComboBox::currentIndexChanged, this, [this, k, combo] {
+            nlohmann::json* skill = selectedSkill();
+            if (updating_ || !skill) return;
+            const QString name = combo->currentText();
+            if (name != "(empty)" && combo->findText(name) < 0) return;
+            nlohmann::json& supports = arrayAt(*skill, "supports");
+            while (supports.size() < kSupportSlots) supports.push_back(nullptr);
+            supports[k] = name == "(empty)" ? nlohmann::json(nullptr) : nlohmann::json{{"name", name.toStdString()}};
+            selSupport_ = k;
+            if (supports[k].is_object()) initSupport(supports[k]);
+            showSupports();
+            emit changed();
+        });
+    }
+    connect(supportGroup_, &QButtonGroup::idClicked, this, [this](int k) {
+        selSupport_ = k;
+        showSupportDetails();
+    });
+    layout->addWidget(supportBox_);
 
     // Activation Mediums have tiers instead of levels; most also offer a Cooldown or a Duration bonus.
     mediumBox_ = new QGroupBox("Activation Medium");
@@ -99,8 +364,6 @@ SkillsEditor::SkillsEditor(const nlohmann::json& skillData, QWidget* parent) : Q
     mediumForm->addRow("Bonus", mediumBonus_);
     mediumForm->addRow(mediumRoll_);
     layout->addWidget(mediumBox_);
-    mediumBox_->setVisible(false);
-    connect(supports_, &QListWidget::currentRowChanged, this, [this] { showMedium(); });
     connect(mediumTier_, &QComboBox::currentIndexChanged, this, [this] {
         if (!updating_) mediumEdited();
     });
@@ -114,114 +377,175 @@ SkillsEditor::SkillsEditor(const nlohmann::json& skillData, QWidget* parent) : Q
         emit changed();
     });
 
-    connect(main_, &QComboBox::currentTextChanged, this, [this](const QString& name) {
-        if (updating_ || !build_ || !skillNames_.contains(name)) return;
-        nlohmann::json& skills = (*build_)["skills"];
-        skills["main"] = name.toStdString();
-        // The main skill must be one of the active skills.
-        nlohmann::json& active = arrayAt(skills, "active");
-        const bool present = std::any_of(active.begin(), active.end(),
-                                         [&](const nlohmann::json& s) { return s.value("name", "") == name.toStdString(); });
-        if (!present) active.insert(active.begin(), {{"name", name.toStdString()}, {"supports", nlohmann::json::array()}});
-        refresh();
+    // Divinity Canvas supports (Noble, Magnificent): stars and their rolled lines.
+    canvasBox_ = new QGroupBox("Canvas support");
+    auto* canvasForm = new QFormLayout(canvasBox_);
+    canvasStars_ = new QSpinBox;
+    canvasStars_->setRange(1, 5);
+    canvasRoll_ = new RollEditor;
+    canvasForm->addRow("Stars", canvasStars_);
+    canvasForm->addRow(canvasRoll_);
+    layout->addWidget(canvasBox_);
+    connect(canvasStars_, &QSpinBox::valueChanged, this, [this](int stars) {
+        nlohmann::json* sup = selectedSupport();
+        if (updating_ || !sup) return;
+        (*sup)["stars"] = stars;
         emit changed();
     });
-    auto addSkill = [this](const char* kind) {
-        if (!build_) return;
-        const QString name = pickName(this, "Add skill", skillNames_);
-        if (name.isEmpty()) return;
-        nlohmann::json entry = {{"name", name.toStdString()}, {"supports", nlohmann::json::array()}};
-        if (std::string(kind) == "passive") entry["enabled"] = true;
-        arrayAt((*build_)["skills"], kind).push_back(entry);
-        refresh();
-        skills_->setCurrentRow(skills_->count() - 1);
-        emit changed();
-    };
-    connect(addActive, &QPushButton::clicked, this, [addSkill] { addSkill("active"); });
-    connect(addPassive, &QPushButton::clicked, this, [addSkill] { addSkill("passive"); });
-    connect(removeSkill, &QPushButton::clicked, this, [this] {
-        QListWidgetItem* item = skills_->currentItem();
-        if (!build_ || !item) return;
-        const std::string kind = item->data(Qt::UserRole).toString().toStdString();
-        nlohmann::json& list = (*build_)["skills"][kind];
-        list.erase(list.begin() + item->data(Qt::UserRole + 1).toInt());
-        refresh();
+    connect(canvasRoll_, &RollEditor::changed, this, [this] {
+        nlohmann::json* sup = selectedSupport();
+        if (updating_ || !sup) return;
+        storeCanvasLines(*sup);
         emit changed();
     });
-    connect(skills_, &QListWidget::currentRowChanged, this, [this] { showSupports(); });
-    connect(enabled_, &QCheckBox::toggled, this, [this](bool on) {
-        nlohmann::json* skill = selectedSkill();
-        if (updating_ || !skill || !skill->contains("enabled")) return;
-        (*skill)["enabled"] = on;
-        const int row = skills_->currentRow();
-        refresh();
-        skills_->setCurrentRow(row);
-        emit changed();
-    });
-    connect(addSupport, &QPushButton::clicked, this, [this] {
-        nlohmann::json* skill = selectedSkill();
-        if (!skill) return;
-        const QString name = pickName(this, "Add support", supportNames_);
-        if (name.isEmpty()) return;
-        arrayAt(*skill, "supports").push_back({{"name", name.toStdString()}});
-        showSupports();
-        emit changed();
-    });
-    connect(removeSupport, &QPushButton::clicked, this, [this] {
-        nlohmann::json* skill = selectedSkill();
-        const int row = supports_->currentRow();
-        if (!skill || row < 0) return;
-        nlohmann::json& list = arrayAt(*skill, "supports");
-        list.erase(list.begin() + row);
-        showSupports();
-        emit changed();
-    });
+    layout->addStretch(1);
 }
 
 void SkillsEditor::setBuild(nlohmann::json* build) {
     build_ = build;
+    if (build_) {
+        normalize(*build_, skillData_);
+        applyTraitSupports(*build_, skillData_, traitData_);
+    }
+    selectSkill("active", 0);
+}
+
+void SkillsEditor::selectSkill(const std::string& kind, int index) {
+    selKind_ = kind;
+    selIndex_ = index;
+    selSupport_ = 0;
     refresh();
-    if (skills_->count() > 0) skills_->setCurrentRow(0);
 }
 
 nlohmann::json* SkillsEditor::selectedSkill() {
-    QListWidgetItem* item = skills_->currentItem();
-    if (!build_ || !item) return nullptr;
-    const std::string kind = item->data(Qt::UserRole).toString().toStdString();
-    return &(*build_)["skills"][kind][item->data(Qt::UserRole + 1).toInt()];
+    if (!build_) return nullptr;
+    nlohmann::json& list = arrayAt((*build_)["skills"], selKind_.c_str());
+    if (selIndex_ < 0 || selIndex_ >= static_cast<int>(list.size()) || !list[selIndex_].is_object()) return nullptr;
+    return &list[selIndex_];
+}
+
+nlohmann::json* SkillsEditor::selectedSupport() {
+    nlohmann::json* skill = selectedSkill();
+    if (!skill) return nullptr;
+    nlohmann::json& list = arrayAt(*skill, "supports");
+    if (selSupport_ < 0 || selSupport_ >= static_cast<int>(list.size()) || !list[selSupport_].is_object()) return nullptr;
+    return &list[selSupport_];
 }
 
 void SkillsEditor::refresh() {
     const bool wasUpdating = updating_;
     updating_ = true;
-    skills_->clear();
     if (build_) {
         nlohmann::json& skills = (*build_)["skills"];
-        main_->setCurrentText(qs(skills.value("main", "")));
-        for (const char* kind : {"active", "passive"}) {
-            const nlohmann::json& list = arrayAt(skills, kind);
-            for (std::size_t i = 0; i < list.size(); ++i) {
-                QString label = qs(list[i].value("name", ""));
-                if (std::string(kind) == "passive")
-                    label = "Passive: " + label + (list[i].value("enabled", true) ? "" : "  (off)");
-                if (label == main_->currentText()) label += "  (main)";
-                auto* item = new QListWidgetItem(label);
-                item->setData(Qt::UserRole, kind);
-                item->setData(Qt::UserRole + 1, static_cast<int>(i));
-                skills_->addItem(item);
-            }
+        nlohmann::json& active = arrayAt(skills, "active");
+        for (int i = 0; i < kActiveSlots; ++i) {
+            const bool filled = i < static_cast<int>(active.size()) && active[i].is_object();
+            activeSlots_[i]->setCurrentText(filled ? qs(active[i].value("name", "")) : "(empty)");
+            activeSlots_[i]->setCurrentIndex(std::max(0, activeSlots_[i]->findText(activeSlots_[i]->currentText())));
         }
+        nlohmann::json& passive = arrayAt(skills, "passive");
+        for (int i = 0; i < kPassiveSlots; ++i) {
+            const bool filled = i < static_cast<int>(passive.size()) && passive[i].is_object();
+            passiveSlots_[i]->setCurrentIndex(
+                std::max(0, passiveSlots_[i]->findText(filled ? qs(passive[i].value("name", "")) : "(empty)")));
+            passiveEnabled_[i]->setEnabled(filled);
+            passiveEnabled_[i]->setChecked(filled && passive[i].value("enabled", true));
+        }
+        const int id = selKind_ == "active" ? selIndex_ : kActiveSlots + selIndex_;
+        if (QAbstractButton* b = skillGroup_->button(id)) b->setChecked(true);
     }
     updating_ = wasUpdating;
     showSupports();
 }
 
-nlohmann::json* SkillsEditor::selectedSupport() {
+// The supports that can go in slot k (0-based) of the selected skill: Activation Mediums only in slot 1,
+// that skill's Magnificent supports only in slot 3 and its Noble supports only in slot 5, everything else
+// in any slot.
+QStringList SkillsEditor::supportsForSlot(int k, const QString& skill) const {
+    QStringList out;
+    for (const QString& name : supportNames_) {
+        const nlohmann::json* card = cardFor(skillData_, name.toStdString());
+        const int want = card ? requiredSupportSlot(*card) : 0;
+        if (want && want != k + 1) continue;
+        if (isCanvas(name.toStdString()) && !name.startsWith(skill + ":")) continue;
+        out << name;
+    }
+    return out;
+}
+
+void SkillsEditor::showSupports() {
+    const bool wasUpdating = updating_;
+    updating_ = true;
     nlohmann::json* skill = selectedSkill();
-    const int row = supports_->currentRow();
-    if (!skill || row < 0) return nullptr;
-    nlohmann::json& list = arrayAt(*skill, "supports");
-    return row < static_cast<int>(list.size()) ? &list[row] : nullptr;
+    supportBox_->setTitle(skill ? "Support slots: " + qs(skill->value("name", "")) : "Support slots");
+    supportBox_->setEnabled(skill != nullptr);
+    const QString skillName = skill ? qs(skill->value("name", "")) : QString();
+    for (int k = 0; k < kSupportSlots; ++k) {
+        QComboBox* combo = supportSlots_[k];
+        combo->clear();
+        combo->addItem("(empty)");
+        combo->addItems(supportsForSlot(k, skillName));
+        QString current = "(empty)";
+        if (skill) {
+            const nlohmann::json& list = arrayAt(*skill, "supports");
+            if (k < static_cast<int>(list.size()) && list[k].is_object()) current = qs(list[k].value("name", ""));
+        }
+        if (combo->findText(current) < 0) combo->addItem(current);   // kept from the build file even if unknown
+        combo->setCurrentIndex(combo->findText(current));
+        // A support placed by a hero trait cannot be changed here.
+        const bool locked = traitLocked(k);
+        combo->setEnabled(!locked);
+        if (locked) combo->setItemText(combo->currentIndex(), current + "  (hero trait)");
+    }
+    if (QAbstractButton* b = supportGroup_->button(selSupport_)) b->setChecked(true);
+    updating_ = wasUpdating;
+    showSupportDetails();
+}
+
+// Default settings for a newly slotted support: canvas supports get 5 stars and their lines at the top
+// of each roll; Activation Mediums use the engine's defaults until changed.
+void SkillsEditor::initSupport(nlohmann::json& sup) {
+    const nlohmann::json* card = cardFor(skillData_, sup.value("name", ""));
+    if (!card || !isCanvas(sup.value("name", ""))) return;
+    sup["stars"] = 5;
+    RollEditor roll;
+    roll.setText(canvasTemplate(*card).join(" | "));
+    sup["values"] = roll.values();
+    nlohmann::json lines = nlohmann::json::array();
+    for (const QString& l : roll.resolved().split(" | ")) lines.push_back(l.toStdString());
+    sup["lines"] = lines;
+}
+
+void SkillsEditor::storeCanvasLines(nlohmann::json& sup) {
+    sup["values"] = canvasRoll_->values();
+    nlohmann::json lines = nlohmann::json::array();
+    for (const QString& l : canvasRoll_->resolved().split(" | ")) lines.push_back(l.toStdString());
+    sup["lines"] = lines;
+}
+
+void SkillsEditor::showSupportDetails() {
+    nlohmann::json* sup = selectedSupport();
+    const std::string name = sup ? sup->value("name", "") : "";
+    const nlohmann::json* card = cardFor(skillData_, name);
+    const bool medium = card && isMedium(*card) && !card->value("tiers", nlohmann::json::array()).empty();
+    const bool canvas = card && isCanvas(name);
+    mediumBox_->setVisible(medium);
+    canvasBox_->setVisible(canvas);
+    if (medium) showMedium();
+    if (canvas) {
+        const bool wasUpdating = updating_;
+        updating_ = true;
+        canvasBox_->setTitle(qs(name));
+        canvasStars_->setValue(std::clamp(sup->value("stars", 5), 1, 5));
+        const QStringList templ = canvasTemplate(*card);
+        std::vector<double> values;
+        if (sup->contains("values"))
+            for (const auto& v : (*sup)["values"]) values.push_back(v.get<double>());
+        else
+            values = inferValues(templ, sup->value("lines", nlohmann::json::array()));
+        canvasRoll_->setText(templ.join(" | "), values);
+        updating_ = wasUpdating;
+    }
 }
 
 // The medium's lines for a tier and bonus, joined with " | " (same selection as the engine's loader).
@@ -244,13 +568,11 @@ QString SkillsEditor::mediumText(const nlohmann::json& card, const QString& tier
 
 void SkillsEditor::showMedium() {
     nlohmann::json* sup = selectedSupport();
-    const std::string name = sup ? sup->value("name", "") : "";
-    const nlohmann::json* card = skillData_.contains(name) ? &skillData_[name] : nullptr;
-    const bool tiered = card && !card->value("tiers", nlohmann::json::array()).empty();
-    mediumBox_->setVisible(tiered);
-    if (!tiered) return;
+    const nlohmann::json* card = sup ? cardFor(skillData_, sup->value("name", "")) : nullptr;
+    if (!card) return;
     const bool wasUpdating = updating_;
     updating_ = true;
+    mediumBox_->setTitle(qs(sup->value("name", "")));
     mediumTier_->clear();
     for (const auto& t : (*card)["tiers"]) mediumTier_->addItem("T" + qs(t.value("tier", "")), qs(t.value("tier", "")));
     const QString tier = qs(sup->value("tier", (*card)["tiers"].back().value("tier", "")));
@@ -273,23 +595,6 @@ void SkillsEditor::mediumEdited() {
     showMedium();
     (*sup)["values"] = mediumRoll_->values();
     emit changed();
-}
-
-void SkillsEditor::showSupports() {
-    const bool wasUpdating = updating_;
-    updating_ = true;
-    supports_->clear();
-    nlohmann::json* skill = selectedSkill();
-    enabled_->setEnabled(skill && skill->contains("enabled"));
-    enabled_->setChecked(skill && skill->value("enabled", true));
-    if (skill) {
-        for (const auto& s : arrayAt(*skill, "supports")) {
-            QString label = qs(s.value("name", ""));
-            if (s.contains("stars")) label += QString("  (%1 stars, %2 lines)").arg(s.value("stars", 1)).arg(s.value("lines", nlohmann::json::array()).size());
-            supports_->addItem(label);
-        }
-    }
-    updating_ = wasUpdating;
 }
 
 // --- Gear --------------------------------------------------------------------------------------

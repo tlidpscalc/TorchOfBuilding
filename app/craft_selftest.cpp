@@ -3,6 +3,7 @@
 #include "CraftDialog.h"
 #include "Editors.h"
 #include "HeroEditor.h"
+#include "TalentEditor.h"
 
 #include "tob/Build.h"
 #include "tob/GameData.h"
@@ -159,6 +160,29 @@ int main(int argc, char* argv[]) {
     check(!baseNames.isEmpty() && baseNames.front() == "Max Life", "base stat listed as \"Max Life\"");
     check(std::abs(tob::calculateMainSkillDps(tob::loadBuild(game, heroBuild)).dps - before) <= before * 1e-9,
           "same DPS after the Hero tab loads the build");
+
+    // Talent panels: the Youga talents follow every rule and keep their DPS in the Talents tab.
+    {
+        nlohmann::json talentBuild = readJson(dataDir / "builds" / "youga_ultimate_one.json");
+        const QStringList issues = TalentEditor::problems(talentBuild, game.boards);
+        for (const QString& p : issues) std::cout << "    talent problem: " << p.toStdString() << "\n";
+        check(issues.isEmpty(), "Youga talents follow the panel rules");
+        TalentEditor talents(game.boards);
+        talents.setBuild(&talentBuild);
+        if (const char* shot = std::getenv("TOB_TALENT_SHOT")) {   // optional screenshot for a visual check
+            talents.resize(1000, 2400);
+            talents.show();
+            QApplication::processEvents();
+            talents.grab().save(shot);
+        }
+        check(std::abs(tob::calculateMainSkillDps(tob::loadBuild(game, talentBuild)).dps - before) <= before * 1e-9,
+              "same DPS after the Talents tab loads the build");
+        // Emptying the first column of the main god breaks the columns that depend on it.
+        nlohmann::json broken = talentBuild;
+        auto& nodes = broken["talents"][0]["nodes"];
+        nodes.erase(std::remove_if(nodes.begin(), nodes.end(), [](const nlohmann::json& n) { return n[0] == 0; }), nodes.end());
+        check(!TalentEditor::problems(broken, game.boards).isEmpty(), "column requirement is enforced");
+    }
 
     // Creative Genius: one node from each of the two groups at 45, 60 and 75, all six kept.
     nlohmann::json genius = {{"traits", {{"tree", "Creative_Genius"},

@@ -133,6 +133,7 @@ nlohmann::json levelText(const nlohmann::json& card, int level) {
 void loadTalents(BuildState& b, const GameData& data, const nlohmann::json& talents) {
     for (const auto& panel : talents) {
         const std::string slug = panel.value("board", "");
+        if (slug.empty()) continue;   // empty panel row
         const nlohmann::json* board = data.board(slug);
         if (!board) {
             b.lines.push_back({"Talent board", slug, false, false, "unknown talent board"});

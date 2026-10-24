@@ -2,6 +2,7 @@
 
 #include "Editors.h"
 #include "HeroEditor.h"
+#include "TalentEditor.h"
 
 #include "tob/ModParser.h"
 #include "tob/SkillDps.h"
@@ -145,8 +146,13 @@ class TitleBarFilter : public QObject {
 public:
     using QObject::QObject;
     bool eventFilter(QObject* object, QEvent* event) override {
+        // Only real windows and dialogs: tooltips, menus and dropdown lists are windows too, and
+        // forcing a frame redraw on them hides them again straight away.
         if (event->type() == QEvent::Show)
-            if (auto* w = qobject_cast<QWidget*>(object); w && w->isWindow()) setTitleBarDark(w, g_darkTitleBars);
+            if (auto* w = qobject_cast<QWidget*>(object); w && w->isWindow()) {
+                const Qt::WindowType type = w->windowType();
+                if (type == Qt::Window || type == Qt::Dialog) setTitleBarDark(w, g_darkTitleBars);
+            }
         return false;
     }
 };
@@ -160,7 +166,7 @@ void applyTheme(bool dark) {
     (void)filter;
     g_darkTitleBars = dark;
     for (QWidget* w : QApplication::topLevelWidgets())
-        if (w->isVisible()) setTitleBarDark(w, dark);
+        if (w->isVisible() && (w->windowType() == Qt::Window || w->windowType() == Qt::Dialog)) setTitleBarDark(w, dark);
 
     QApplication::setStyle("Fusion");
     if (!dark) {
@@ -290,10 +296,17 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
         if (resultTabs->currentWidget() == linesPage && linesStale_) showLines();
     });
 
+    // Like Path of Building: results in a narrow panel on the left, the editors take the rest. The
+    // divider position is remembered between runs.
     auto* splitter = new QSplitter;
-    splitter->addWidget(editTabs);
     splitter->addWidget(resultTabs);
+    splitter->addWidget(editTabs);
+    splitter->setStretchFactor(0, 0);
     splitter->setStretchFactor(1, 1);
+    resultTabs->setMinimumWidth(300);
+    splitter->setSizes({420, 1000});
+    if (const QByteArray state = QSettings().value("splitter").toByteArray(); !state.isEmpty()) splitter->restoreState(state);
+    connect(splitter, &QSplitter::splitterMoved, this, [splitter] { QSettings().setValue("splitter", splitter->saveState()); });
     setCentralWidget(splitter);
 
     dataDir_ = findDataDir();
@@ -317,12 +330,15 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
     skillsEditor_ = new SkillsEditor(data_.skills, data_.traits);
     gearEditor_ = new GearEditor(craftData_);
     heroEditor_ = new HeroEditor(data_.traits, craftData_.crafting);
+    talentEditor_ = new TalentEditor(data_.boards);
     editTabs->addTab(heroEditor_, "Hero");
+    editTabs->addTab(talentEditor_, "Talents");
     editTabs->addTab(skillsEditor_, "Skills");
     editTabs->addTab(gearEditor_, "Gear");
     editTabs->addTab(configScroll, "Config");
     connect(skillsEditor_, &SkillsEditor::changed, this, [this] { buildEdited(true); });
     connect(gearEditor_, &GearEditor::changed, this, [this] { buildEdited(true); });
+    connect(talentEditor_, &TalentEditor::changed, this, [this] { buildEdited(true); });
     // Trait changes can add or remove supports a trait grants (Clockwork Core).
     connect(heroEditor_, &HeroEditor::changed, this, [this] {
         if (SkillsEditor::applyTraitSupports(build_, data_.skills, data_.traits)) skillsEditor_->setBuild(&build_);
@@ -396,6 +412,7 @@ void MainWindow::setBuild(nlohmann::json build) {
     build_ = std::move(build);
     loaded_ = true;
     if (heroEditor_) heroEditor_->setBuild(&build_);
+    if (talentEditor_) talentEditor_->setBuild(&build_);
     if (skillsEditor_) skillsEditor_->setBuild(&build_);
     if (gearEditor_) gearEditor_->setBuild(&build_);
     setDirty(false);

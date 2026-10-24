@@ -2,12 +2,14 @@
 // modifier lines it produces. Run with QT_QPA_PLATFORM=offscreen; exits non-zero on a failed check.
 #include "CraftDialog.h"
 #include "Editors.h"
+#include "HeroEditor.h"
 
 #include "tob/Build.h"
 #include "tob/GameData.h"
 #include "tob/SkillDps.h"
 
 #include <QApplication>
+#include <QComboBox>
 #include <QDir>
 
 #include <cmath>
@@ -124,6 +126,63 @@ int main(int argc, char* argv[]) {
     check(build["skills"]["active"][1]["supports"][0].value("name", "") == "Activation Medium: Preparation",
           "Activation Medium in slot 1");
     check(std::abs(slotted - before) <= before * 1e-9, "same DPS after slotting skills");
+
+    // Hero Memory base stats against the owner's in-game readings.
+    struct Reading { const char* stat; int rarity; int level; double value; };
+    for (const Reading& r : {Reading{"+90 Intelligence", 4, 50, 110}, Reading{"+90 Intelligence", 4, 21, 67},
+                             Reading{"+90 Intelligence", 4, 10, 50}, Reading{"+90 Intelligence", 4, 1, 37},
+                             Reading{"+90 Intelligence", 3, 20, 59}, Reading{"+90 Intelligence", 3, 40, 90},
+                             Reading{"+90 Intelligence", 2, 12, 41}, Reading{"+90 Intelligence", 2, 30, 70},
+                             Reading{"+90 Intelligence", 1, 1, 17}, Reading{"+90 Intelligence", 1, 20, 50},
+                             Reading{"+90 Intelligence", 0, 5, 19}, Reading{"+90 Intelligence", 0, 10, 30},
+                             Reading{"+330 Max Life", 4, 50, 403}, Reading{"+525 Max Energy Shield", 4, 50, 642},
+                             Reading{"+180 Max Mana", 4, 50, 220}, Reading{"+4320 Armor", 4, 50, 5280},
+                             Reading{"+36% Cast Speed", 4, 50, 44}, Reading{"+30% Movement Speed", 4, 50, 30},
+                             Reading{"+30% Movement Speed", 3, 40, 25}, Reading{"+90% damage", 4, 50, 132},
+                             Reading{"+90% damage", 3, 40, 108}}) {
+        const double v = HeroEditor::baseStatValue(r.stat, r.rarity, r.level);
+        check(v == r.value, std::string(r.stat) + " rarity " + std::to_string(r.rarity) + " level " +
+                                std::to_string(r.level) + " = " + std::to_string(static_cast<int>(v)));
+    }
+
+    // The Hero tab keeps an older build's traits and memories (custom lines, trait level 3).
+    nlohmann::json heroBuild = readJson(dataDir / "builds" / "youga_ultimate_one.json");
+    const nlohmann::json nodesBefore = heroBuild["traits"]["nodes"];
+    HeroEditor hero(game.traits, data.crafting);
+    hero.setBuild(&heroBuild);
+    check(heroBuild["traits"]["nodes"] == nodesBefore, "trait nodes and levels unchanged");
+    // Base stats are listed by name only; their value comes from rarity and level.
+    QStringList baseNames;
+    for (QComboBox* box : hero.findChildren<QComboBox*>())
+        for (int i = 0; i < box->count(); ++i)
+            if (box->itemData(i).toString() == "+330 Max Life") baseNames << box->itemText(i);
+    check(!baseNames.isEmpty() && baseNames.front() == "Max Life", "base stat listed as \"Max Life\"");
+    check(std::abs(tob::calculateMainSkillDps(tob::loadBuild(game, heroBuild)).dps - before) <= before * 1e-9,
+          "same DPS after the Hero tab loads the build");
+
+    // Creative Genius: one node from each of the two groups at 45, 60 and 75, all six kept.
+    nlohmann::json genius = {{"traits", {{"tree", "Creative_Genius"},
+                                         {"picks", {"Inspiration Overflow", "Mind Domain", "Brainstorm"}},
+                                         {"picks_b", {"Super Sonic Protocol", "Law of Ingenuity", "Hyper-Resonance Hypothesis"}}}}};
+    HeroEditor geniusHero(game.traits, data.crafting);
+    geniusHero.setBuild(&genius);
+    std::cout << "Creative Genius nodes: " << genius["traits"]["nodes"].dump() << "\n";
+    check(genius["traits"]["nodes"].size() == 7, "Creative Genius keeps base + 3 group A + 3 group B picks");
+
+    // An Ultimate memory offers every tier down to T0 for its random affixes.
+    heroBuild["hero_memories"][0]["memory"] = {{"rarity", 4}, {"level", 50}, {"base", 2},
+                                               {"fixed", nlohmann::json::array()},
+                                               {"random", {{{"family", "+#% Skill Area"}, {"tier", "0"}, {"values", {45}}}}}};
+    hero.setBuild(&heroBuild);
+    QStringList tierLists;
+    for (QComboBox* box : hero.findChildren<QComboBox*>()) {
+        QStringList items;
+        for (int i = 0; i < box->count(); ++i) items << box->itemText(i);
+        if (items.contains("T1") || items.contains("T0")) tierLists << items.join(",");
+    }
+    std::cout << "tier lists: " << tierLists.join(" | ").toStdString() << "\n";
+    check(std::any_of(tierLists.begin(), tierLists.end(), [](const QString& s) { return s.startsWith("T0"); }),
+          "Ultimate random affix offers T0");
 
     std::cout << (failures ? "FAILED" : "all passed") << "\n";
     return failures ? 1 : 0;

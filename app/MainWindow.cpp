@@ -1,6 +1,7 @@
 #include "MainWindow.h"
 
 #include "Editors.h"
+#include "HeroEditor.h"
 
 #include "tob/ModParser.h"
 #include "tob/SkillDps.h"
@@ -315,11 +316,18 @@ MainWindow::MainWindow(QWidget* parent) : QMainWindow(parent) {
 
     skillsEditor_ = new SkillsEditor(data_.skills, data_.traits);
     gearEditor_ = new GearEditor(craftData_);
+    heroEditor_ = new HeroEditor(data_.traits, craftData_.crafting);
+    editTabs->addTab(heroEditor_, "Hero");
     editTabs->addTab(skillsEditor_, "Skills");
     editTabs->addTab(gearEditor_, "Gear");
     editTabs->addTab(configScroll, "Config");
     connect(skillsEditor_, &SkillsEditor::changed, this, [this] { buildEdited(true); });
     connect(gearEditor_, &GearEditor::changed, this, [this] { buildEdited(true); });
+    // Trait changes can add or remove supports a trait grants (Clockwork Core).
+    connect(heroEditor_, &HeroEditor::changed, this, [this] {
+        if (SkillsEditor::applyTraitSupports(build_, data_.skills, data_.traits)) skillsEditor_->setBuild(&build_);
+        buildEdited(true);
+    });
 
     const QString youga = QDir(dataDir_).filePath("builds/youga_ultimate_one.json");
     if (QFileInfo::exists(youga)) loadBuildPath(youga);
@@ -387,6 +395,7 @@ bool MainWindow::saveBuildAs() {
 void MainWindow::setBuild(nlohmann::json build) {
     build_ = std::move(build);
     loaded_ = true;
+    if (heroEditor_) heroEditor_->setBuild(&build_);
     if (skillsEditor_) skillsEditor_->setBuild(&build_);
     if (gearEditor_) gearEditor_->setBuild(&build_);
     setDirty(false);

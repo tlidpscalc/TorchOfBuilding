@@ -13,6 +13,7 @@
 #include <nlohmann/json.hpp>
 
 class GearEditor;
+class HeroEditor;
 class QCheckBox;
 class QComboBox;
 class QDoubleSpinBox;
@@ -65,6 +66,7 @@ private:
     QLabel* buildLabel_;
     SkillsEditor* skillsEditor_ = nullptr;
     GearEditor* gearEditor_ = nullptr;
+    HeroEditor* heroEditor_ = nullptr;
     QFormLayout* flagsForm_;
     QFormLayout* varsForm_;
     QDoubleSpinBox* enemyRes_;

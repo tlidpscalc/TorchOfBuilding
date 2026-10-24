@@ -205,7 +205,16 @@ bool SkillsEditor::applyTraitSupports(nlohmann::json& build, const nlohmann::jso
         }
     }
     nlohmann::json& active = arrayAt(build["skills"], "active");
-    if (!clockwork || active.empty() || !active[0].is_object()) return false;
+    if (active.empty() || !active[0].is_object()) return false;
+    if (!clockwork) {
+        // The trait was dropped: remove the support it had placed.
+        for (auto& s : arrayAt(active[0], "supports"))
+            if (s.is_object() && s.value("trait", false)) {
+                s = nullptr;
+                return true;
+            }
+        return false;
+    }
     // Only Main Active Spell Skills (ASSUMED: every main spell counts as tanglable).
     const auto* card = cardFor(skillData, active[0].value("name", ""));
     const auto tags = card ? card->value("tags", nlohmann::json::array()) : nlohmann::json::array();
